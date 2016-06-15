@@ -1,53 +1,13 @@
 <script type="text/javascript" src="js/objetoajax.js"></script>
-<script type="text/javascript" src="js/funciones.js"></script>
 <script type="text/javascript" src="jscalendar/calendar.php"></script>
 <script type="text/javascript" src="jscalendar/lang/calendar-es.js"></script>
 <script type="text/javascript" src="jscalendar/calendar-setup.js"></script>
 <style type="text/css">
     @import url("jscalendar/calendar-win2k-cold-1.css");
 </style>
-<!-- Call shadowbox scripts //-->
-<script type="text/javascript" src="js/shadowbox/jquery-1.2.6.js"></script>
-<script type="text/javascript" src="js/shadowbox/adapter/shadowbox-jquery.js"></script>
-<script type="text/javascript" src="js/shadowbox/shadowbox.js"></script>
-<!-- Call shadowbox scripts //-->
 
-
-<link rel="stylesheet" type="text/css" href="../shadowbox-3.0.3/shadowbox.css">
-<script type="text/javascript" src="../shadowbox-3.0.3/shadowbox.js"></script>
 <script type="text/javascript">
-Shadowbox.init({
-    handleOversize: "drag",
-    modal: true
-});
-</script>
-<script type="text/javascript"><!--
-	function closeShadow()
-	{
-		Shadowbox.close();
-	}
-// --></script>
-<script type="text/javascript">
-		
-// i use classic skin, spanish language 'es' but can be traded for 'en', and all of the possible player types.
- 
-Shadowbox.loadSkin('classic', 'js/shadowbox/skin'); 
-Shadowbox.loadLanguage('es', 'js/shadowbox/lang'); 
-Shadowbox.loadPlayer(['flv', 'html', 'iframe', 'img', 'qt', 'swf', 'wmp'], 'js/shadowbox/player'); 		
- 
-// This is the Shadowbox function we called from flash remember? in the externalInterfaceCall part?. 
-// actually is a variable not a function. though it contains a function.
 
-var openShadowbox = function(content, player, title){
-    Shadowbox.open({
-        content:    content,
-        player:     player,
-        title:      title
-    });
-};
-
-// initializes shadowbox.
-window.onload = Shadowbox.init;
 
 function mostrar(dato,caja)
 {
@@ -71,8 +31,6 @@ function mostrar(dato,caja)
 	{
 		document.getElementById('mostrar_imagen5').innerHTML="<img src='../externos/Thumb.php?img=../images/"+dato+"&tamano=50'>";	
 	}
-	//document.getElementById('imagen').value=dato;
-	
 }
 </script>
 
@@ -83,8 +41,9 @@ function mostrar(dato,caja)
 </style>
 <script type="text/javascript" src="js/editor/widgEditor.js"></script>
 
+
 	<ol class="breadcrumb">
-	<?
+	<?php
 	if($_SESSION['login']['perfil'] == 1)
 	{
 		if($tipo_contenido != 10)
@@ -145,22 +104,31 @@ if ($mostrar_form == false)
 else {?>
 <!-- Pinto el formulario donde se mostrara la informacion del nodo que se seleccione-->
 <br>
-<form method="post" name="form">
+<form method="post" name="form" id="formPrincipal">
 <!-- <input type="hidden" name="fecha" value="<?echo (isset($fecha))?$fecha:date('Y-m-d H:i:s');?>">-->
 	<table  id="form_admin" class="table table-striped">
 		<tr>
-			<td align="center" colspan="2" id="botones_panel">
-				<input type="submit" name="guardar" value="<? echo $texto_boton;?>" class="btn btn-primary">
-				<input type="submit" name="cancelar" value="Cancelar" class="btn btn-primary">
-				<!-- <input type="submit" name="cancelar" value="Agregar">-->
+			<td colspan="2">
+				<?php if(isset($_GET['editar'])){ ?>
+					<h3>Editando: <?php echo $info_id[0]['titulo']?></h3>
+				<?php }else{ ?>
+					<h3>Nuevo contenido para <?php echo $info_id[0]['titulo']?></h3>
+				<?php } ?>
 			</td>
 		</tr>
+		<!--<tr>
+			<td align="right" colspan="2" id="botones_panel">
+				<input type="submit" name="cancelar" value="Cancelar" class="btn btn-default">
+				<input type="button" id="btnGuardarTop" name="guardar" value="<? echo $texto_boton;?>" class="btn btn-warning btn-guardar"  onclick="sendForm()">
+			</td>
+		</tr>-->
 		<tr>
-			<td>
+			<td colspan="2">
 			<?php if($funciones->entorno()){ ?>
 				<input type="hidden" name="tipo_contenido" value="<?=$tipo_contenido?>">
 			<?php } ?>	
 				<input type="hidden" id="id_padre" name="id_padre" size="53" value="<? echo $id_padre;?>">
+				<input type="hidden" id="guardar" name="guardar" size="53">
 			</td>
 		</tr>
 		<?php if(!$funciones->entorno()){ ?>
@@ -814,9 +782,9 @@ else {?>
 			</td>
 		</tr>
 		<tr>
-			<td align="center" colspan="2" id="botones_panel">
-				<input type="submit" name="guardar" value="<? echo $texto_boton;?>" class="btn btn-primary">
-				<input type="submit" name="cancelar" value="Cancelar" class="btn btn-primary">
+			<td align="right" colspan="2" id="botones_panel">
+				<input type="submit" name="cancelar" value="Cancelar" class="btn btn-default">
+				<input type="button" name="guardar"  id="btnGuardarBottom" value="<? echo $texto_boton;?>" class="btn btn-warning  btn-guardar" onclick="sendForm()">
 				<!-- <input type="submit" name="cancelar" value="Agregar">-->
 			</td>
 		</tr>

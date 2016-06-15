@@ -26,13 +26,13 @@ define('_RUTA_ABSOLUTA'										,$ruta_absoluta);		//Ruta relativa del portal e
 //Carpetas
 define('_PLANTILLAS'	                                 	,$ruta_absoluta.'html/');			//Url desde el navegador
 define('_NOMBRE_EMPRESA'	                                ,'Orugal');			//Url desde el navegador
-define('_DOMINIO'	                     		           ,'http://localhost/CMSorugal/');			//local
-//define('_DOMINIO'	                     		           ,'http://www.tucomunidad.co/hippie/2015/');			//produccion
+define('_DOMINIO'	                     		           ,'http://192.168.0.12:8081/orugalCms/');			//local
 
 
 define('_ENTORNO',											"desarrollo");//desarrollo - produccion
 define('_LOGO',												_DOMINIO."images/diseno/logo.png");//logo
 define('_BANNER_ADMIN',										false);
+define('_MENSAJE_FAIL',										"Perd&oacute;n, pero esta es zona restringida");
 
 
 

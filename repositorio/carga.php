@@ -1,4 +1,6 @@
-<?
+<?php
+session_start();
+require("../config/configuracion.php");
 ini_set("display_errors",0);
 /*
 * Repositorio de imagenes Black Image.
@@ -7,7 +9,13 @@ ini_set("display_errors",0);
 */
 //incluyo los archivos de configuración del portal
 //require_once("../configuracion/configuracion.php");
-
+//unset($_SESSION['login']);
+if(!isset($_SESSION['login']))
+{
+	include("rest.php");
+}
+else
+{
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,64 +24,68 @@ ini_set("display_errors",0);
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <style type="text/css">
 </style>
+
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css" />
+<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css' />
 <style>
-body{background-repeat:repeat-x;background-color:#FFFFFF;font-family: Arial, Helvetica, sans-serif;margin:0;padding:0;}
+body{background-repeat:repeat-x;background-color:#FFFFFF;font-family: 'Roboto', Helvetica, sans-serif;margin:0;padding:0;}
 h1{font-size:14px;text-align:center}
 a{color:#a43a0c;text-decoration:none;font-size:12px;font-weight:bold}
 .cajas{padding:4px}
 .boton{padding:5px;border:0}
 </style>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css" />
 </head>
 
 <body>
-<div class="container-fluid">
-	<div class="container">
+<div class="container-fluid" style="background: #EBE9E9;border-bottom:1px solid #ccc;box-shadow: 0px 0px 3px #999">
 		<div class="row">
 			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 text-left">
-				<h2>Repositorio Archivos</h2>
+				<h3>Repositorio Archivos</h3><br>
+			</div>
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" >
+				<div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
+					<!-- Carga de imagen-->
+					<form name="form1" action="upload.php" method="post" enctype="multipart/form-data" role="form">
+						<div class="form-group">
+							<label for="email">SUBIR UNA IMAGEN</label>
+							<input class="form-control" name="archivo[]" type="file" size="35" multiple/>
+							<input type="hidden" name="ruta" value="<?echo $ruta=(isset($_GET['dir']))?$_GET['dir']:'../images/';?>">
+						</div>
+						<div class="form-group">
+							<input name="enviar" type="submit" value="Subir Imagen" class="btn btn-primary">
+							<input type="button" value="Cerrar" onClick="window.close()" class="btn btn-default">
+							<input name="action" type="hidden" value="upload" class="btn btn-primary">
+						</div>
+						<div class="form-group">
+							<li style="color:#999;font-size:9.2px;display:block">Maximo 3 Mb. Formato (jpg, png, gif)</li>
+							<li style="color:#333;font-size:11px;display:block;font-weight:bold">Puedes subir varias imagenes a la vez, solo manten presionada la tecla Control y selecciona las imagenes</li>
+						</div>	
+					</form> <br>
+					</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
+					<form method="post" role="form">
+						<div class="form-group">
+							<label for="email">CREAR CARPETA</label>
+							<input type="text" name="nombre_folder" class="form-control" size="35">
+						</div>
+						<div class="form-group">
+							<input name="crear_folder" type="submit" value="Crear folder" class="btn btn-primary"><br>
+							<li style="color:#333;font-size:11px;display:block;font-weight:bold">
+								El nombre de la carpeta no debe contener (Espacios, tildes, &tilde; o cual quier caracter especial)
+							</li>
+						</div>	
+					</form>	
+				</div>
 			</div>
 		</div>
-	</div>
 </div>
 <div class="container-fluid" style="margin:2% 0 0 0">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12 col-xs-12 col-md-3 col-lg-3">
-				<!-- Carga de imagen-->
-				<form name="form1" action="upload.php" method="post" enctype="multipart/form-data" role="form">
-					<div class="form-group">
-						<label for="email">SUBIR UNA IMAGEN</label>
-						<input class="form-control" name="archivo[]" type="file" size="35" multiple/>
-						<input type="hidden" name="ruta" value="<?echo $ruta=(isset($_GET['dir']))?$_GET['dir']:'../images/';?>">
-					</div>
-					<div class="form-group">
-						<input name="enviar" type="submit" value="Subir Imagen" class="btn btn-primary">
-						<input type="button" value="Cerrar" onClick="window.close()" class="btn btn-default">
-						<input name="action" type="hidden" value="upload" class="btn btn-primary">
-					</div>
-					<div class="form-group">
-						<li style="color:#999;font-size:9.2px;display:block">Maximo 3 Mb. Formato (jpg, png, gif)</li>
-						<li style="color:#333;font-size:11px;display:block;font-weight:bold">Puedes subir varias imagenes a la vez, solo manten presionada la tecla Control y selecciona las imagenes</li>
-					</div>	
-				</form> <br>
-				<form method="post" role="form">
-					<div class="form-group">
-						<label for="email">CREAR CARPETA</label>
-						<input type="text" name="nombre_folder" class="form-control" size="35">
-					</div>
-					<div class="form-group">
-						<input name="crear_folder" type="submit" value="Crear folder" class="btn btn-primary"><br>
-						<li style="color:#333;font-size:11px;display:block;font-weight:bold">
-							El nombre de la carpeta no debe contener (Espacios, tildes, &tilde; o cual quier caracter especial)
-						</li>
-					</div>	
-				</form>	
-			</div>
 			<!--centro-->
-			<div class="col-sm-12 col-xs-12 col-md-1 col-lg-1"></div>
-			<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8">
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
 				<?
 				if(isset($_GET['dato']))
 				{
@@ -179,6 +191,49 @@ a{color:#a43a0c;text-decoration:none;font-size:12px;font-weight:bold}
 </div>
 
 
+	<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.10.3.custom.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var dominio  	=   "<?php echo _DOMINIO ?>";
+		$(document).ready(function(){
+			$(".imagenes").draggable({
+			  revert: true
+			});
+
+
+			$(".carpetas").droppable({
+			  drop: function(event,ui){
+			  	var origen  = ui.draggable.data("ruta");
+			  	var imagen  = ui.draggable.data("imagen");
+			  	var destino = $(this).data('carpeta');
+         
+			  	$.ajax({
+				    url: dominio+"php/mueveFoto.php",
+				    data: "accion=1&origen="+origen+"&destino="+destino+"&imagen="+imagen,
+				    type: "GET",
+				    dataType: "jsonp",
+				    success:function(json)
+				    {
+				    	ui.draggable.remove();
+				    	//alert(json.mensaje);
+				    	location.reload();
+				    },
+				    error:function(e){
+				        //$("#ERRORES").html(e.statusText + e.status + e.responseText);
+				    }
+				});
+
+			  	/*alert(origen + "  -  "+destino);
+			  	location.reload();*/
+			  	//realizo el movimiento de la foto via ajax
+
+			  }
+			});
+		});
+
+
+	</script>
 </body>
 </html>
+<?php }?>

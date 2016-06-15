@@ -1,3 +1,8 @@
+
+
+
+
+
 function campos(accion)
 {
 	document.getElementById('antetitulo').style.display = accion;
@@ -1098,4 +1103,24 @@ function ponerCont(id,caja,texto)
 	document.getElementById('text'+caja).style.display='none';
 	document.getElementById('oculta'+caja).value=id;
 	document.getElementById(caja).value=texto;
+}
+
+function sendForm()
+{
+	swal({
+	  title: "Desea continuar?",
+	  text: "La informaci&oacute;n ingresada en el formulario es correcta?",
+	  type: "info",
+	  html:true,
+	  showCancelButton: true,
+	  confirmButtonColor: "#DD6B55",
+	  confirmButtonText: "Continuar",
+	  cancelButtonText: "Cancelar",
+	  closeOnConfirm: false
+	},
+	function()
+	{
+		$("#formPrincipal").submit();
+	});
+
 }

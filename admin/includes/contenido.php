@@ -1,4 +1,4 @@
-<?
+<?php
 require('core/PHPPaging.lib.php');
 global $funciones;
 global $db;
@@ -403,6 +403,7 @@ if(isset($_GET['editar']))
 			@eval("$".$llave." = '".$valor."';");
 		}
 	}
+	//var_dump($_POST);die();
 	//valido si se dio la orden de guardar
 	if(isset($_POST['guardar']))
 	{
@@ -817,7 +818,7 @@ $tabla .= '</td>
 								
 								$tabla .= '<tr class="center">';
 								$tabla.='<td align="left">'.
-												$rew['titulo'].'('.$rew['orden'].')
+												utf8_encode($rew['titulo']).'('.$rew['orden'].')
 											</td>';
 								
 								if($tipo_contenido == 10)

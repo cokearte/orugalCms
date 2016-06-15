@@ -31,12 +31,12 @@ class Funciones
 		{
 			$arreglo	=	array("id"=>($result->fields['id']),
 								  "id_padre"=>$result->fields['id_padre'],
-								  "antetitulo"=>$result->fields['antetitulo'],
-								  "titulo"=>$result->fields['titulo'],
-								  "subtitulo"=>$result->fields['subtitulo'],
-								  "resumen"=>html_entity_decode(nl2br(utf8_encode($result->fields['resumen']))),
-								  "contenido"=>html_entity_decode(nl2br(utf8_encode($result->fields['contenido']))),
-								  "especificaciones"=>html_entity_decode(utf8_encode(nl2br($result->fields['especificaciones']))),
+								  "antetitulo"=>utf8_encode($result->fields['antetitulo']),
+								  "titulo"=>utf8_encode($result->fields['titulo']),
+								  "subtitulo"=>utf8_encode($result->fields['subtitulo']),
+								  "resumen"=>utf8_encode(nl2br($result->fields['resumen'])),
+								  "contenido"=>utf8_encode(nl2br($result->fields['contenido'])),
+								  "especificaciones"=>utf8_encode(nl2br($result->fields['especificaciones'])),
 								  "marca"=>$result->fields['marca'],
 								  "imagen"=>$result->fields['imagen'],
 								  "imagen2"=>$result->fields['imagen2'],
@@ -233,7 +233,31 @@ class Funciones
 	 * @param array $datos es un arreglo que inicialmente se envia vacio y el sistema se encarga de llenarlo
 	 * @return $datos retorna el arreglo con la informacion de la recursividad
 	 */
+
 	function BusquedaRecursiva($id,$datos)
+    {
+    	$resultado = $this->infoId($id);
+    	if($resultado[0]['id_padre'] != "0")
+        {
+                //si lo es pondre los datos traidos en el arreglo
+                array_push($datos,$resultado[0]);
+                //y de nuevo llamo la funcion
+                return $this->BusquedaRecursiva($resultado[0]['id_padre'],$datos);
+
+        }
+        //cuando ya el padre sea igual a 0 es por que ya llego a la pagina de inicio
+        else
+        {
+                //si lo es pondre los datos traidos en el arreglo
+                array_push($datos,$resultado[0]);
+                //retorno el arreglo
+                return (array_reverse($datos));
+        }
+    }
+
+	/*Esta es la función recursova original en caso de que falle*/
+	
+	/*function BusquedaRecursiva($id,$datos)
     {
     	//variable base de datos @see config/conexion.php
             global $db;
@@ -258,7 +282,7 @@ class Funciones
                     //retorno el arreglo
                     return (array_reverse($datos));
             }
-    }
+    }*/
 	/*
 	 * Funcion que realiza una busqueda recursiva partiendo desde un nodo padre y hacia abajo
 	 * @param int $idbusca el cual sera el id desde donde buscaremos
@@ -348,12 +372,12 @@ class Funciones
 
 			$arreglo	=	array("id"=>($result->fields['id']),
 								  "id_padre"=>$result->fields['id_padre'],
-								  "antetitulo"=>$result->fields['antetitulo'],
-								  "titulo"=>$result->fields['titulo'],
-								  "subtitulo"=>$result->fields['subtitulo'],
-								  "resumen"=>html_entity_decode(nl2br($result->fields['resumen'])),
-								  "contenido"=>html_entity_decode(nl2br($result->fields['contenido'])),
-								  "especificaciones"=>html_entity_decode(nl2br($result->fields['especificaciones'])),
+								  "antetitulo"=>utf8_encode($result->fields['antetitulo']),
+								  "titulo"=>utf8_encode($result->fields['titulo']),
+								  "subtitulo"=>utf8_encode($result->fields['subtitulo']),
+								  "resumen"=>(nl2br($result->fields['resumen'])),
+								  "contenido"=>(nl2br($result->fields['contenido'])),
+								  "especificaciones"=>(nl2br($result->fields['especificaciones'])),
 								  "marca"=>$result->fields['marca'],
 								  "imagen"=>$result->fields['imagen'],
 								  "imagen2"=>$result->fields['imagen2'],
@@ -687,7 +711,7 @@ class Funciones
 												}
 											}
 										//armo los campos a los cuales le insertare la informacion
-											$campos		.=	sprintf($key1[0]."='".$info."',");
+											$campos		.=	sprintf($key1[0]."='".utf8_decode($info)."',");
 										}
 									}
 									else
