@@ -1,0 +1,60 @@
+td.toolbar{
+  border-top: 1px solid buttonhighlight;
+  border-left: 1px solid buttonhighlight;
+  border-bottom: 1px solid buttonshadow;
+  border-right: 1px solid buttonshadow;
+  padding: 0; margin: 0; padding-bottom:1; padding-top:1;
+}
+
+.toolbar{
+  font-family: "Arial";
+  font-size: xx-small;
+  vertical-align: middle;
+  cursor: default;
+}
+
+.toolbar img{
+  border: 1px solid buttonface; margin:0; padding:1;
+  cursor: hand;
+}
+
+.toolbar span.delimiter{
+  background-color: buttonface;
+  border-top: 1px solid buttonshadow;
+  border-left: 1px solid buttonshadow;
+  border-bottom: 1px solid buttonhighlight;
+  border-right: 1px solid buttonhighlight;
+  width: 2px;
+  cursor: default;
+}
+
+.toolbar span.space{
+  background-color: buttonface;
+  width: 2px;
+  cursor: default;
+}
+
+.toolbar span.text{
+  position:relative;
+  top: -2;
+  margin-left: 4;
+}
+
+.toolbar select{
+  font-size: 12px;
+  margin-top: 1; margin-bottom: 1;
+}
+
+div.editor{
+  font-family: "Times New Roman";
+  border: 2px inset buttonface; padding:5;
+}
+
+div.paste_div{
+  position:absolute;
+  top: -10000px;
+  left: -10000px;
+  height : 1px;
+  width : 1px;
+  overflow : auto;
+}

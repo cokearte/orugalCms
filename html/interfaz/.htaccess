@@ -1,0 +1,12 @@
+RewriteEngine On
+#ErrorDocument 404 /noPage.php
+
+# Maquillando las url
+RewriteRule ^home$ index.php
+RewriteRule ^nosotros$ index.php?id=2
+RewriteRule ^eventos$ index.php?id=11
+RewriteRule ^servicios$ index.php?id=1190
+RewriteRule ^contacto$ index.php?id=337
+RewriteRule ^gracias-contacto$ index.php?id=337&gracias
+
+RewriteRule ^([a-zA-Z0-9_-]+)-([0-9]+)$ index.php?id=11&hijo=$2

@@ -1,0 +1,47 @@
+<div id="condiciones">
+            	<div id="tit_condiciones">
+       	    <h1>Contacto</h1></div>
+                <div id="are_condi">
+                <form method="post">
+                	<div id="titulo_condiciones">Contact</div>
+                    <div id="formc">
+                      <div class="formc2">
+                      	<div id="dato">Nombre</div>
+                      	<div id="campo"><input name="nombres" type="text" value="<?=$nombres?>" placeholder="Escriba su nombre"/></div>
+                      </div>
+                      <div class="formc2">
+                      	<div id="dato">Mail</div>
+                      	<div id="campo"><input name="mail" type="text" value="<?=$mail?>"  placeholder="Escriba su correo"/></div>
+                      </div>
+                      <div class="formc2">
+                      	<div id="dato">Comentario</div>
+                      	<div id="campo"><textarea name="comentario" cols="" rows="" placeholder="Escriba su comentario"><?=$comentario?></textarea></div>
+                      </div>
+                      <div class="formc2">
+                      	<div id="dato">Pais</div>
+                      	<div id="campo">
+                      		<select name="pais">
+                      			<option value="">Seleccione..</option>
+                      			<?
+                      				foreach($paises as $lista){
+									if($pais == $lista['nombre']){
+								?>
+									<option value="<?=$lista['nombre']?>" selected><?=$lista['nombre']?></option>
+								<?	
+									}
+                      			?>
+                      				<option value="<?=$lista['nombre']?>"><?=$lista['nombre']?></option>
+                      			<?}?>
+                      		</select>
+                      	</div>
+                      </div>
+                      <div id="btn_entrar">
+                      	<a style="cursor:pointer" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image4','','images/diseno/enviar2.jpg',1)">
+                      		<input type="image" src="images/diseno/enviar1.jpg" name="enviar" width="82" height="24" border="0" id="Image4" />
+                      	</a>
+                      </div>
+                  </div>
+                  <div id="fotoc"><img src="images/diseno/fotoc.jpg" width="179" height="353" /></div>
+                  </form>
+                </div>
+            </div>

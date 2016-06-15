@@ -1,0 +1,18 @@
+RewriteEngine On
+#ErrorDocument 404 /noPage.php
+
+# Maquillando las url
+RewriteRule ^home$ index.php
+RewriteRule ^quienes-somos$ index.php?id=2
+RewriteRule ^informacion-interes$ index.php?id=13
+RewriteRule ^informacion-gremial$ index.php?id=11
+RewriteRule ^afiliados$ index.php?id=1676
+RewriteRule ^salidaAfiliado$ index.php?id=1676&salidaAfiliado
+RewriteRule ^afiliados/([a-zA-Z0-9_-]+)/([0-9]+)$ index.php?id=1676&padre=$2
+
+RewriteRule ^contacto$ index.php?id=337
+
+RewriteRule ^eventos/([a-zA-Z0-9_-]+)/([0-9]+)$ index.php?id=11&hijo=$2
+RewriteRule ^([a-zA-Z0-9_-]+)-([0-9]+)$ index.php?id=13&hijo=$2
+
+RewriteRule ^([a-zA-Z0-9_-]+)/([0-9]+)$ index.php?idNoticia=$2

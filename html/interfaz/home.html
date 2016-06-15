@@ -1,0 +1,47 @@
+<div class="contenedores">
+    <div class="centros">
+        <div class="centrosInt">
+            <img src="<?php echo _DOMINIO ?>images/diseno//slogan.png"  />
+        </div>
+    </div>
+    <div class="centros">
+        <div class="centrosInt">
+            <div class="columna separador">
+                <div class="fotoColomnaHome"><img src="<?php echo _DOMINIO ?>images/diseno//imgBienvenidoHome.png"></div>
+                <div class="textosColumnasHome">
+                    <h2>¡Bienvenido!</h2>
+                    <p><?php echo $bienvenido[0]['contenido'] ?></p>
+                </div>
+            </div>
+            <div class="columna">
+                <div class="fotoColomnaHome"><img src="<?php echo _DOMINIO ?>images/diseno//imgQuienesHome.png"></div>
+                <div class="textosColumnasHome">
+                    <h2>¿Quienes Somos?</h2>
+                    <p><?php echo substr($quienes[0]['contenido'],0,150) ?>...
+                    </p>
+                    <p><a href="quienes-somos">Ver Más</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="centros">
+        <div class="centrosInt">
+            <div class="columna70">
+                Aliados
+            </div>
+            <div class="columna70">
+                <div class="owl-carousel">
+                    <?php foreach($banersAli as $aliados){ ?>
+                      <div class="item"><img src="<?php echo _DOMINIO ?>images/<?php echo $aliados['imagen'] ?>" /></div>
+                    <?php } ?>
+                </div>
+            </div>
+            <div class="columna30">
+                    Redes Sociales
+                </div>
+            <div class="columna30">
+                <img src="<?php echo _DOMINIO ?>images/diseno//redes.png">
+            </div>
+        </div>
+    </div>  
+</div>    

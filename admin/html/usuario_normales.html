@@ -1,0 +1,133 @@
+<style>
+	.titulos{font-weight:bold;text-align:center;text-transform:uppercase}
+	td{border-bottom:1px solid #999;padding: 10px}
+</style>
+<!-- Call shadowbox scripts //-->
+<link rel="stylesheet" type="text/css" href="../shadowbox-3.0.3/shadowbox.css">
+<script type="text/javascript" src="../shadowbox-3.0.3/shadowbox.js"></script>
+<script type="text/javascript" src="js/funciones.js"></script>
+<script type="text/javascript">
+Shadowbox.init({
+    handleOversize: "drag",
+    modal: true
+});
+</script>
+<script type="text/javascript"><!--
+	function closeShadow()
+	{
+		Shadowbox.close();
+	}
+// --></script>
+<script>
+	function confirmar()
+	{
+		if(confirm("Esta seguro que desea borrar los usuarios seleccionados?") == true)
+		{
+			document.form.submit();
+		}
+		else
+		{
+			return false;
+		}
+	}
+function generarClave(id_user,accion,id)
+{
+	if(confirm("Se va a generar una clave para este usuario, esta clave será enviada al correo que el usuario registro, Desea continuar?")==true)
+	{
+		document.location="index.php?id="+id+"&accion=3&genera="+id_user;
+	}
+	else
+	{
+		return false;
+	}
+}
+</script>
+<form method="post" name="form">
+<table width="100%" border="0" cellspacing="0">
+	<!--<tr>
+		<td>
+			Nombres
+		</td>
+		<td colspan="5">
+			<input type="text" name="nombre" size="50" value="<?=$nombre?>">
+		</td>
+	</tr>
+	<tr>	
+		<td>
+			Apellidos
+		</td>
+		<td colspan="5">
+			<input type="text" name="apellido" size="50" value="<?=$apellido?>">
+		</td>
+	</tr>
+	<tr>	
+		<td>
+			Genero
+		</td>
+		<td colspan="5">
+			Masculino <input type="radio" name="genero" value="M" <?if($genero=='M'){echo "checked";}?>><br>
+			Femenino <input type="radio" name="genero" value="F" <?if($genero=='F'){echo "checked";}?>>
+		</td>
+	</tr>
+	<tr>	
+		<td colspan="6" align="center">
+			<input type="submit" name="buscar" value="Filtrar">
+			<input type="submit" name="exportar" value="Exportar a Excel">
+		</td>
+	</tr>-->
+	<tr>	
+		<td colspan="4" align="center">
+			<strong>LISTADO DE USUARIOS ACTUALES</strong>
+		</td>
+		<td colspan="4" align="center">
+			<strong>
+				<a href="appadmin/nuevo_user.php?new" rel='shadowbox; width=600px;height=400px'>Nuevo Usuario</a>
+			</strong>
+		</td>
+	</tr>
+	<tr>
+		<td class="titulos">
+			Nombres
+		</td>
+		<td class="titulos">
+			Apellidos
+		</td>
+		<td class="titulos">
+			correo
+		</td>
+		<td class="titulos">
+			Acciones
+		</td>
+		<td class="titulos">
+			E <input type="checkbox" onClick="marcar(this)">
+		</td>
+	</tr>
+	<?
+		foreach($array_users as $datos)
+		{
+			if($datos['idusuario'] != 1)
+			{
+				echo "<tr>";
+				echo "<td>".$datos['nombres']."</td>";
+				echo "<td>".$datos['apellidos']."</td>";
+				echo "<td align='center'>".$datos['email']."</td>";
+				echo "<td align='center'>
+							<a href='appadmin/edita_user.php?edit&user=".$datos['idusuario']."' rel='shadowbox; width=600px;height=400px'>Editar</a> | 
+							<a style='cursor:pointer' onClick=\"generarClave(".$datos['idusuario'].",'".base64_encode($accion)."',".$id.")\" title='Generar Clave'>Genera Clave</a>
+						</td>";
+				echo "<td align='center'><input type='checkbox' name='elim[]' value='".$datos['idusuario']."'></td>";
+				echo "<tr>";
+			}
+		}	
+	?>
+	<tr>
+		<td colspan="4">
+			
+		</td>
+		<td class="titulos">
+			<input type="button" value="Eliminar" name="eliminar" onClick="confirmar()">
+			<input type="hidden" name="accion" value="1">
+		</td>
+	</tr>
+</table>
+</form>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title><?php echo _NOMBRE_EMPRESA?> - <?php echo $info_id[0]['titulo']?></title>	
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta  content="<?php echo $info_id[0]['keywords']?>" name="keywords"/>
+		<meta  content="<?php echo $info_id[0]['notas']?>" name="description"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<link rel="stylesheet" type="text/css" href="<?php echo _DOMINIO ?>css/asograsas.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo _DOMINIO ?>css/asograsasMobile.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo _DOMINIO ?>css/flexslider.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo _DOMINIO ?>css/owl.carousel.css" />
+	    <script src="<?php echo _DOMINIO ?>js/jquery.min.js"></script>
+	    <script src="<?php echo _DOMINIO ?>js/modernizr.js"></script>
+	    <script defer src="<?php echo _DOMINIO ?>js/jquery.flexslider.js"></script>
+	    <script src="<?php echo _DOMINIO ?>js/jquery.easing.js"></script>
+  		<script src="<?php echo _DOMINIO ?>js/jquery.mousewheel.js"></script>
+  		<script type="text/javascript" src="<?php echo _DOMINIO ?>js/owl.carousel.js"></script>
+  		<script type="text/javascript">
+		// Can also be used with $(document).ready()
+			$(document).ready(function() {
+
+			  $('.flexslider').flexslider({
+			    animation: "slide",
+			    controlNav:false,
+				directionNav:false
+			  });
+
+			
+					$('.owl-carousel').owlCarousel({
+				    loop:true,
+				    margin:10,
+				    autoplay:true,
+				    autoplayTimeout:1000,
+				    autoplayHoverPause:true,
+				    responsive:{
+				        0:{
+				            items:3
+				        },
+				        600:{
+				            items:3
+				        },
+				        1000:{
+				            items:5
+				        }
+				    }
+				})
+			});
+
+			
+		</script>
+	</head>
+	<body>
+		<!--cabezote-->
+		<?php include(_PLANTILLAS."interfaz/cabezote.php");?>
+		<!--fin cabezote-->
+
+		<!--contenido central-->
+		<?php include ($contenido);?>
+		<!--fin Contenido Central
+
+		<!--pie de página-->	
+		<?php include(_PLANTILLAS."interfaz/pie.php") ?>
+		<!-- Fin pie de página-->
+	</body>
+</html>

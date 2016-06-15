@@ -1,0 +1,355 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ margin:0; padding:0}
+
+body{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#333333;;
+	/*background-image:url(../images/diseno/fondo_pag.jpg);
+	background-repeat:repeat-x; background-color:#FF6600;*/
+	margin:auto;
+}
+h1{font-size:20px; color:#FF6600;}
+h2{font-size:12px; color:#333333; font-weight:bold;}
+a{ text-decoration:none; color:#333333;}
+a:hover{color:#FF6600; text-decoration:underline;}
+
+
+#navegador{width:984px; margin:auto; }
+#banner{width:984px; height:276px; background-image:url(../images/diseno/fondo_banner.jpg); background-repeat:no-repeat;}
+#menu{width:984px; height:40px; background-image:url(../images/diseno/fondo_menuprincipal.jpg); background-repeat:no-repeat;}
+#cuerpo{width:984px; float:left; background-image:url(../images/diseno/fondocuerpo.jpg); background-repeat:repeat-y; padding-bottom:15px;}
+#pie{width:984px; height:50px; float:left; background-image:url(../images/diseno/fondo_pie.jpg); background-repeat:no-repeat;}
+#derechos{width:520px; float:left; padding:25px 10px 10px 450px;}
+#logo{ width:114px; height:228px; float:left; margin-top:35px; margin-left:40px;}
+#menuprincipal{width:784px; height:40px; float:left; margin-left:200px;}
+	#quien, #catalogo, #oferta, #cotizar, #clientes, #contacto {list-style:none;	margin:0;	padding:0;
+	}
+	#quien, #catalogo, #oferta, #cotizar, #clientes, #contacto li { margin-top:14px; padding-bottom:3px; float:left; text-align:center; margin-left:1px; 
+	}
+	#quien li a {display:block; padding:7px 30px 3px 15px; margin-left:1px; background-image:url(../images/diseno/quien.jpg); 			    background-repeat:no-repeat;text-decoration:none;	text-align:center;	font-size:13px; font-weight:bold;
+	color:#FFFFFF;	
+	}	
+	#quien li a:hover {
+	color:#666666; background-image:url(../images/diseno/quien2.jpg); background-repeat:no-repeat;
+	}
+	#catalogo li a  {display:block; padding:7px 25px 3px 20px; margin-left:1px; background-image:url(../images/diseno/catalogo.jpg); 			    background-repeat:no-repeat;text-decoration:none;	text-align:center;	font-size:13px; font-weight:bold;
+	color:#FFFFFF;	
+	}	
+	#catalogo li a:hover  {
+	color:#666666; background-image:url(../images/diseno/catalogo2.jpg); background-repeat:no-repeat;
+	}
+	#oferta li a {display:block; padding:7px 30px 3px 20px; margin-left:1px; background-image:url(../images/diseno/oferta.jpg); 			    background-repeat:no-repeat;text-decoration:none;	text-align:center;	font-size:13px; font-weight:bold;
+	color:#FFFFFF;	
+	}	
+	#oferta li a:hover {
+	color:#666666; background-image:url(../images/diseno/oferta2.jpg); background-repeat:no-repeat;
+	}
+	#cotizar li a {display:block; padding:7px 30px 3px 25px; margin-left:1px; background-image:url(../images/diseno/oferta.jpg); 			    background-repeat:no-repeat;text-decoration:none;	text-align:center;	font-size:13px; font-weight:bold;
+	color:#FFFFFF;	
+	}	
+	#cotizar li a:hover {
+	color:#666666; background-image:url(../images/diseno/oferta2.jpg); background-repeat:no-repeat;
+	}
+	#clientes li a {display:block; padding:7px 30px 3px 25px; margin-left:1px; background-image:url(../images/diseno/oferta.jpg); 			    background-repeat:no-repeat;text-decoration:none;	text-align:center;	font-size:13px; font-weight:bold;
+	color:#FFFFFF;	
+	}	
+	#clientes li a:hover {
+	color:#666666; background-image:url(../images/diseno/oferta2.jpg); background-repeat:no-repeat;
+	}
+	#contacto li a {display:block; padding:7px 40px 3px 10px; margin-left:1px; background-image:url(../images/diseno/contacto1.jpg); 			    background-repeat:no-repeat;text-decoration:none;	text-align:center;	font-size:13px; font-weight:bold;
+	color:#FFFFFF;	
+	}	
+	#contacto li a:hover {
+	color:#666666; background-image:url(../images/diseno/contacto2.jpg); background-repeat:no-repeat;
+	}
+#menusup{width:auto; height:30px; float:left; margin-left:210px; background-image:url(../images/diseno/fondomensup.gif); background-repeat:x;}
+	#menup{list-style:none;	margin:0;	padding:0;
+	}
+	#menup li { margin-top:2px; padding-bottom:3px; float:left; text-align:center; margin-left:12px;
+	}
+		#menup li img{border:none}
+	#menup li a {display:block; padding:5px 5px 8px 5px; margin-left:1px;
+	text-decoration:none;	text-align:center;	font-size:13px; font-weight:bold;
+	color:#FFFFFF;border-right:1px solid #fff;	
+	}	
+	#menup li a:hover {
+	color:#FF9966;
+	}
+#newproduct{width:312px; height:140px; float:left; margin-left:90px; margin-top:80px;}
+#fotnewpro{width:301px; height:211px; float:left; margin-left:10px; margin-top:20px;}
+#titbanner{width:312px; float:left;}
+	#titbanner h1{font-family:Arial, Helvetica, sans-serif; font-size:22px; color:#FF6600;}
+#lineabanner{width:312px; float:left; margin:5px 0px; }
+ hr{color:#FF6600;}
+#infobanner{ width:260px; float:left; margin-top:5px;}
+#vermas{ width:79px; height:25px; float:right; margin-right:15px; margin-top:8px;}
+	#vermas img {border:none;}
+
+#busqueda{width:189px; height:auto; float:left;}
+	#tit{width:auto; height:29px; float:left; margin-left:20px; margin-top:30px;}
+	#text_busqueda{width:140px; float:left; margin-left:20px; margin-top:10px;}
+	#text_busqueda2{width:140px; float:left; margin-left:20px; margin-top:10px;}
+	#campo{width:148px; height:15px; float:left; margin-left:20px; margin-top:10px;}
+	#buscar{width:auto; float:left; margin-left:100px; margin-top:20px;}
+#contenido{width:786px; float:left; background-image:url(../images/diseno/fondocontenido.jpg); background-repeat:repeat-x;}
+#marcas{width:332px; float:left; margin-left:8px;}
+	#textmarcas{width:268px; float:left; margin-left:20px; margin-top:10px;}
+	.marca{width:80px; height:80px; float:left; margin:20px 20px 0px 10px; background-image:url(../images/diseno/fondomarcas.png); background-repeat:no-repeat; text-align:center; padding-top:5px;}
+	#btn_marcas{width:268px; height:30px; float:left; margin-left:25px; margin-top:10px;}
+	#btn_marcas a img{border:none;}
+#productomes{width:423px; height:177px; float:left; margin-left:5px; margin-top:15px; background-image:url(../images/diseno/fondo_pro_mes.png); background-repeat:no-repeat;}
+	#fotpro{width:144px; height:160px; float:left; margin-top:8px; margin-left:15px; text-align:center;}
+	#titpro1{ width:230px;; float:left; margin-left:10px; margin-top:15px;}
+	#titpro{ width:230px;; float:left; margin-left:10px; margin-top:10px;}
+	#textpro{ width:230px;; float:left; margin-left:10px; margin-top:10px; margin-bottom:5px;}
+#ofertames{width:423px; height:129px; float:left; margin-top:15px; margin-left:5px; background-image:url(../images/diseno/fond-ofertas.png); background-repeat:no-repeat;}
+#fotoferta{width:142px; height:auto; float:right; margin-top:10px; margin-right:10px; border:solid 2px #FF6600; text-align:center;}
+
+/*----------------------------------QUIENES SOMOS------------------------------------*/
+
+#quienessomos{width:556px; float:left;}
+#titquienes{width:322; float:left; margin-left:20px; margin-top:20px;}
+#text_quienes{width:432px; float:left; margin-left:110px; margin-top:10px;}
+#lineaq{width:200px; float:left; margin-left:110px; margin-top:10px;}
+#lateral_izq{width:210px; float:left; margin-top:20px; margin-left:5px; margin-bottom:10px; background-image:url(../images/diseno/fondo_izq.png); background-repeat:repeat-y;}
+#fotproizq{width:180px; float:left; margin-top:8px; margin-left:15px; text-align:center; border:solid #FF6600 2px;}
+#titproizq{ width:190px; float:left; margin-left:15px; margin-top:10px;}
+#textproizq{width:190px; float:left; margin-left:15px; margin-top:10px;}
+#titproizq a{ font-weight:bold; color:#333333;}
+	#titproizq a:hover{font-weight:bold; color:#FF6600;}
+#fotofertaizq{width:180px; float:left; margin-top:12px; margin-left:15px; text-align:center; border:#FF6600 solid 2px;}
+
+/*-----------------------------------CATALOGO DE PRODUCTO----------------------------------*/
+
+.producto{width:110px; height:157px; float:left; margin:15px 5px 10px 23px;}
+#categorias{ width:189px; height:360px; float:left; background-image:url(../images/diseno/catalogo/fondo_menu.png); background-repeat:no-repeat;}
+#fotoproducto{width:110px; height:100px; float:left; text-align:center; margin-top:20px;}
+#productomen { list-style-image:url(../images/diseno/catalogo/vineta.png); margin-left:15px; margin-top:5px;
+	}
+	#productomen li { margin-top:10px; padding-bottom:1px; float:left; text-align:center; margin-left:1px; 
+	}
+	#productomen li a {display:block;  margin-left:1px; text-decoration:none; text-align:right; font-size:12px; font-weight:bold;
+	color:#333333;
+	}	
+	#productomen li a:hover {
+	color:#FF6600;
+	}
+#mencategorias { list-style-image:url(../images/diseno/catalogo/vinetagris.png); margin-left:10px; margin-top:5px; 
+	}
+	#mencategorias li { margin-top:5px; padding-bottom:1px; float:left; text-align:left; margin-left:1px; list-style-image:url(../images/diseno/catalogo/vinetagris.png); width:170px;
+	}
+	#mencategorias li a {display:block; padding:2px 30px 3px 5px; margin-left:1px; text-decoration:none; text-align:left; font-size:12px; font-weight:bold;
+	color:#FFFFFF;	
+	}	
+	#mencategorias li a:hover {
+	color:#333333;
+	}
+#lineap{width:505px; float:left; margin-left:25px; margin-top:10px;}
+
+#cotizar2{width:180px; float:left; margin-left:15px; margin-top:8px; background-image:url(../images/diseno/catalogo/fondo_cotizar.png); background-repeat:no-repeat;}
+#contador{width:auto; height:25px; float:right; margin-right:30px; margin-top:30px;}
+	#anterior{width:8px; float:left; margin-right:10px; margin-top:5px; margin-left:10px;}
+	.numero{width:14px; height:18px; float:left; margin:3px; text-align:center; background-color:#999999;}
+.productoinfo{width:502px; height:122px; float:left; margin-left:20px; margin-top:10px;}
+#carrito{width:240px; float:right;}
+	#precio{width:auto; float:left; margin-right:5px; margin-left:5px; margin-top:2px;}
+	#unidades{width:60px; float:left; margin-left:10px; margin-right:10px;}
+
+	#anadir { list-style-image:url(../images/diseno/catalogo/vinetagris.png); margin-left:10px; margin-top:1px; 
+	}
+	#anadir li { margin-top:1px; padding-bottom:1px; float:right; text-align:left; margin-left:5px; list-style-image:url(../images/diseno/catalogo/carrito.jpg); width:90px;
+	}
+	#anadir li a {display:block;  margin-left:1px; text-decoration:none; text-align:left; font-size:12px;
+	color:#333333;	
+	}	
+	#anadir li a:hover {
+	color:#FF6600;
+	}
+	#lineacarrito{width:240px; float:left;}
+#titproducto{width:274px; float:left; margin-left:20px; margin-top:15px;}
+	#titproducto a{ font-weight:bold; color:#333333;}
+	#titproducto a:hover{font-weight:bold; color:#FF6600;}
+#infoproducto{width:300px; float:left; margin-left:20px; margin-top:10px;}
+#fotoproducto2{width:110px; height:100px; float:left; text-align:center; margin-bottom:10px;}
+#contadorinferior{width:470px; float:left; margin-left:90px;}
+#titoferta{width:210px; float:left; margin-top:10px;}
+#inferior{width:786px; float:left; background-image:url(../images/diseno/catalogo/fondo_inferior.jpg); background-repeat:repeat; margin-top:20px;}
+.inf{width:194px; float:left; margin:15px 20px 20px 40px; text-align:center;}
+	#fotoinf{width:120px; float:left; border:solid #333333 2px; margin-left:30px;}
+	#titinf{width:180px; float:left; margin-left:5px; margin-top:10px;}
+	#textinf{width:180px; float:left; margin-left:5px; margin-top:10px;}
+	#titinf a{ font-weight:bold; color:#333333;}
+	#titinf a:hover{font-weight:bold; color:#FF6600;}
+	#lineainf{width:4px; height:180px; float:left; margin-top:15px;}
+	
+#tucarro{width:180px; height:141px; float:left; margin-left:15px; background-image:url(../images/diseno/catalogo/carro.png); background-repeat:no-repeat;}
+#totalitems{width:80px; float:left; margin-top:32px; margin-left:7px;}
+#totalitems3{width:auto; float:rigth; margin-top:32px; margin-right:9px; text-align:right;}
+#total{width:60px; float:left; margin-left:7px;}
+#total2{width:auto; float:rigth; margin-right:9px; text-align:right;}
+#vercarro{width:125px; float:left; margin-left:25px; margin-top:10px;}
+
+/*------------------------------------------------OFERTAS----------------------------------------*/
+
+.ofertas{width:180px; height:224px; float:left; margin:10px 30px 10px 50px;}
+#fotoferta2{width:176px; float:left; border:solid 2px #666666; text-align:center;}
+#tit_oferta{width:180px; float:left; margin-top:5px;}
+#lineaoferta{width:180px; float:left; margin-top:5px;}
+#infoferta{width:180px; float:left; margin-top:10px;}
+
+#nuestras_marcas{width:180px; float:left; margin-top:8px; margin-left:15px; text-align:center; border:solid #FF6600 2px; background-image:url(../images/diseno/ofertas/fondomarcas.jpg); margin-bottom:10px; padding-bottom:5px;}
+.marca2{width:80px; height:80px; float:left; margin:10px 0px 0px 8px; background-image:url(../images/diseno/ofertas/fondo.png); background-repeat:no-repeat; text-align:center; padding-top:5px;}
+
+/*-----------------------------------------------COTIAZAR--------------------------------------------*/
+
+#contenido_cotizar{width:786px; height:514px; float:left; background-image:url(../images/diseno/cotizar/fondo_cotizar.jpg); background-repeat:no-repeat;}
+#cotizador{width:360px; height:127px; float:left; margin-left:150px; margin-top:20px;}
+#titulocotizador{width:auto; float:left; margin-top:5px;}
+#infocotizador{width:283px; float:left; margin-left:20px; margin-top:10px;}
+
+/*----------------------------------------------CLIENTES---------------------------------------------*/
+
+#titclientes{width:393px; height:155px; float:left; margin-left:20px; margin-top:20px; background-image:url(../images/diseno/clientes/titulo.png); background-repeat:no-repeat;}
+#textclientes{width:250px; float:left; margin-left:10px; margin-top:75px;}
+#nuestros_clientes{width:605px; float:left; margin-left:60px; margin-top:30px; background-image:url(../images/diseno/clientes/clientes_fondo.jpg); background-repeat:repeat-y; margin-bottom:30px; 
+}
+.cliente{width:163px; float:left; margin:10px 10px 5px 20px;}
+#marcas2{width:760px; float:left; margin-left:15px;}
+#tit_marcas{width:300px; float:left; margin-bottom:10px;}
+	#tit_marcas h1{color:#666666;}
+#horizontal_marcas{width:760px; height:98px; float:left; background-image:url(../images/diseno/ofertas/fondomarcas.jpg); background-repeat:repeat;
+}
+
+/*------------------------------------------CONTACTO-----------------------------------------*/
+
+#titcont{width:600px; float:left; margin-left:20px; margin-top:20px;}
+#fotocontac{width:217px; height:261px; float:left; margin-top:20px; margin-left:40px;}
+#formulario{width:350px; float:left; margin-top:20px; margin-left:30px;}
+.datos{width:100px; float:left; margin:6px 25px 5px 0px;
+	}
+	.datosusuario{width:180px; height:19px; background-color:#808080; float:left;
+	margin:8px;
+	}
+		.datosusuario input {background-color:#808080; width:180px; height:19px; padding:2px;}
+	.datosusuario2{width:180px; height:50px; background-color:#808080; float:left; margin:8px;}
+		.datosusuario2 textarea {background-color:#808080; width:180px; height:50px; padding:2px;}
+		
+#sedes{width:755px; height:179px; float:left; background-image:url(../images/diseno/contacto/fondo_sedes.jpg); background-repeat:no-repeat; margin-left:20px;}
+#sedebog{width:194px; float:left; margin-left:280px; text-align:center; margin-top:10px;}
+#sedebog2{width:194px; float:left; margin-left:280px; text-align:center; margin-top:30px;}
+#sedemed{width:194px; float:left; margin-left:40px; text-align:center; margin-top:10px;}
+#sedemed2{width:194px; float:left; margin-left:40px; text-align:center; margin-top:30px;}
+
+/*-----------------------------------------------ZONA RESTRINGIDA---------------------------------*/
+
+#zonares{width:468px; float:left;
+margin-left:80px; margin-top:10px; margin-bottom:20px;
+}
+	#textzona{width:468px;
+	float:left;}
+	#formzona{width:420px; 
+	float:left; margin-top:20px; margin-left:20px;
+	}
+		.usuario{width:400px; height:30px;
+		float:left; margin:10px;
+		}
+		#nombrez{width:100px; height:14px; float:left;
+		margin-top:10px;
+		}
+		#inputz{width:270px; height:16px; float:left;
+		background-color:#666666; padding: 3px 3px 3px 8px;;
+		}
+			#inputz input{background-color:#666666; border:#666666; color:#FFFFFF;}
+	#olvido{width:402px; height:28px;
+	float:left; margin: 30px 0px 30px 20px;
+	}
+		#lineao{width:396px; height:2px;
+		float:left;
+		}
+		#ocontraseña{width:133px; height:14px; float:right; margin-left:10px;}
+			#ocontraseña a{color:#333333; font-weight:bold;}
+			#ocontraseña a:hover{color:#FF6600;
+}
+
+/*--------------------------------------------------LISTA CARRITO------------------------*/
+.productolista{width:500px; float:left; border-bottom:#CCCCCC 1px solid; margin-top:2px;}
+.categorialista{width:500px; float:left; background-color:#FDE384; margin-bottom:2px;}
+#titlista{width:500px; float:left; margin-left:15px; margin-top:25px;}
+#textlista{width:400px; float:left; margin-left:20px; margin-top:10px; margin-bottom:20px;}
+.pedido{width:150px; float:left; margin-left:30px; margin-right:5px; margin-top:10px; margin-bottom:10px; text-align: center;}
+	.pedido a:hover{text-decoration:underline; color:#FF6600; font-weight:bold;}
+	
+#lista{width:500px; margin-left:25px; float:left; margin-top:10px;}
+
+#nombrecate{width:250px; float:left; height:18px;}
+	#nombrecate h2{color:#FF6600;}
+#cantidad{width:80px; float:right; height:18px; text-align:center;}
+#totalista{width:100px; float:left; text-align:center;}
+#calcular{width:60px; float:left; text-align:center;}
+
+#nombrepro{width:225px; float:left; height:18px;}
+#eliminar{width:20px; float:left; margin-right:5px;}
+
+#totalitems2{width:500px; float:left; margin:5px 20px;}
+#items{width:300px; float:right; margin:5px 30px 0 0;}
+	#textitems{width:130px; float:left; margin-left:60px;}
+	#totalis{ float:right;}
+	#totalis h1{color:#333333}
+#lineah2{width:450px; margin:5px 50px; float:left;}
+
+/*----------------------------------------------SOLICITUD DE INGRESO-----------------------------------*/
+
+#datosbasicos{width:500px; margin-left:0px; float:left; margin-top:10px;}
+#datosform{width:150px; margin-right:10px; float:left; margin-top:5px;}
+#nombre_razon{width:250px; margin-right:10px; float:left; margin-top:5px;}
+#inputdatos{width:200px; float:left; margin-top:5px;}
+#tipod{width:20px; float:left; margin-top:5px; margin-left:10px;}
+#tipodocumento{width:150px; float:left; margin-top:5px;}
+#ciudad{width:100px; float:left; margin-top:5px;}
+#datoscel{width:80px; margin-right:10px; float:left; margin-top:5px;}
+#cel{width:100px; margin-right:10px; float:left; margin-top:5px;}
+#lineah3{width:450px; margin:10px 20px; float:left;}
+#datostribu{width:200px; margin-right:10px; float:left; margin-top:5px;}
+#retefuente{width:160px; margin-right:10px; float:left; margin-top:5px; margin-left:40px;}
+#retpractica{width:200px; margin-left:280px; float:left; margin-top:2px;}
+	#retpractica h2{font-size:10px; font-weight:bold;}
+#mercancia{width:260px; margin-right:10px; float:left; margin-top:5px;}
+#cual{width:210px; margin-right:10px; float:left; margin-top:5px; margin-left:10px;}
+
+/*--------------------------------------------DETALLE PRODUCTO--------------------------------------------*/
+
+#detallepro{width:500px; margin-left:25px; float:left; margin-top:40px;}
+#fotodetalle{width:200px; float:left; }
+#datodetalle{width:280px; float:left; }
+#nombre{width:250px; float:left; margin-left:20px; }
+#referencia{width:250px; float:left; margin-left:20px;}
+#infoproductodet{width:250px; float:left; margin-left:20px; margin-top:10px;}
+#preciodetalle{width:250px; float:left; margin-left:20px; margin-top:10px;}
+.cantidad{width:250px; float:left; margin-left:20px; margin-top:10px;}
+#cantidad2{width:80px; float:left; height:18px;}
+#anadir2 { list-style-image:url(../images/diseno/catalogo/vinetagris.png); margin-left:10px; margin-top:1px; 
+	}
+	#anadir2 li { margin-top:1px; padding-bottom:1px; float:left; text-align:left; margin-left:5px; list-style-image:url(../images/diseno/catalogo/carrito.jpg); width:90px;
+	}
+	#anadir2 li a {display:block;  margin-left:1px; text-decoration:none; text-align:left; font-size:12px;
+	color:#333333;	
+	}	
+	#anadir2 li a:hover {
+	color:#FF6600;
+	}
+#borrar { list-style-image:url(../images/diseno/catalogo/vinetagris.png); margin-left:10px; margin-top:1px; 
+	}
+	#borrar li { margin-top:1px; padding-bottom:1px; float:left; text-align:left; margin-left:5px; list-style-image:url(../images/diseno/eliminar.png); width:90px;
+	}
+	#borrar li a {display:block;  margin-left:1px; text-decoration:none; text-align:left; font-size:12px;
+	color:#333333;	
+	}	
+	#borrar li a:hover {
+	color:#FF6600;
+	}
+	#paginador{color:#fff}
+	#paginador a{color:#fff;text-decoration:none}
+	#paginador a:hover{color:#fff;text-decoration:underline}

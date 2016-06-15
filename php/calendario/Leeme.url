@@ -1,0 +1,10 @@
+[DEFAULT]
+BASEURL=http://www.programacionweb.net/
+[DOC#28]
+BASEURL=http://impes.tradedoubler.com/imp/iframe/81308/761666
+ORIGURL=http://impes.tradedoubler.com/imp/iframe/81308/761666
+[InternetShortcut]
+URL=http://www.programacionweb.net/?mostrar=D_Ver&num=18
+Modified=50A80F63B258C40139
+IconFile=http://www.programacionweb.net/favicon.ico
+IconIndex=1

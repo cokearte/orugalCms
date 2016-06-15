@@ -1,0 +1,27 @@
+<div class="contenedores">
+  <div class="centros">
+    <div id="logo">
+      <a href="<?php echo _DOMINIO ?>" title="<?php echo _NOMBRE_EMPRESA ?>"><img src="<?php echo _DOMINIO ?>images/diseno//logo.png" /></a>
+    </div>
+    <div id="llamenos">
+      <h2>Llámanos</h2>
+      <h3><span class="spanNaranja">(57)</span> 616 2066</h3>
+    </div>
+  </div>
+  <div class="centros">
+    <div class="menuPrincipal">
+      <?php include(_PLANTILLAS."interfaz/menu_principal.php") ?>
+    </div>
+  </div>
+</div>
+<div class="contenedores">
+    <div class="flexslider">
+      <ul class="slides">
+        <?php foreach($banersSup as $superiores){ ?>
+            <li>
+                <img src="<?php echo _DOMINIO ?>images/<?php echo $superiores['imagen'] ?>" />
+            </li>
+        <?php } ?> 
+      </ul>
+    </div>
+</div>

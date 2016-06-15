@@ -1,0 +1,113 @@
+*{font-family: 'Roboto', sans-serif;}
+.headerImg{background: url(../images/diseno/Header.png) no-repeat fixed; min-height:100%; width: 100%;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+.BoxTitle{background: #181409; margin: 84px auto; max-width: 222px; min-height: 222px;}
+.titulo{color: #FFF; font-size: 5em; text-align: center; font-weight: 500;}
+.subtitulo{color: #FFF; font-weight: 300; text-align: center; font-size: 3em; margin-top: -25px;}
+.navbar-inverse .navbar-nav>li>a{color: #fffaea; font-size: 1.7em;text-transform: uppercase;}
+.navbar-inverse{background: transparent; border: none; color: #FFF;}
+.bienvenidos{background: #202020;height:307px; width: 100%; color: #FFF; padding: 40px;}
+/*.restauranteImg{background: url(../images/diseno/Restaurante.png) no-repeat; height: 307px; width: 100%;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}*/
+.paddingOff{padding: 0px;}
+/*.chef{background: url(../images/diseno/chef.png) no-repeat; height: 307px; width: 100%;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}*/
+.howsay{color: #000; min-height: 307px; width: 100%;height:auto;}
+.howsay h2{text-align: center;}
+.howsay p{font-weight: 200; width: 80%; margin:0 auto; text-align: center; font-size: 1em}
+.bienvenidos p{font-weight: 200; font-size: 1.2em;}
+.Inside{margin-top: -36px;}
+.platein{background: url(../images/diseno/platoFoot.png) no-repeat fixed; width: 100%; height: 385px;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+.zDiv{z-index: 10; background: #FFF;}
+.UpDiv{margin-top: -36px;}
+.experience{padding-top: 110px;color: #FFF; text-align: center;}
+.experience h1{font-weight: 700;}
+.experience h3{font-weight: 500; margin-top: -10px;}
+.experience p{font-weight: 200; font-size: 1.3em;}
+.imgRig{background: blue; right: 0; position: absolute;z-index: 1;}
+#menu{height: 250px; z-index: 50; padding-top: 70px;}
+#menu2{height: 250px; z-index: 50; padding-top: 70px;}
+#menu3{height: 250px; z-index: 50; padding-top: 70px;}
+.imfFirst{padding-top: 45px;}
+.subtitu{text-align: center; padding-top: 35px; font-size: 1.5em; padding-bottom: 35px;}
+.precios{font-size: 3.2em; margin-top: -10px;color:#9b7f58;}
+.menu-list{text-align: justify; font-size: 1.1em}
+.imgLef{background: blue; left: 0; position: absolute;z-index: 1;}
+.galerry{padding-top: 80px; padding-bottom: 20px;}
+.tmGry{margin: 0px; padding:0px; }
+.Galeri1{cursor: pointer;}
+.redesSociales{padding:80px 0px 40px 0px;}
+.instagram{background: #202020; width: 100%; min-height: 240px; height: auto; color: #FFF; text-align: center; padding-top: 50px;}
+.facebook{background: #FFF; width: 100%; min-height: 240px; height: auto;}
+.hippie-btn{width: 50%; border-radius: 0px; font-size: 1.6em; font-weight: 500;}
+.Reserva{background: url(../images/diseno/Reserva.png) no-repeat center center fixed; height: auto; min-height: 615px; color: #FFF; text-align: center;margin-top: -50px;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+.Reserva h2{padding-top: 90px; font-size: 3.2em; font-weight: 700;}
+.Reserva h3{font-size: 2.2em; font-weight: 300;}
+.separate{padding-bottom: 15px;}
+.lefpading{padding-right: 35px;}
+.rigpading{padding-left: 35px;}
+.separate input{height: 38px; border:1px solid #FFF; border-radius: 0px; background: rgba(250,250,250,0.3); color: #FFF;}
+
+#dataTime::-moz-placeholder { color: #FFF;; }
+#name::-moz-placeholder { color: #FFF;; }
+#hora::-moz-placeholder { color: #FFF;; }
+#Telefono::-moz-placeholder { color: #FFF;;}
+#email::-moz-placeholder { color: #FFF;; }
+#Telefono::-moz-placeholder { color: #FFF;; }
+
+#dataTime::-webkit-input-placeholder { color: #FFF;; }
+#name::-webkit-input-placeholder { color: #FFF;; }
+#hora::-webkit-input-placeholder { color: #FFF;; }
+#Telefono::-webkit-input-placeholder { color: #FFF;; }
+#email::-webkit-input-placeholder { color: #FFF;; }
+#Telefono::-webkit-input-placeholder { color: #FFF;; }
+
+.ContactCarreta{font-weight: 300; font-size: 1.6em}
+.btn-reserva{background: #000; border-radius: 0px; color: #FFF; border-color: transparent; font-size: 2em; padding: 8px 20px 8px 20px;}
+.contacto{background: #FFF; color: #000;height:330px; text-align: center;}
+.contacto p{padding: 15px; font-weight: 300; font-size: 1em}
+.contactoTitu{margin: 50px 0px 15px 0px;}
+.Subir{margin-top: -55px;}
+.RedesF{cursor: pointer; background: url(../images/diseno/facebook-bk.png) no-repeat center center; height: 50px; width: 50px;}
+.RedesI{cursor: pointer; background: url(../images/diseno/insrtagram-bk.png) no-repeat center center;height: 50px;width: 50px;}
+.RedesG{cursor: pointer; background: url(../images/diseno/google+bk.png) no-repeat center center;height: 50px;width: 50px;}
+.cover{
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+.RedesF:hover{background: url(../images/diseno/facebook.png) no-repeat center center;-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;}
+.RedesI:hover{background: url(../images/diseno/insrtagram.png) no-repeat center center;-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;}
+.RedesG:hover{background: url(../images/diseno/google+.png) no-repeat center center;-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;}

@@ -1,0 +1,141 @@
+/* CSS Document */
+body
+{
+	background-repeat:repeat-x;
+	background:#FEE7BE url(../images_biencss/fondo.jpg) no-repeat left top;
+	font-family: Arial, Helvetica, sans-serif;
+	margin:0;
+	padding:0;
+}
+#centro{background:#fff}
+#botones_panel{background:transparent}
+
+/*estilos del meni de usuario*/
+#menu_usuario span{font-weight:bold}
+#form_admin {}
+#form_admin input{border:1px solid #ccc}
+#form_admin textarea{border:1px solid #ccc}
+#form_admin select{border:1px solid #ccc}
+#migas{}
+#centro #migas {width:500px}
+#centro #migas ul {width:auto;padding:0}
+#centro #migas ul li{color:#000;display:inline;width:auto;font-weight:bold}
+#cabecera
+{
+    background-image: url(../images_biencss/header_interno.jpg);
+	width:760px;
+	height:155px;
+	margin:auto;
+}
+
+#imgder
+{
+    background-image: url(../images_biencss/logo02.png);
+	width:267px;
+	height:101px;
+	float:right;
+	margin:22px 13px 0 0;
+}
+
+#left
+{
+   width:200px;
+   margin-left:5px;
+   font-size:12px;
+   float:left;
+}
+#mostrar_imagen{width:50px;float:left}
+#mostrar_imagen2{width:50px;float:left}
+#mostrar_imagen3{width:50px;float:left}
+#mostrar_imagen4{width:50px;float:left}
+#mostrar_imagen5{width:50px;float:left}
+#cuerpo
+{
+	float:left;
+	width:688px;
+	padding:20px 0 0 0;
+	margin-left:2%;
+}
+
+#pie
+{
+	margin:auto;
+	width:757px;
+	height:60px;
+	clear:both;
+}
+
+#left
+{
+  float:left;
+}
+/*
+ul li
+{
+	list-style:none;
+	
+}
+
+ul li a
+{
+	color:#a43a0c;
+	text-decoration:none;
+	font-size:12px;
+}
+
+ul li a:hover
+{
+	color:#a43a0c;
+	text-decoration: underline;
+	}
+*/
+h2
+{
+	font-size:1em;
+	margin-left:4px;
+}
+
+table
+{
+	margin:auto;
+	border-collapse:collapse;
+	font-size:1.0em;
+	border-color:#CCCCCC;
+
+}
+table #info{font-size:1.2em;}
+/*table a
+{
+    color:#a43a0c;
+	text-decoration:none;
+	font-size:12px;
+	font-weight:bold;
+}*/
+
+/*
+table a:hover
+{
+    color:#a43a0c;
+	text-decoration: underline;
+	font-size:12px;
+}*/
+
+.center
+{
+	text-align:center;
+}
+
+.sobre
+{
+  background-color:lavender;
+}
+
+.quita
+{
+  background-color:white;
+}
+
+.marca
+{
+ background-color:#bbb;
+}

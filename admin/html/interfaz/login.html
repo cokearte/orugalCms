@@ -1,0 +1,30 @@
+   <form method="post"  role="form">
+	  <div class="form-group">
+	  	<center><img src="<?php echo _LOGO?>" width="50%" /></center>
+	  </div>
+	  <?php if(count($errores) > 0){ ?>
+	  <div class="form-group">
+	  	  <div class="alert alert-danger">
+	  	  		<ul>
+			   <?php
+			   	foreach($errores as $error)
+			   	{
+					echo "<li>".$error."</li>";
+				}
+			   ?>
+			   </ul>
+		   </div>
+	  </div>
+	  <?php } ?>
+	   <div class="form-group">
+	   		<div class="nombres">Usuario</div>
+	   		<input type="text" name="usuario" class="form-control" value="<?php echo $username?>" placeholder="Usuario"/>
+	   </div>
+	   <div class="form-group">
+	   		<div class="nombres">Contrase&ntilde;a</div>
+	   		<input type="password" name="contrasena" class="form-control" placeholder="Clave"/>
+	   </div>
+	   <div class="form-group">
+	   	<center><input type="submit"  name="entrar" value="Ingresar" class="btn btn-primary" /></center>
+	   </div>
+   </form>

@@ -1,0 +1,157 @@
+<!--                                                    
+     ("`-''-/").___....''"`-._
+      `6_ 6  )   `-.  (     ).`-.__.`) 
+      (_Y_.)'  ._   )  `._ `. ``-..-'
+    _..`..'_..-_/  /..'_.' ,'
+   (il),-''  (li),'  ((!.-'
+
+   Desarrollado por  @orugal
+-->
+<?php if ($logueado == 0){ ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Ingreso al Sistema</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="<?php echo _DOMINIO ?>css/bootstrap.min.css" />
+<link rel="stylesheet" href="<?php echo _DOMINIO ?>css/bootstrap-theme.min.css" />
+<style>
+	body{font-family:'Roboto';}
+	/*body{font-family:Arial;background:#fff;margin:0;padding:0;overflow:none;color:#FFF}
+	#login{margin:auto;padding:0;width:982px;}
+	#contenedor{padding:80px 0 0 350px;width:300px;color:#fff}
+	.nombres{color:#1E1815;float:left;width:300px;margin:0 0 5px 0;font-weight: bold;font-size: 0.9em}
+	.cajas{float:right;width:300px;}
+	.cajas .text{width:290px;padding:5px;}
+	.contBoton{width:300px;float:left;margin:0 0 10px 0}
+	.logo{width:300px;float:left;margin:0 0 30px 0;text-align:center}
+	.boton{padding:3px 10px 3px 10px;background:#333;}*/
+</style>	
+</head>
+<body>
+	<div class="container-fluid" style="margin:10% 0 0 0">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
+					<?php
+					include("includes/login.php");
+				?>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-4 col-lg-4"></div>
+				
+			</div>
+		</div>
+	</div>	
+	<script type="text/javascript" src="<?php echo _DOMINIO ?>js/jquery-2.1.4.min.js"></script>
+	<script src="<?php echo _DOMINIO ?>js/bootstrap.min.js" ></script>
+</body>
+</html>		
+<?php }else{?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Administrador - <?php echo _NOMBRE_EMPRESA ;?></title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="<?php echo _DOMINIO ?>css/bootstrap.min.css" />
+<link rel="stylesheet" href="<?php echo _DOMINIO ?>css/bootstrap-theme.min.css" />
+<link rel="stylesheet" href="<?php echo _DOMINIO ?>css/sweetalert.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="js/objetoajax.js"></script>
+<script type="text/javascript" src="<?php echo _DOMINIO ?>js/jquery-2.1.4.min.js"></script>
+<script src="<?php echo _DOMINIO ?>js/sweetalert.min.js" ></script>
+<script type="text/javascript" src="js/funciones.js"></script>
+<style>
+	body{font-family:'Roboto';background:url(/*../images/diseno/fondoInternas.png*/);margin:0;padding:0}
+	#contenedor{width:1000px;margin:auto}
+	#navegador{float:left}
+	#lateral{background:#f6f6f6;padding:0 0 20px 0px;width:160px;float:left}
+	#lateral1 {padding:0;margin:0;float:left;width:160px;}
+	#lateral1 li{display:block;border-bottom:1px dashed #999;padding:0 0 5px 10px}
+	
+	#lateral1 li a{color:#1F1A17;text-decoration:none;font-size:0.8em}
+	#lateral1 li a:hover{text-decoration:none}
+	#cabezote{float:left;width:1000px;background:url(../images/diseno/logo.png) no-repeat center center;height:155px}
+	#contenido{width:840px;float:right;background:#fff;padding:0;padding:0 0 0px 0}
+	#contenido a{color:#E3963C;text-decoration:none}
+	#contenido a:hover{color:#E3963C;text-decoration:underline}
+	#contenido #migas {padding:0;margin:0}
+	#contenido #migas ul li{display:inline;font-weight:bold}
+	#contenido #migas ul li a{font-weight:bold;}
+	#pie{padding:10px;background:#333;color:#FFF;float:left;font-size:0.8em;text-align:center;width:980px}
+	#pie a{color:#fff;text-decoration: none}
+	#pie a:hover{color:#fff;text-decoration: underline}
+	#cont1{background:#f6f6f6;float:left;width:1000px}
+	#tabla td{border:1px solid #ccc}
+	.text{padding: 3px;border:1px solid #999;}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse" style="border-radius:0">
+	  <div class="container-fluid">
+	  <div class="container">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="index.php"><?php echo _NOMBRE_EMPRESA ?></a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <?php include("includes/lateral.php");?>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right" style="margin:1% 0 0 0">
+	        	<a href="index.php?logout" class="btn btn-primary">Cerrar Sesión</a>
+	      </ul> 
+
+	    </div><!-- /.navbar-collapse -->
+
+	  </div><!-- /.container-fluid -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+
+	<div class="container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-xs-12 col-md-2 col-lg-2" style="padding:0"></div>
+				<div class="col-sm-12 col-xs-12 col-md-8 col-lg-8" style="padding:0">
+					<?php
+						if($tipo_id[0]['tipo_contenido'] == 13 and $editar == false)
+						{
+							include($tipo_id[0]['adjunto']);
+						}
+						else
+						{
+							include("includes/contenido.php");
+						}
+					?>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-2 col-lg-2" style="padding:0"></div>
+			</div>
+		</div>
+	</div>	
+	<div class="container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 text-center">
+					Administrador de contenidos de <strong><?php echo _NOMBRE_EMPRESA ?></strong><br>
+					&copy; Derechos reservados <?php echo date("Y")?><br>
+					<!--<a href="http://www.twitter.com/orugal" target="_blank" title="Desarrollado por @orugal">@orugal</a>-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="<?php echo _DOMINIO ?>js/bootstrap.min.js" ></script>
+</body>
+</html>	
+<?php }?>

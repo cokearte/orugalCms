@@ -1,0 +1,280 @@
+<script src="js/flowplayer-3.2.2.min.js"></script>
+
+
+<div id="vid_gen">
+            	<div id="fecha2">Martes 18 de Mayo 2010</div>
+<div id="video_grande_vip">
+					<div id="icono_vip"><img src="images/diseno/vip.png" width="48" height="48" /></div>
+                	<div id="tit_video"><?=utf8_encode($info_id[0]['titulo'])?></div>
+                    <div id="full_video">
+                    	<?if(empty($var)){?>
+	                    	<?if($quitar_creditos == 1){?><!-- mostrar ventana de quitar creditos -->
+	                    		<center>
+	                    			<div style="display:block;width:500px;height:400px;background:url(images/diseno/malla.png)">
+	                    				<div style="float:left;margin:90px 10px 10px 20px;width:250px;">
+	                    					<img src="images/<?=$info_id[0]['imagen']?> " width="250px" />
+	                    				</div>
+	                    				<div style="float:left;margin:120px 10px;width:200px;">
+	                    					Usted actualmente tiene <h2 style="color:#FFD037"><?=$_SESSION['ingreso']['creditos']?> Creditos.</h2><br>
+	                    					Este video tiene un costo de <h2 style="color:#E17300"><?=$info_id[0]['puntoscanje']?> creditos</h2>  &iquest;Desea Continuar? <br><br>
+	                    						<a href="index.php?id=<?=$id?>&padre=<?=$padre?>&ver" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('si','','images/diseno/si2.jpg',1)">
+								            		<img src="images/diseno/si1.jpg" name="login" border="0" id="si" />
+								            	</a>
+	                    					<a href="index.php?id=313"onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('no','','images/diseno/no2.jpg',1)">
+								            		<img src="images/diseno/no1.jpg" name="login" border="0" id="no" />
+								            </a>
+	                    				</div>
+	                    			</div>
+	                    		</center>
+	                    		<script language="JavaScript">
+									flowplayer("player", "swf/flowplayer-3.2.2.swf",{
+											    clip:  {
+										        autoPlay: false,
+										        autoBuffering: true
+										    }
+										});
+								</script>
+							<?}elseif($quitar_creditos == 2){?><!-- mostrar ventana de quitar creditos -->
+	                    		<center>
+	                    			<div style="display:block;width:500px;height:400px;background:url(images/diseno/malla.png)">
+	                    				<div style="float:left;margin:90px 10px 10px 20px;width:250px;">
+	                    					<img src="images/<?=$info_id[0]['imagen']?> " width="250px" />
+	                    				</div>
+	                    				<div style="float:left;margin:120px 10px;width:200px;">
+	                    					Usted actualmente No tiene tiempo disponible para ver este video<br>
+	                    					Desea comprar tiempo Ahora?
+	                    					<div style="margin:20px 0 0 0">
+	                    						<a href="index.php?id=16" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('si','','images/diseno/si2.jpg',1)">
+								            		<img src="images/diseno/si1.jpg" name="login" border="0" id="si" />
+								            	</a>
+		                    					<a href="index.php?id=313"onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('no','','images/diseno/no2.jpg',1)">
+									            	<img src="images/diseno/no1.jpg" name="login" border="0" id="no" />
+									            </a>
+								            </div>
+	                    				</div>
+	                    			</div>
+	                    		</center>
+	                    		<script language="JavaScript">
+									flowplayer("player", "swf/flowplayer-3.2.2.swf",{
+											    clip:  {
+										        autoPlay: false,
+										        autoBuffering: true
+										    }
+										});
+								</script>	
+	                    	<?}else{?><!-- mostrar video normal -->
+		                    	<center>
+		                    		<a href="archivos/<?=$info_id[0]['adjunto']?>" style="display:block;width:500px;height:400px;" id="player"></a>
+		                    	</center>
+								<script language="JavaScript">
+									flowplayer("player", "swf/flowplayer-3.2.2.swf");
+								</script>
+							<?}?>
+						<?}else{?>
+							<?if($quitar_creditos == 1){?><!-- mostrar ventana de quitar creditos -->
+								<div style="display:block;width:500px;height:400px;background:url(images/diseno/malla.png)">
+	                    				<div style="float:left;margin:90px 10px 10px 20px;width:250px;">
+	                    					<img src="images/<?=$info_id[0]['imagen']?> " width="250px" />
+	                    				</div>
+	                    				<div style="float:left;margin:120px 10px;width:200px;">
+	                    					Usted actualmente tiene <h2 style="color:#FFD037"><?=$_SESSION['ingreso']['creditos']?> Creditos.</h2><br>
+	                    					Este video tiene un costo de <h2 style="color:#E17300"><?=$info_id[0]['puntoscanje']?> creditos</h2>  &iquest;Desea Continuar? <br><br>
+	                    						<a href="index.php?id=<?=$id?>&padre=<?=$padre?>&ver" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('si','','images/diseno/si2.jpg',1)">
+								            		<img src="images/diseno/si1.jpg" name="login" border="0" id="si" />
+								            	</a>
+	                    					<a href="index.php?id=313"onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('no','','images/diseno/no2.jpg',1)">
+								            		<img src="images/diseno/no1.jpg" name="login" border="0" id="no" />
+								            </a>
+	                    				</div>
+	                    			</div>
+	                    	 <?}elseif($quitar_creditos == 2){?><!-- mostrar ventana de quitar creditos -->
+								<div style="display:block;width:500px;height:400px;background:url(images/diseno/malla.png)">
+	                    				<div style="float:left;margin:90px 10px 10px 20px;width:250px;">
+	                    					<img src="images/<?=$info_id[0]['imagen']?> " width="250px" />
+	                    				</div>
+	                    				<div style="float:left;margin:120px 10px;width:200px;">
+	                    					Usted actualmente No tiene tiempo disponible para ver este video<br>
+	                    					Desea comprar tiempo Ahora?
+	                    					<div style="margin:20px 0 0 0">
+	                    						<a href="index.php?id=16" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('si','','images/diseno/si2.jpg',1)">
+								            		<img src="images/diseno/si1.jpg" name="login" border="0" id="si" />
+								            	</a>
+		                    					<a href="index.php?id=313"onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('no','','images/diseno/no2.jpg',1)">
+									            	<img src="images/diseno/no1.jpg" name="login" border="0" id="no" />
+									            </a>
+								            </div>
+	                    				</div>
+	                    			</div>
+	                    	<?}else{?>
+								<video
+							     src="archivos/<?=$info_id[0]['adjunto']?>"
+							     controls="true"
+							     width="500"
+							     height="400">
+							    </video>
+						    <?}?>
+						<?}?>
+
+                    	
+                    </div>
+				<div id="caracteristicas">
+					<div class="caract">Duracion:</div>
+                    <div class="intro_caract"><?=utf8_encode($info_id[0]['alto'])?> &nbsp;</div>
+                    <div class="caract">Vistas</div>
+                    <div class="intro_caract"><?=utf8_encode($info_id[0]['visitas'])?> &nbsp;</div>
+                    <div class="caract">Fecha</div>
+                    <div class="intro_caract">
+                    	<?
+                   			$exploto_fecha_hora	= explode(" ",$info_id[0]['fecha']);
+							$explo_fecha		= explode("-",$exploto_fecha_hora[0]);
+                    		$mes 	=	$funciones->TraducirMes($explo_fecha[1]);
+							$dia	=	$funciones->TraducirDia($explo_fecha[2]);
+							$dias = array('Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo');
+							$dia_sem = $dias[date('N', strtotime($exploto_fecha_hora[0]))];
+							echo $dia_sem." ".substr($mes,0,3)." ".$explo_fecha[2]." ".$exploto_fecha_hora[1];
+                    	?>
+					</div>
+					<div class="caract">Calificaci&oacute;n</div>
+					<div class="intro_caract"><?=utf8_encode($info_id[0]['votos'])?> Votos &nbsp;</div>
+					<div class="caract">Ranking</div>
+					<div class="intro_caract">
+					<?
+						for($a=1;$a<=$prom_votos;$a++)
+						{	
+							echo "<img src='php/hands/star_act.gif'>";
+						}
+					?>
+					&nbsp;
+					</div>
+					<?if(isset($_SESSION['ingreso'])){?>
+					<div class="caract">Calificar</div>
+					<div class="intro_caract">
+					<?include("php/hands/hands.php")?>&nbsp;
+					</div>
+					<?}?>
+					
+                    <div style="width:680px;float:left;margin-top:5px;margin-left:5px;text-align:justify">
+                  	  <?=utf8_encode($info_id[0]['resumen'])?>
+                    </div>
+</div>
+            <!-- <div id="download">
+            	<a href="archivos/<?=utf8_encode($info_id[0]['adjunto'])?>" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image18','','images/diseno/download2.png',1)">
+            		<img src="images/diseno/download1.png" name="Image18" width="110" height="24" border="0" id="Image18" />
+            	</a>
+            </div>-->
+            </div>
+              <div id="vid_rela">
+              <style>
+              	#demo{}
+              	#demo .selected{background:url(images/diseno/fondo_hover.png);width:auto;height:26px;padding:10px 5px 0 5px}
+              	#demo li{background:url(images/diseno/fondo_des.png);width:auto;height:26px;padding:10px 5px 0 5px}
+              	#demo li a{color:#fff;text-decoration:none}
+              	.yui-nav{padding:0 0 0 10px;border-bottom:1px solid #fff}
+              </style>
+		              <div id="demo" class="yui-navset">
+						    <ul class="yui-nav">
+						        <li class="selected"><a href="#tab1"><em>Related Video</em></a></li>
+						        <li><a href="#tab2"><em>Comments (<?=count($comentarios)?>)</em></a></li>
+						    </ul>            
+						    <div class="yui-content">
+						        <div id="tab1">
+						        	<?
+						                while($rew = $paging->fetchResultado())
+										{ 
+										 ?>
+				                    <div class="video">
+					                	<div id="video">
+					                		<a href="index.php?id=<?=$rew['id']?>&padre=<?=$rew['id_padre']?>"><img border="0" src="images/<?=$rew['imagen']?>" width="161" height="120" /></a>
+					                	</div>
+					                  	<div id="nomb_video"><?=utf8_encode($rew['titulo'])?></div>
+					                  	<div id="visitas">
+					                  		<div id="click"><?=$rew['visitas']?> visitas</div>
+					                    	<div id="tiempo"><?=$rew['alto']?></div>
+					                    </div>
+				               		 </div>
+				                	 <?} ?>
+						        </div>
+						        <div id="tab2">
+						        <style>
+						        	.coment{padding:5px 0 5px 0;border-bottom:1px solid #7E7D7E;margin:15px 0 0 0}
+						        	.coment h3{color:#999}
+						        	.coment p{color:#fff}
+						        </style>
+						        	<?if(isset($_SESSION['ingreso'])){?>
+						        	<input type="hidden" value="0" id="theValue" />
+						        	<div style="padding:20px 0 0 20px">
+						        		<h3 style="padding:0 0 10px 0;color:#999">Leave a comment...</h3>
+						        		<textarea cols="50" rows="3" name="coment_value" id="coment_value"></textarea>
+						        		<div style="text-align:right;width:420px">
+						        		<div id="mensajes" style="text-align:right;float:left;color:#fff"></div>
+						        			<a style="cursor:pointer" onClick="relcoment('<?=$_SESSION['ingreso']['idusuario']?>','<?=$id?>')"><img src="images/diseno/send.jpg" alt="Send Comment" border="0" width="70px"></a>
+						        		</div>
+						        	</div>
+						        	<?}else{?>
+						        		<div style="padding:20px 0 0 20px">
+						        			<h3 style="padding:0 0 10px 0;color:#999">Log in to leave a comment. <a href="index.php?id=337&video=<?=$id?>&padre=<?=$_GET['padre']?>&verific=<?=base64_encode('To leave a comment, you must register or login with your username and password ')?>" style="color:#fff">Login Here</a></h3>
+						        		</div>
+						        	<?}?>
+									<!-- <p><a href="javascript:;" onclick="addElement();">Add Some Elements</a></p>-->
+									<div id="myDiv"  style="padding:20px 0 0 20px">
+										<?foreach($comentarios as $info_coment){?>
+											<div class="coment">
+												<h3><?=$info_coment['username']?> - <?=$info_coment['fecha']?></h3>
+												<p>
+													<?=$info_coment['comentario']?>
+												</p>
+											
+											</div>
+										<?}?>	
+									</div>
+						        </div>
+						    </div>
+						</div>
+						<script type="text/javascript">
+						    var tabView = new YAHOO.widget.TabView('demo');
+						</script>
+												
+                     
+              </div>
+              <div id="paginador"><?=$links?></div>
+        	</div>
+        <div id="banner_der">
+   	  <div id="men_categorias">
+      	
+   	    	<?include("php/mas_votado.php") ?>
+      </div>
+            <div id="lineader"></div>
+          <div class="publicidad2">
+          	<?
+			  	  	foreach($banners as $publicidad)
+				    {
+						if($publicidad['tipo_contenido'] == 37)//banner en flash
+						{
+		  	   				?>
+		  	   				 		<div id="publicidad_nuevo" style="position:absolute;z-index:50;width:198px;height:144px">
+	  				 					<a href="index.php?id=<?=$id?>&banner=<?=$publicidad['banner']?>&url=<?=base64_encode($publicidad['link'])?>&imagen=<?=base64_encode($publicidad['adjunto'])?>" target="_blank" title="<?=$publicidad['titulo'] ?>">
+	  				 						<img src="images/diseno/link.png" title="<?=$publicidad['titulo']?>">
+	  				 					</a>
+		  	   				 		</div>
+		  	   				 		<div style="z-index:1;position:relative">
+				        	    		<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="189" height="144">
+										  <param name="movie" value="archivos/<?=$publicidad['adjunto']?>" />
+										  <param name="quality" value="high" />
+										  <param name="wmode" value="transparent" />		
+										  <embed src="archivos/<?=$publicidad['adjunto']?>" wmode="transparent" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="189" height="144"></embed>
+										</object>
+									</div>
+		            		<?
+	            		}
+	            		else
+	            		{
+							?>
+		        	    			<a href="index.php?id=<?=$id?>&banner=<?=$publicidad['banner']?>&url=<?=base64_encode($publicidad['link'])?>&imagen=<?=base64_encode($publicidad['imagen'])?>" target="_blank"  title="<?=$publicidad['titulo'] ?>">
+		        	    				<img src="images/<?=$publicidad['imagen']?>" width="189" height="144" alt="<?=$publicidad['titulo']?>"/>
+		        	    			</a>
+		            		<?
+						}
+	            	}
+	            ?>
+          </div>
+        </div>

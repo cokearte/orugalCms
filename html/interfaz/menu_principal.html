@@ -1,0 +1,14 @@
+<ul id="main_menu">
+<?
+foreach($opciones_principal as $datos)
+{
+	echo "<li id='main1'>
+			<a href='index.php?id=".$datos['id']."&del'>
+				".$datos['titulo']."
+			</a>
+			<img src='images/generics/arrow_menu.jpg' width='11' height='7' />
+		</li>";	
+}
+?>
+</ul>
+ 

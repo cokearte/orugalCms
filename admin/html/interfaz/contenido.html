@@ -1,0 +1,1103 @@
+<script type="text/javascript" src="js/objetoajax.js"></script>
+<script type="text/javascript" src="js/funciones.js"></script>
+<script type="text/javascript" src="jscalendar/calendar.php"></script>
+<script type="text/javascript" src="jscalendar/lang/calendar-es.js"></script>
+<script type="text/javascript" src="jscalendar/calendar-setup.js"></script>
+<style type="text/css">
+    @import url("jscalendar/calendar-win2k-cold-1.css");
+</style>
+<!-- Call shadowbox scripts //-->
+<script type="text/javascript" src="js/shadowbox/jquery-1.2.6.js"></script>
+<script type="text/javascript" src="js/shadowbox/adapter/shadowbox-jquery.js"></script>
+<script type="text/javascript" src="js/shadowbox/shadowbox.js"></script>
+<!-- Call shadowbox scripts //-->
+
+
+<link rel="stylesheet" type="text/css" href="../shadowbox-3.0.3/shadowbox.css">
+<script type="text/javascript" src="../shadowbox-3.0.3/shadowbox.js"></script>
+<script type="text/javascript">
+Shadowbox.init({
+    handleOversize: "drag",
+    modal: true
+});
+</script>
+<script type="text/javascript"><!--
+	function closeShadow()
+	{
+		Shadowbox.close();
+	}
+// --></script>
+<script type="text/javascript">
+		
+// i use classic skin, spanish language 'es' but can be traded for 'en', and all of the possible player types.
+ 
+Shadowbox.loadSkin('classic', 'js/shadowbox/skin'); 
+Shadowbox.loadLanguage('es', 'js/shadowbox/lang'); 
+Shadowbox.loadPlayer(['flv', 'html', 'iframe', 'img', 'qt', 'swf', 'wmp'], 'js/shadowbox/player'); 		
+ 
+// This is the Shadowbox function we called from flash remember? in the externalInterfaceCall part?. 
+// actually is a variable not a function. though it contains a function.
+
+var openShadowbox = function(content, player, title){
+    Shadowbox.open({
+        content:    content,
+        player:     player,
+        title:      title
+    });
+};
+
+// initializes shadowbox.
+window.onload = Shadowbox.init;
+
+function mostrar(dato,caja)
+{
+	if(caja=='imagen')
+	{
+		document.getElementById('mostrar_imagen').innerHTML="<img src='../externos/Thumb.php?img=../images/"+dato+"&tamano=50'>";
+	}
+	else if(caja=='imagen2')
+	{
+		document.getElementById('mostrar_imagen2').innerHTML="<img src='../externos/Thumb.php?img=../images/"+dato+"&tamano=50'>";
+	}
+	else if(caja=='imagen3')
+	{
+		document.getElementById('mostrar_imagen3').innerHTML="<img src='../externos/Thumb.php?img=../images/"+dato+"&tamano=50'>";
+	}
+	else if(caja=='imagen4')
+	{
+		document.getElementById('mostrar_imagen4').innerHTML="<img src='../externos/Thumb.php?img=../images/"+dato+"&tamano=50'>";
+	}
+	else if(caja=='imagen5')
+	{
+		document.getElementById('mostrar_imagen5').innerHTML="<img src='../externos/Thumb.php?img=../images/"+dato+"&tamano=50'>";	
+	}
+	//document.getElementById('imagen').value=dato;
+	
+}
+</script>
+
+<style type="text/css">
+    /*@import "css/editor/info.css";*/
+	/*@import "css/editor/main.css";*/
+	@import "css/editor/widgEditor.css";
+</style>
+<script type="text/javascript" src="js/editor/widgEditor.js"></script>
+
+	<ol class="breadcrumb">
+	<?
+	if($_SESSION['login']['perfil'] == 1)
+	{
+		if($tipo_contenido != 10)
+		{
+			echo "Ud est&aacute; aqui: ";
+			foreach($miga as $info)
+			{
+				if($info['id'] != 10)
+				{
+					if($info['id'] == $id)
+					{
+						echo "<li class='active'>".$info['titulo']."</li>";	
+					}
+					else
+					{			
+						echo "<li><a href='?id=".$info['id']."'>".$info['titulo']."</a>  </li>";
+					}
+				}
+			}
+		}
+		if($tipo_contenido==10 and isset($_GET['editar']))
+		{
+			echo "Ud est&aacute; aqui: ";
+			echo "<li><a href='?type=10'> Videos </a> </li>";
+			echo "<li  class='active'>".$info_id[0]['titulo']."</li>";
+		}
+	}
+	else
+	{
+		echo "Ud est&aacute; aqui: ";
+		echo "<li><a href='index.php?id=".$query_sites[0]['id']."'>".$query_sites[0]['titulo']."</a></li>";
+	}
+		
+	?>
+	<!-- <li>{if $nodo == $miga[miga].nodo}{$miga[miga].titulo}{else}<a href="?nodo={$miga[miga].nodo}">{$miga[miga].titulo}</a> >{/if}</li>-->
+	</ol>
+
+
+<div class="errores">
+	<?echo $final;?>
+</div>
+<?
+if ($mostrar_form == false)
+{
+	//para mostrar y bloquear el home del admin
+	if($id!= 1 or $tipo_contenido == 46)
+	{
+		echo $tabla;
+	}
+	else
+	{	
+		if(_BANNER_ADMIN)
+		{
+			echo '<img src="../images/diseno/slogan.png"  width="100%" style="margin:50px 0 0 0">';
+		}
+	}
+}
+else {?>
+<!-- Pinto el formulario donde se mostrara la informacion del nodo que se seleccione-->
+<br>
+<form method="post" name="form">
+<!-- <input type="hidden" name="fecha" value="<?echo (isset($fecha))?$fecha:date('Y-m-d H:i:s');?>">-->
+	<table  id="form_admin" class="table table-striped">
+		<tr>
+			<td align="center" colspan="2" id="botones_panel">
+				<input type="submit" name="guardar" value="<? echo $texto_boton;?>" class="btn btn-primary">
+				<input type="submit" name="cancelar" value="Cancelar" class="btn btn-primary">
+				<!-- <input type="submit" name="cancelar" value="Agregar">-->
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<?php if($funciones->entorno()){ ?>
+				<input type="hidden" name="tipo_contenido" value="<?=$tipo_contenido?>">
+			<?php } ?>	
+				<input type="hidden" id="id_padre" name="id_padre" size="53" value="<? echo $id_padre;?>">
+			</td>
+		</tr>
+		<?php if(!$funciones->entorno()){ ?>
+		<tr>
+			<td>
+				Tipo Contenido
+			</td>
+			<td class="celdas">
+				<select id="tipo_id" name="tipo_contenido" onchange="tiposid(this.value)"  class="form-control">
+					<option value="0" <?if($tipo_contenido == 0){echo 'selected';}?>>Default</option>
+					<option value="1" <?if($tipo_contenido == 1){echo 'selected';}?>>Noticias</option>
+					<option value="16" <?if($tipo_contenido == 16){echo 'selected';}?>>Cat Noticias</option>
+					<option value="17" <?if($tipo_contenido == 17){echo 'selected';}?>>Noticia</option>
+					<option value="3" <?if($tipo_contenido == 3){echo 'selected';}?>>Catalogo</option>
+					<option value="2" <?if($tipo_contenido == 2){echo 'selected';}?>>Categoria Catalogo</option>
+					<option value="8" <?if($tipo_contenido == 8){echo 'selected';}?>>Subcategoria Catalogo</option>
+					<option value="9" <?if($tipo_contenido == 9){echo 'selected';}?>>Linea</option>
+					<option value="10" <?if($tipo_contenido == 10){echo 'selected';}?>>Video</option>
+					<option value="4" <?if($tipo_contenido == 4){echo 'selected';}?>>Galer&iacute;a de Imagenes</option>
+					<option value="21" <?if($tipo_contenido == 21){echo 'selected';}?>>Imagen</option>
+					<option value="6" <?if($tipo_contenido == 6){echo 'selected';}?>>Home</option>
+					<option value="5" <?if($tipo_contenido == 5){echo 'selected';}?>>Aplicacion PHP</option>
+					<option value="7" <?if($tipo_contenido == 7){echo 'selected';}?>>Foro</option>
+					<option value="11" <?if($tipo_contenido == 11){echo 'selected';}?>>Descarga de Archivos</option>
+					<option value="12" <?if($tipo_contenido == 12){echo 'selected';}?>>Archivos</option>
+					<option value="13" <?if($tipo_contenido == 13){echo 'selected';}?>>Aplicacion PHP administrativa</option>
+					<option value="14" <?if($tipo_contenido == 14){echo 'selected';}?>>Galeria de Video</option>
+					<option value="15" <?if($tipo_contenido == 15){echo 'selected';}?>>Video</option>
+					<option value="18" <?if($tipo_contenido == 18){echo 'selected';}?>>Titular</option>
+					<option value="19" <?if($tipo_contenido == 19){echo 'selected';}?>>Jugadores</option>
+					<option value="20" <?if($tipo_contenido == 20){echo 'selected';}?>>Jugador</option>
+					<option value="22" <?if($tipo_contenido == 22){echo 'selected';}?>>Atributos</option>
+					<option value="23" <?if($tipo_contenido == 23){echo 'selected';}?>>Subatributos</option>
+					<option value="24" <?if($tipo_contenido == 24){echo 'selected';}?>>Tiendas</option>
+					<option value="25" <?if($tipo_contenido == 25){echo 'selected';}?>>Tienda</option>
+					<option value="26" <?if($tipo_contenido == 26){echo 'selected';}?>>Academias</option>
+					<option value="27" <?if($tipo_contenido == 27){echo 'selected';}?>>Academia</option>
+					<option value="28" <?if($tipo_contenido == 28){echo 'selected';}?>>Ofertero</option>
+					<option value="29" <?if($tipo_contenido == 29){echo 'selected';}?>>SubOfertero</option>
+					<option value="30" <?if($tipo_contenido == 30){echo 'selected';}?>>Eventos</option>
+					<option value="31" <?if($tipo_contenido == 31){echo 'selected';}?>>Subventos</option>
+					<option value="32" <?if($tipo_contenido == 32){echo 'selected';}?>>Categorias Vacantes</option>
+					<option value="33" <?if($tipo_contenido == 33){echo 'selected';}?>>Subcategoria Vacantes</option>
+					<option value="34" <?if($tipo_contenido == 34){echo 'selected';}?>>Rese&ntilde;as</option>
+					<option value="35" <?if($tipo_contenido == 35){echo 'selected';}?>>Areas de trabajo</option>
+					<option value="36" <?if($tipo_contenido == 36){echo 'selected';}?>>Banner en Imagen</option>
+					<option value="37" <?if($tipo_contenido == 37){echo 'selected';}?>>Banner en Flash</option>
+					<option value="38" <?if($tipo_contenido == 38){echo 'selected';}?>>Planes Creditos</option>
+					<option value="39" <?if($tipo_contenido == 39){echo 'selected';}?>>Planes Tiempo</option>
+					<option value="40" <?if($tipo_contenido == 40){echo 'selected';}?>>Categoria Tiendas</option>
+					<option value="41" <?if($tipo_contenido == 41){echo 'selected';}?>>Tiendas</option>
+					<option value="42" <?if($tipo_contenido == 42){echo 'selected';}?>>Mini Site</option>
+					<option value="43" <?if($tipo_contenido == 43){echo 'selected';}?>>Productos Mini Site</option>
+					<option value="44" <?if($tipo_contenido == 44){echo 'selected';}?>>Servicios</option>
+					<option value="45" <?if($tipo_contenido == 45){echo 'selected';}?>>Subservicios</option>
+					<option value="46" <?if($tipo_contenido == 46){echo 'selected';}?>>Boletin</option>
+					<option value="47" <?if($tipo_contenido == 47){echo 'selected';}?>>Areas Comunes</option>
+					<option value="48" <?if($tipo_contenido == 48){echo 'selected';}?>>Sub area</option>
+					<option value="49" <?if($tipo_contenido == 49){echo 'selected';}?>>Area Interna</option>
+					<option value="50" <?if($tipo_contenido == 50){echo 'selected';}?>>Encuestas</option>
+					<option value="51" <?if($tipo_contenido == 51){echo 'selected';}?>>Pregunta</option>
+					<option value="52" <?if($tipo_contenido == 52){echo 'selected';}?>>Respuesta</option>
+					<option value="53" <?if($tipo_contenido == 53){echo 'selected';}?>>Cartelera</option>
+					<option value="54" <?if($tipo_contenido == 54){echo 'selected';}?>>Peliculas</option>
+					<option value="55" <?if($tipo_contenido == 55){echo 'selected';}?>>Marcas</option>
+					<option value="56" <?if($tipo_contenido == 56){echo 'selected';}?>>SubMarcas</option>
+					<option value="57" <?if($tipo_contenido == 57){echo 'selected';}?>>Banners Home</option>
+					<option value="58" <?if($tipo_contenido == 58){echo 'selected';}?>>Banner</option>
+					<option value="59" <?if($tipo_contenido == 59){echo 'selected';}?>>Categorias Ofertas Laborales</option>
+					<option value="60" <?if($tipo_contenido == 60){echo 'selected';}?>>Oferta</option>
+				</select>
+			</td>
+		</tr>
+		<?php }?>	
+		
+		<!-- campos producto -->
+		<tr id="titulo">
+			<td>
+				<?if($tipo_contenido==60){?>Nombre<?}else{?>Nombre<?}?>
+			</td>
+			<td>
+				<input type="text"  class="form-control" name="titulo,r" size="53" value="<? echo $titulo; ?>">
+			</td>
+		</tr>
+		<tr id="antetitulo">
+			<td>
+				<?if($tipo_contenido==60){?>Empresa<?}else{?>Antetitulo<?}?>
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="antetitulo" size="53" value="<? echo $antetitulo; ?>">
+			</td>
+		</tr>
+		<tr id="direccion">
+			<td>
+				<?if($tipo_contenido == 42){echo "Local";}else{echo "Direcci&oacute;n";}?>
+			</td>
+			<td class="celdas">
+				<input type="text"  class="form-control"  name="direccion" size="53" value="<? echo $direccion; ?>">
+			</td>
+		</tr>
+		<tr id="telefono">
+			<td>
+				Tel&eacute;fono
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="telefono" size="53" value="<? echo $telefono; ?>">
+			</td>
+		</tr>
+		<tr id="telefono2">
+			<td>
+				Celular
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="telefono2" size="53" value="<? echo $telefono2; ?>">
+			</td>
+		</tr>
+		<tr id="mail">
+			<td>
+				Correo de Contacto
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="mail" size="53" value="<? echo $mail; ?>">
+			</td>
+		</tr>
+		<tr id="horarios">
+			<td>
+				Horarios
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="horarios" size="53" value="<? echo $horarios; ?>">
+			</td>
+		</tr>
+		<tr id="mapa">
+			<td>
+				Ingrese la URL de Google Maps http://....
+			</td>
+			<td class="celdas">
+				<textarea cols="40" class="form-control" rows="10" name="mapa"><? echo $mapa; ?></textarea>
+			</td>
+		</tr>
+		<tr id="codproducto">
+			<td>
+				Codigo Producto
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="codproducto" size="53" value="<? echo $codproducto; ?>">
+			</td>
+		</tr>
+		<tr id="marca">
+			<td>
+				Categoria
+			</td>
+			<td class="celdas">
+				<select name="marca">
+				<option <?if($marca==1){echo "selected";}?> value='1'>Home</option>
+				<option <?if($marca==578){echo "selected";}?> value='578'>Ofertas Laborales</option>
+				<option <?if($marca==431){echo "selected";}?> value='431'>Quienes Somos</option>
+				<option <?if($marca==360){echo "selected";}?> value='360'>Buscar</option>
+				<?
+					foreach($marcas as $marc)
+						{
+							if($marc['id'] == $marca)
+							{
+								echo "<option value='".$marc['id']."' selected>".$marc['titulo']."</option>";
+							}
+							else
+							{		
+								echo "<option value='".$marc['id']."'>".$marc['titulo']."</option>";
+							}		
+						}
+					?>
+				</select>
+			</td>
+		</tr>
+		<!-- fin de campos producto-->
+		<tr id="subtitulo">
+			<td>
+				Subtitulo
+			</td>
+			<td>
+				<input type="text" class="form-control" name="subtitulo" size="53" value="<? echo $subtitulo; ?>">
+			</td>
+		</tr>
+		<tr id="resumen">
+			<td>
+				Resumen
+			</td>
+			<td>
+				<!-- <textarea cols="40" rows="10" name="resumen">-->
+				<textarea cols="40" id="noise2" rows="10" name="resumen"  class="widgEditor nothing form-control"><? echo $resumen; ?></textarea>
+			</td>
+		</tr>
+		<tr id="fecha_form">
+			<td class="celdas">
+				Fecha
+			</td>
+			<td class="celdas">
+				<input type="text" name="fecha" id="fecha" size="20" value="<?=$fecha?>" readonly>
+	        	<input type="button" id="btn_fecha"style="border:1px solid;font:0.8em;" value="Seleccione la fecha">
+	                                <script type="text/javascript">
+	                                    Calendar.setup({
+	                                        inputField     :    "fecha",      // id of the input field
+	                                        ifFormat       :    "%Y-%m-%d",       // format of the input field
+	                                        showsTime      :    false,            // will display a time selector
+	                                        button         :    "btn_fecha",   // trigger for the calendar (button ID)
+	                                        singleClick    :    true,           // double-click mode
+	                                        step           :    1                // show all years in drop-down boxes (instead of every other year as default)
+	                                    });
+	                                    </script>
+			</td>
+		</tr>
+		<tr id="descriptivo">
+			<td colspan="2">
+				<b>Debe escribir los 11 caracteres del codigo de video de youtube</b>
+			</td>
+		</tr>
+		<tr id="descripcion">
+			<td>
+				<?if($tipo_contenido == 43){echo "Codigo de Youtube";}elseif($tipo_contenido == 33){echo "Lo que ofrecemos.";}else{echo "Descripci&oacute;n";}?>
+			</td>
+			<td>
+			<?if($tipo_contenido == 43){?>
+				<input type="text" class="form-control" name="contenido" size="53" value="<? echo $contenido; ?>">
+			<?}else{?>
+				<textarea  id="noise" rows="10" name="contenido"  class="widgEditor nothing form-control">
+					<?
+						echo $contenido;
+					?>
+				</textarea>
+			<?}?>	
+			</td>
+		</tr>
+		<tr id="horarioinicio">
+			<td>
+				Inicio de la exposici&oacute;n
+			</td>
+			<td>
+				<input type="text" class="form-control" name="horarioinicio" size="53" value="<? echo $horarioinicio; ?>">
+			</td>
+		</tr>
+		<tr id="horariofin">
+			<td>
+				Fin de la exposici&oacute;n
+			</td>
+			<td>
+				<input type="text" class="form-control" name="horariofin" size="53" value="<? echo $horariofin; ?>">
+			</td>
+		</tr>
+		<tr id="adjunto">
+			<td>
+				Archivo Adjunto
+			</td>
+			<td align="left">
+				<table align="left">
+					<tr>
+						<td align="left">
+							<input type="text"  class="form-control"  name="adjunto" size="53" value="<? echo $adjunto; ?>">
+						</td>
+						<td align="left">
+							<a border="0" href="#" onClick="ventanaPop2('adjunto')"><img border="0" src="../repositorio_archivos/119.png" width="30" height="30"></a>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<!-- campos producto -->
+		<tr id="precio_normal">
+			<td>
+				Precio
+			</td>
+			<td class="celdas">
+				<input type="text"  class="form-control"  name="precio_normal" size="20" value="<? echo $precio_normal; ?>"> (Solo Numeros) 
+			</td>
+		</tr>
+		<tr id="precio_oferta">
+			<td>
+				Precio Oferta
+			</td>
+			<td class="celdas">
+				<input type="text"  class="form-control"  name="precio_oferta"  size="20"  value="<? echo $precio_oferta; ?>"> Sin Simbolos Ej: 9999.99
+			</td>
+		</tr>
+		<tr id="iva">
+			<td>
+				Iva
+			</td>
+			<td class="celdas">
+				<select id="iva">
+					<option value="0" <?if($iva == 0){echo 'selected';}?>>0%</option>
+					<option value="10" <?if($iva == 10){echo 'selected';}?>>10%</option>
+					<option value="15" <?if($iva == 15){echo 'selected';}?>>15%</option>
+					<option value="16" <?if($iva == 16){echo 'selected';}?>>16%</option>
+					<option value="21" <?if($iva == 21){echo 'selected';}?>>21%</option>
+				</select>	
+			</td>
+		</tr>
+		<tr id="partefabricante">
+			<td>
+				Parte Fabricante
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="partefabricante" size="53" value="<? echo $partefabricante; ?>">
+			</td>
+		</tr>
+		<tr id="parteproducto">
+			<td>
+				Parte Producto
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="parteproducto" size="53" value="<? echo $parteproducto; ?>">
+			</td>
+		</tr>
+		<tr id="alto">
+			<td>
+				Salario
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="alto" size="20" value="<? echo $alto; ?>">
+			</td>
+		</tr>
+		<tr id="ancho">
+			<td>
+				Ancho
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="ancho" size="20" value="<? echo $ancho; ?>">
+			</td>
+		</tr>
+		<tr id="largo">
+			<td>
+				Largo
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="largo" size="20" value="<? echo $largo; ?>">
+			</td>
+		</tr>
+		<tr id="profundidad">
+			<td>
+				Profundidad
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="profundidad" size="20" value="<? echo $profundidad; ?>">
+			</td>
+		</tr>
+		<tr id="puntos">
+			<td>
+				<?if($tipo_contenido == 38){echo "Cantidad de Creditos";}elseif($tipo_contenido == 39){echo "Cantidad de Tiempo.";}else{echo "Cantidad";}?>
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="puntos" size="20" value="<? echo $puntos; ?>"> (Solo Numeros)
+			</td>
+		</tr>
+		<tr id="canje">
+			<td>
+				Tipo de Respuesta	
+			</td>
+			<td class="celdas">
+				<input type="radio" name="canje" size="53"  value="1" <?if($canje==1){echo "checked='checked'";}?> > Respuesta Unica
+				<input type="radio" name="canje" size="53"  value="0"  <?if($canje==0){echo "checked='checked'";}?> > Multiple Respuesta
+			</td>
+		</tr>
+		<tr id="puntoscanje">
+			<td>
+				Cantidad de creditos
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="puntoscanje" size="20" value="<? echo $puntoscanje; ?>">
+			</td>
+		</tr>
+		<tr id="permisos">
+			<td colspan="2">
+				<b>Permisos de Publicaci&oacute;n</b>
+			</td>
+		</tr>
+		<tr id="destacado" style="background:#ccc">
+			<td>
+				Tipo <!-- Destacado -->
+			</td>
+			<td>
+				<label><input type="radio" name="destacado" size="53" checked  value="0" <?if($destacado==0){echo "checked='checked'";}?>>Normal</label><br>
+				<label><input type="radio" name="destacado" size="53"  value="1" <?if($destacado==1){echo "checked='checked'";}?>> VGT</label><br>
+				<label><input type="radio" name="destacado" size="53"  value="2" <?if($destacado==2){echo "checked='checked'";}?>> VG</label><br>
+				<label><input type="radio" name="destacado" size="53"  value="3" <?if($destacado==3){echo "checked='checked'";}?>> VGT Y VG</label><br>
+			</td>
+		</tr>
+		<tr id="novedad" style="background:#ccc">
+			<td>
+				Publico Registrado? <!-- Registrados -->
+			</td>
+			<td>
+				<input type="radio" name="novedad" size="53"  value="1" <?if($novedad==1){echo "checked='checked'";}?>> Si
+				<input type="radio" name="novedad" size="53"  value="0" <?if($novedad==0){echo "checked='checked'";}?>> No
+			</td>
+		</tr>
+		<tr id="promocion" style="background:#ccc">
+			<td>
+				Publico VIP? <!-- Promocion -->
+			</td>
+			<td>
+				<input type="radio" name="promocion"  value="1" <?if($promocion==1){echo "checked='checked'";}?>> Si
+				<input type="radio" name="promocion"  value="0" <?if($promocion==0){echo "checked='checked'";}?>> No
+			</td>
+		</tr>
+		<tr id="imagen1_preview">
+			<td>	
+				Vista Previa
+			</td>
+			<td>
+				<div id="mostrar_imagen" style="margin:0 0 0 20px;float:left">
+			<?
+			if(empty($imagen) or !file_exists('../images/'.$imagen))
+			{
+				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail">';
+			}
+			else
+			{
+			?>
+				<img  src="externos/Thumb.php?img=../../images/<? echo $imagen;?>&tamano=100" class="img img-thumbnail">
+			<?}?>	
+				</div>
+				<div id="mostrar_imagen2" style="margin:0 0 0 20px;float:left">
+			<?
+			if(empty($imagen2) or !file_exists('../images/'.$imagen2))
+			{
+				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail">';
+			}
+			else
+			{
+			?>
+				<img  src="externos/Thumb.php?img=../../images/<? echo $imagen2;?>&tamano=100" class="img img-thumbnail">
+			<?}?>
+			</div>
+				<div id="mostrar_imagen3" style="margin:0 0 0 20px;float:left">
+			<?
+			if(empty($imagen3) or !file_exists('../images/'.$imagen3))
+			{
+				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail">';
+			}
+			else
+			{
+			?>
+				<img  src="externos/Thumb.php?img=../../images/<? echo $imagen3;?>&tamano=100" class="img img-thumbnail">
+			<?}?>	
+				</div>
+					<div id="mostrar_imagen4" style="margin:0 0 0 20px;float:left">
+			<?
+			if(empty($imagen4) or !file_exists('../images/'.$imagen4))
+			{
+				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail">';
+			}
+			else
+			{
+			?>
+				<img  src="externos/Thumb.php?img=../../images/<? echo $imagen4;?>&tamano=100" class="img img-thumbnail">
+			<?}?>	
+				</div>
+				<div id="mostrar_imagen5" style="margin:0 0 0 20px">
+			<?
+			if(empty($imagen5) or !file_exists('../images/'.$imagen5))
+			{
+				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail">';
+			}
+			else
+			{
+			?>
+				<img  src="externos/Thumb.php?img=../../images/<? echo $imagen5;?>&tamano=100" class="img img-thumbnail">
+			<?}?>	
+				</div>
+			</td>
+		</tr>
+		<!-- fin campos producto -->
+		<tr id="imagen">
+			<td>
+				<?if($tipo_contenido == 42){echo "Imagen presentaci&oacute;n de la galer&iacute;a <br><span style='font-weight:bold;font-size:0.7em'><i>(190 x 71 PX)</i></span>";}else{echo "Imagen Contenido";}?>
+			</td>
+			<td align="left">
+				<table align="left">
+					<tr>
+						<td align="left">
+							<input type="text" class="form-control" name="imagen" size="53" value="<? echo $imagen; ?>">
+
+						</td>
+						<td align="left">
+							<a border="0" href="#" onClick="ventanaPop('imagen')"><img border="0" src="externos/repositorio/63.png" width="30" height="30"></a>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr id="imagen2">
+			<td>
+				<?if($tipo_contenido == 42){echo "Banner Minisite <br> <span style='font-weight:bold;font-size:0.7em'><i><i>(450 X 123 PX)</i></span>";}else{echo "Imagen Medio";}?>
+			</td>
+			<td align="left">
+				<table align="left">
+					<tr>
+						<td align="left">
+							<input type="text"  class="form-control" name="imagen2" size="53" value="<? echo $imagen2; ?>">
+
+						</td>
+						<td align="left">
+							<a border="0" href="#" onClick="ventanaPop('imagen2')"><img border="0" src="externos/repositorio/63.png" width="30" height="30"></a>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr id="imagen3">
+			<td>
+				<?if($tipo_contenido == 42){echo "Como llegar Img <br><span style='font-weight:bold;font-size:0.7em'><i>(800 x 600 PX)</i></span>";}else{echo "Imagen 3";}?>
+			</td>
+			<td align="left">
+				<table align="left">
+					<tr>
+						<td align="left">
+							<input type="text" class="form-control" name="imagen3" size="53" value="<? echo $imagen3; ?>">
+
+						</td>
+						<td align="left">
+							<a border="0" href="#" onClick="ventanaPop('imagen3')"><img border="0" src="externos/repositorio/63.png" width="30" height="30"></a>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr id="imagen4">
+			<td>
+				Imagen 4
+			</td>
+			<td align="left">
+				<table align="left">
+					<tr>
+						<td align="left">
+							<input type="text" class="form-control" name="imagen4" size="53" value="<? echo $imagen4; ?>">
+
+						</td>
+						<td align="left">
+							<a border="0" href="#" onClick="ventanaPop('imagen4')"><img border="0" src="externos/repositorio/63.png" width="30" height="30"></a>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr id="imagen5">
+			<td>
+				Imagen 5
+			</td>
+			<td align="left">
+				<table align="left">
+					<tr>
+						<td align="left">
+							<input type="text" class="form-control" name="imagen5" size="53" value="<? echo $imagen5; ?>">
+
+						</td>
+						<td align="left">
+							<a border="0" href="#" onClick="ventanaPop('imagen5')"><img border="0" src="externos/repositorio/63.png" width="30" height="30"></a>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<?if($tipo_contenido == 58){?>
+		<tr id="recom">
+			<td colspan="2">
+				<div style="float:left">
+					Tenga en cuenta estas recomendaciones ala hora de cargar Imagenes:
+					<ul>
+						<li>
+							Es recomendado que sean cargadas en las siguientes medidas:
+							<ul>
+								<li>Para los banners del home 950px X 338px</li>
+								<li>Para los banners internos 950px X 200px</li>
+							</ul>	
+						</li>
+						<li>Recuerde que la imagen no debe superar los 2 MB (2000 Kb)</li>
+					</ul>
+				</div>
+			</td>
+		</tr>
+		<?}?>
+		<tr id="pie_imagen">
+			<td>
+				Pie de imagen
+			</td>
+			<td>
+				<input type="text" class="form-control" name="pie_imagen" size="53"  value="<? echo $pie_imagen; ?>">
+			</td>
+		</tr>
+		<tr id="imagen_home">
+			<td>
+				Imagen Home
+			</td>
+			<td>
+				<input type="text" class="form-control" name="imagen_home" size="53" value="<? echo $imagen_home; ?>">
+			</td>
+		</tr>
+		<tr id="autor">
+			<td>
+				Autor
+			</td>
+			<td>
+				<input type="text" class="form-control" name="autor" size="53" value="<? echo $autor; ?>">
+			</td>
+		</tr>
+		<tr id="mail_autor">
+			<td>
+				Correo Electr&oacute;nico
+			</td>
+			<td>
+				<input type="text" class="form-control" name="mail_autor" size="53" value="<? echo $mail_autor; ?>">
+			</td>
+		</tr>
+		<tr id="link">
+			<td>
+				URL a Redireccionar<br> (con http://)
+			</td>
+			<td>
+				<input type="text" class="form-control" name="link" size="53"  value="<? echo $link; ?>">
+			</td>
+		</tr>
+		<tr id="tipo_link">
+			<td>
+				Tipo Link
+			</td>
+			<td>
+				<select name="tipo_link"  class="form-control">
+					<option value="_parent"  <?if($tipo_link == '_parent'){echo 'selected';}?>>Misma Ventana</option>
+					<option value="_blank"   <?if($tipo_link == '_blank'){echo 'selected';}?>>Ventana Diferente</option>
+				</select>
+			</td>
+		</tr>
+		<tr id="seo">
+			<td colspan="2" align="center">
+				<b>CONFIGURACI&Oacute;N SEO</b>
+			</td>
+		</tr>
+		<tr id="keywords">
+			<td>
+				Keywords
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="keywords" size="53" value="<? echo $keywords; ?>">
+			</td>
+		</tr>
+		<tr id="notas">
+			<td>
+				Meta Descripci&oacute;n
+			</td>
+			<td class="celdas">
+				<textarea cols="40" class="form-control" rows="3" name="notas"><? echo $notas; ?></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2" id="botones_panel">
+				<input type="submit" name="guardar" value="<? echo $texto_boton;?>" class="btn btn-primary">
+				<input type="submit" name="cancelar" value="Cancelar" class="btn btn-primary">
+				<!-- <input type="submit" name="cancelar" value="Agregar">-->
+			</td>
+		</tr>
+		<tr id="relacionados">
+			<td colspan="2">
+				<?if($tipo_contenido == 10 and $editar	==	true){?>
+				<div style='background:#999;color:#fff;text-align:center'>
+					<b>
+						PRODUCTOS RELACIONADOS
+					</b>
+				</div>
+				<div id="info" style="background:#fff;border:1px solid #999">
+				</div>
+					<div style="overflow:auto;height:50px;">
+						<table width="100%">
+							<?
+								foreach($relacionados as $rel)
+								{	
+
+										echo "<tr style='background:#ECF4CC'>";
+
+											echo "<td><b>".$rel['titulo']."</b></td>";
+											echo "<td>
+													eliminar
+										 		 </td>";
+
+										echo "</tr>";	
+	
+								}
+								?>
+						</table>
+					</div>
+					<div style="width:100%;background:#ECF4CC;text-align:left">
+						<input type="hidden" id="oculta" type="hidden">
+						<input type="text" id="caja" size="50" onkeypress="(listaJugadores(this.value,'oculta'))" autocomplete="off">
+						<input type="button" name="guardar_atrib" value="Relacionar Producto" onClick="productosRelacionados(<?echo $id;?>,document.getElementById('oculta').value,1)">
+					</div>
+					<div id="text" style="position:absolute;z-index:250;background:#fff;border:1px solid #999">
+					</div>
+				<?}?>	
+			</td>
+		</tr>
+		<tr id="atributos">
+			<td colspan="2">
+				<?if($tipo_contenido == 10 and $editar	==	true){?>
+				<div style='background:#999;color:#fff;text-align:center'>
+					<b>
+						ATRIBUTOS DEL PRODUCTO
+					</b>
+				</div>
+					<div style="overflow:auto;height:170px;">
+					<script>
+						function InsertarFila(valor)
+						{
+							var tabla = document.getElementById('mi_tabla');
+							// Insertar la tercera fila
+							tabla.tBodies[0].insertRow(2);
+							// Crear la columna de tipo <th> que hace de cabecera de fila
+							var cabecera = document.createElement("th");
+							cabecera.setAttribute('scope', 'row');
+							cabecera.innerHTML = valor;
+							tabla.tBodies[0].rows[2].appendChild(cabecera); 
+							// Crear las dos columnas de datos y añadirlas a la nueva fila
+							tabla.tBodies[0].rows[2].insertCell(1);
+							tabla.tBodies[0].rows[2].cells[1].innerHTML = '<input type="text" size="50" name="'+valor+'">';
+							
+							cosa	=	document.forms['form'].elements['valores'];
+							//alert(cosa.length);
+							cosa.options[cosa.selectedIndex]=null;
+						}
+					
+					</script>
+					<style>
+					 #mi_tabla tr{background:#ECF4CC}
+					 #mi_tabla th{text-align:left}
+					</style>
+					<?=$final?>
+					<table width="100%" id="mi_tabla">
+							<tbody>
+							<tr>
+								<td>
+								</td>
+								<td>
+								</td>
+							</tr>
+							<?
+							//$datos2	=	array();
+								foreach($atributos as $data)
+								{
+									foreach($data as $key=>$info)
+									{
+										if(!is_numeric($key))
+										{
+											if(!empty($info))
+											{
+												//echo $key."=>".$info."<br>";
+												$datos2[0][$key]="$info";
+											}
+										}
+									}
+								}
+							ksort($datos2[0]);
+								//var_dump($datos2);
+								foreach($datos2 as $data)
+								{
+									foreach($data as $key=>$info)
+									{
+										
+										if(!is_numeric($key))
+										{
+											
+											if(!empty($info))
+											{
+												echo "<tr>";
+												if($key != 'producto')
+												{	
+													echo "<td><b>".utf8_encode($key)."</b></td>";
+													echo "<td>
+															<input type='text' value='".$info."' name='".$key."' size='50'>
+											 			 </td>";
+												}
+												echo "</tr>";
+											}
+										}
+											
+									}
+								}
+								?>
+								</tbody>
+						</table>
+					</div>
+					<div style="width:100%;background:#ECF4CC;text-align:center">
+					<?
+								$datos	=	array();
+								foreach($atributos as $data)
+								{
+									foreach($data as $key=>$info)
+									{
+										if(!is_numeric($key))
+										{
+											if(empty($info))
+											{
+												array_push($datos,$key);
+											}
+										}
+									}
+								}
+						sort($datos);
+						?>
+						<select id="valores" name="valores">
+						<?
+								
+								for($a=1;$a<=count($datos);$a++)
+								{
+									echo "<option value='".$datos[$a]."'>".$datos[$a]."</option>";
+								}
+						
+						?>
+						</select>
+						<input type="button" name="" value="A&ntilde;adir Atributo" onClick="InsertarFila(document.getElementById('valores').value);">
+						<input type="submit" name="guardar_atrib" value="Guardar Atributos">
+					</div>
+				<?}?>	
+			</td>
+		</tr>
+		<?if($tipo_contenido == 52 and $editar	==	true){?>
+		<tr>
+			<td colspan="2" align="center">
+				<strong>SELECCIONE LOS USUARIOS A RELACIONAR</strong>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<table width="100%" cellpadding="0" cellspacing="0">
+					<?php foreach($salidaUsuarios as $usuariosRel){?>	
+						<tr>
+							<td style="padding:5px;border-bottom:1px solid #999" align="left" style="padding:0 0 0 20px"><?php echo $usuariosRel['usuario'] ?></td>
+							<?php if($usuariosRel['verifica'] == 1){ ?>
+								<td style="padding:5px;border-bottom:1px solid #999" align="center" id="evento<?php echo $usuariosRel['idusuario'] ?>"><a style="cursor:pointer" onclick="relacionarUsuarioArchivo(<?php echo $usuariosRel['idusuario'] ?>,<?php echo $id ?>,0)">Desasignar</a></td>
+							<?php }else{ ?>
+								<td style="padding:5px;border-bottom:1px solid #999" align="center" id="evento<?php echo $usuariosRel['idusuario'] ?>"><a style="cursor:pointer" onclick="relacionarUsuarioArchivo(<?php echo $usuariosRel['idusuario'] ?>,<?php echo $id ?>,1)">Asignar</a></td>
+							<?php } ?>
+							
+						</tr>
+					<?php } ?>
+				</table>
+			</td>
+		</tr>
+		<?php } ?>
+		<tr id="categorias_asign">
+			<td colspan="2" align="center">
+			<?if($tipo_contenido == 10 and $editar	==	true or $tipo_contenido == 21 and $editar	==	true){?>
+				<table width="100%">
+				<tr style='background:#999;color:#fff'>
+					<td colspan="2" align="center">
+						<b>CATEGORIAS ASIGNADAS A ESTE PRODUCTO</b>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div id="mensaje">
+							
+						</div>
+					</td>
+				</tr>
+				<tr style='background:#999;color:#fff'>
+					<td align="center">
+						<b>LINEA</b>
+					</td>
+					<td align="center">
+						<b>ACCI&Oacute;N</b>
+					</td>
+				</tr>
+				<?
+					$contador	=	0;
+					foreach($info_categorias as $data)
+					{
+						if(($contador%2)==0)
+						{
+							echo "<tr id='div".$data['id']."' style='background:#EAF3C5'>";
+						}
+						else
+						{
+							echo "<tr id='div".$data['id']."' style='background:#E2E2E2'>";
+						}
+						echo	"<td align='center'><b>".$data['titulo']."</b></td>
+									<td align='center'><a href='#div".$data['id']."' onClick='asignaCategoria(".$id.",".$data['id'].",0)'>Eliminar</a></td>
+								</tr>
+								";
+						$contador++;
+					}
+				?>
+				</table>
+				<?}?>
+			</td>
+		</tr>
+		<tr id="asignar">
+				<td colspan="2">
+				<div style="background:#ECF4CC">
+				<?if($tipo_contenido == 10 and $editar	==	true or $tipo_contenido == 21 and $editar	==	true){?>
+					<table width="100%" cellspacing="0">
+						<tr style='background:#999;color:#fff'>
+							<td align="center">Categoria</td>
+							<!-- <td align="center">Subcategoria</td>
+							<td align="center">Linea</td>Para asignacion de categorias-->
+						</tr>
+						<tr>
+							<td align="center">
+							<input type="hidden" id="valor" name="valor">
+							<select size="10"  id="opciones0" onchange="cargarSelect(this.value,0)">
+								<?
+								foreach($listado_catalogo as $info)
+								{
+									echo '<option value="'.$info['id'].'">'.$info['titulo'].'</option>';
+								}
+							?>
+								</select>
+							</td>
+							<!-- <td id="opciones1" align="center">
+								<select size="10" disabled>
+									<option>Seleccione</option>
+								</select>
+							</td>
+							<td id="opciones2" align="center">
+								<select size="10" disabled id="categoria">
+									<option>Seleccione</option>
+								</select>
+							</td> OJO con esto, esto es para asignacion de categorias-->
+						</tr>
+						<tr>
+							<td colspan="3" align="center">
+								<input type="button" value="Asignar Categoria" onClick="asignaCategoria(<?echo $id;?>,document.form.valor.value,1)">
+							</td>
+						</tr>
+					</table>
+					<?}?>
+					</div>	
+				</td>
+		</tr>
+	</table>
+</form>
+<!-- En esta parte se llama la funcion que muestra y oculta campos segun el tipo de nodo, esto es para la persistecia-->
+<script>tiposid(<?echo $tipo_contenido;?>)</script>
+<?}?>

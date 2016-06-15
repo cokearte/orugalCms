@@ -1,0 +1,76 @@
+<link rel="stylesheet" type="text/css" href="<?=_DOMINIO?>shadowbox-3.0.3/shadowbox.css">
+<script type="text/javascript" src="<?=_DOMINIO?>shadowbox-3.0.3/shadowbox.js"></script>
+<script type="text/javascript">
+Shadowbox.init({
+    handleOversize: "drag",
+    modal: true
+});
+</script>
+<div id="contenido_interiores">
+	  <div id="menuservicios">
+        	<ul id="menupquienes">
+        	<li> 
+            <div class="btn_quienes">
+            	 <!-- <div class="izq"><img src="images/diseno/quienes/fondo_menu_izq.png" /></div>-->
+             	<a href="empaque-embalaje">Empaque y Embalaje</a>
+               <!-- <div class="der"><img src="images/diseno/quienes/fondo_menu_der.png" /></div>-->
+            </div>
+            </li>
+            
+            <li>           
+            <div class="btn_quienes">
+            	 <!-- <div class="izq"><img src="images/diseno/quienes/fondo_menu_izq.png" /></div>-->
+             	<a href="minibodegas-bodegaje-personalizado">Bodegaje personalizado y mini bodegas</a>
+             <!-- <div class="der"><img src="images/diseno/quienes/fondo_menu_der.png" /></div>-->
+            </div>
+            </li>
+            <li>
+            <div class="btn_quienes">
+            	 <!-- <div class="izq"><img src="images/diseno/quienes/fondo_menu_izq.png" /></div>-->
+             	<a href="transporte-mercancias">Transporte de mercanc&iacute;as y mudanzas</a>
+             <!-- <div class="der"><img src="images/diseno/quienes/fondo_menu_der.png" /></div>-->
+            </div>
+            </li>
+       	  </ul>
+          
+      </div>
+      <div id="columna1">
+      <div id="titulos_servicios">
+        	<div id="storage"><img src="images/diseno/quienes/storage.png" /></div>
+            <div id="titulo">
+              <h2><?=$info_id[0]['titulo']?></h2>
+            </div>
+        </div>
+        <script>
+        	function ponerImagen(imagen)
+        	{
+        		document.getElementById('imagen_poner').src="images/"+imagen;
+        	}
+        </script>
+        <div id="foto_servicios">
+        	<img id="imagen_poner" src="images/<?=$info_id[0]['imagen']?>" width="352px"/>
+        </div>
+        
+        <div style="float:left">
+	        <?if($info_id[0]['imagen'] != ''){?><div class="sub_fotos"><a style="cursor:pointer" onClick="ponerImagen('<?=$info_id[0]['imagen']?>')"><img src="images/<?=$info_id[0]['imagen']?>" width="70px"/></a></div><?}?>
+	        
+	        <?if($info_id[0]['imagen2'] != ''){?><div class="sub_fotos"><a style="cursor:pointer" onClick="ponerImagen('<?=$info_id[0]['imagen2']?>')"><img src="images/<?=$info_id[0]['imagen2']?>" width="70px"/></a></div><?}?>
+	        
+	        <?if($info_id[0]['imagen3'] != ''){?><div class="sub_fotos"><a style="cursor:pointer" onClick="ponerImagen('<?=$info_id[0]['imagen3']?>')"><img src="images/<?=$info_id[0]['imagen3']?>" width="70px"/></a></div><?}?>
+	        
+	        <?if($info_id[0]['imagen4'] != ''){?> <div class="sub_fotos"><a style="cursor:pointer" onClick="ponerImagen('<?=$info_id[0]['imagen4']?>')"><img src="images/<?=$info_id[0]['imagen4']?>" width="70px"/></a></div><?}?>
+	      </div>  
+	   </div>
+	      
+      <div id="columna2">
+      	  <div id="texto_servicios">
+          <?echo utf8_encode($info_id[0]['contenido'])?>
+          <div id="recomendar">
+          	<a href="<?=_DOMINIO?>php/recomendar.php"  rel='shadowbox; width=632px; height=800px;' onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image16','','images/diseno/servicios/recomendar2.jpg',1)">
+          		<img src="images/diseno/servicios/recomendar.jpg" name="Image16" width="129" height="36" border="0" id="Image16" />
+         	</a>
+         </div>
+          <br />
+        </div>
+      </div>
+	</div>

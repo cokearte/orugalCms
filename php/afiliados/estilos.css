@@ -1,0 +1,10 @@
+.carpetas{float: left;width: 42%;padding:2% 2% 2% 6%;background: url(119.png) no-repeat left 10px;text-align: left;word-wrap:break-word;}
+.carpetas a{color:#444444;text-decoration: none}
+.carpetas a:hover{color:#5E8E19;text-decoration: underline}
+
+
+.files{float: left;width: 46%;padding:2% 2% 2% 2%;text-align: left;word-wrap:break-word;}
+.files a{color:#444444;text-decoration: none;width: 100%}
+.files a:hover{color:#5E8E19;text-decoration: underline}
+.btnDescarga a{text-decoration:none;color:#fff;background:#5E8E19 ;padding:5px 5px 5px 25px;border-radius: 3px;margin:15px 0 0 0;float:left;width: auto}
+.btnDescarga a:hover{text-decoration:none;color:#fff;text-decoration: underline;background:#444 ;border-radius: 3px;margin:15px 0 0 0;float:left;width: auto}
