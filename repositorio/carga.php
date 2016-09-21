@@ -74,6 +74,7 @@ else
 		.cajas{padding:4px}
 		.boton{padding:5px;border:0}
 		.barra{box-shadow:none;border:none;border-radius: 0}
+		img{image-orientation: from-image;}
 	</style>
 </head>
 <body>
@@ -89,7 +90,9 @@ else
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <a class="navbar-brand" href="index.php"><?php echo _NOMBRE_EMPRESA ?> - Repositorio</a>
+		      <a class="navbar-brand" href="index.php">
+		      	<span class="glyphicon glyphicon-picture"></span> <?php echo _NOMBRE_EMPRESA ?> im&aacute;genes
+		      </a>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -98,7 +101,7 @@ else
 		        <?php include("includes/lateral.php");?>
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right" style="margin:1% 0 0 0">
-		        	<a href="index.php?logout" class="btn btn-primary">Cerrar</a>
+		        	<a onclick="javascript:window.close()" class="btn btn-primary">Cerrar</a>
 		      </ul> 
 
 		    </div><!-- /.navbar-collapse -->
@@ -212,7 +215,7 @@ else
 								<!-- Carga de imagen-->
 								<form name="form1" action="upload.php" method="post" enctype="multipart/form-data" role="form">
 									<div class="form-group">
-										<label for="email">SUBIR UNA IMAGEN</label>
+										<label for="email">SUBIR UNA IMAGEN A LA CARPETA <?php echo strtoupper($infoFolderActual[0]['nombre'])?></label>
 										<input  name="archivo[]" type="file" size="35" multiple/>
 										<input type="hidden" name="ruta" value="../<?php echo $rutavisitada;?>">
 										<input type="hidden" name="padre" value="<?php echo $dir?>">
@@ -231,7 +234,7 @@ else
 							<div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
 								<form method="post" role="form">
 									<div class="form-group">
-										<label for="email">CREAR CARPETA</label>
+										<label for="email">CREAR CARPETA DENTRO DE A LA CARPETA <?php echo strtoupper($infoFolderActual[0]['nombre'])?></label>
 										<input type="text" name="nombre_folder" class="form-control" size="35">
 										<input type="hidden" name="padre" value="<?php echo $dir?>" class="form-control" size="35">
 									</div>

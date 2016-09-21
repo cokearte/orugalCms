@@ -83,6 +83,14 @@ function tiposid(id)
 		document.getElementById('descripcion').style.display = '';
 		document.getElementById('imagen').style.display = '';
 		document.getElementById('imagen1_preview').style.display = '';
+		document.getElementById('imagen2').style.display = '';
+		document.getElementById('mostrar_imagen2').style.display = '';
+		document.getElementById('imagen3').style.display = '';
+		document.getElementById('mostrar_imagen3').style.display = '';
+		document.getElementById('imagen4').style.display = '';
+		document.getElementById('mostrar_imagen4').style.display = '';
+		document.getElementById('imagen5').style.display = '';
+		document.getElementById('mostrar_imagen5').style.display = '';
 		document.getElementById('pie_imagen').style.display = 'none';
 		document.getElementById('keywords').style.display = 'none';
 		document.getElementById('notas').style.display = 'none';
@@ -731,7 +739,13 @@ function cargarSelect2(id,div)
 }
 function ventanaPop(caja)
 {
-	window.open('../repositorio/carga.php?caja='+caja, '_blank','scrollbars=yes,width=1000,height=600');
+	var ancho = 1100;
+	var alto  = 800;
+	var posicion_x; 
+	var posicion_y; 
+	posicion_x=(screen.width/2)-(ancho/2); 
+	posicion_y=(screen.height/2)-(alto/2);
+	window.open('../repositorio/carga.php?caja='+caja,"Repositorio imágenes", "width="+ancho+",height="+alto+",menubar=0,toolbar=0,directories=0,scrollbars=yes,resizable=no,left="+posicion_x+",top="+posicion_y+"");
 }
 function ventanaPop2(caja)
 {

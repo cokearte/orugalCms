@@ -13,6 +13,11 @@ if(!isset($_SESSION['login']))
 }
 else
 {
+
+if(isset($_GET['caja']))
+{
+	$_SESSION['caja'] =	$_GET['caja']; 
+}	
 ?>
 
 <style>
@@ -24,6 +29,8 @@ else
 	.tabla tr{border:1px solid red}.table > tbody > tr > td {
 	     vertical-align: middle;
 	}
+
+	img{image-orientation: from-image;}
 </style>
 <script>
 function poner(dato,caja)
@@ -97,6 +104,8 @@ $pintado   .= '<thead>';
 	$pintado   .= '</tr>';
 	$pintado   .= '<tr>';
 		$pintado   .= '<th  class="text-left" colspan="2">NOMBRE</th>';
+		$pintado   .= '<th  class="text-center">TAMA&Ntilde;O</th>';
+		$pintado   .= '<th  class="text-center">TIPO</th>';
 		$pintado   .= '<th  class="text-center">ACCIONES</th>';
 	$pintado   .= '</tr>';
 $pintado   .= '</thead>';	
@@ -115,7 +124,10 @@ if($dir != 1)
 					$pintado   .= "Subir un nivel";
 				$pintado   .= "</a>";
 			$pintado   .= '</td>';
-			$pintado   .= '<td align="center">';
+			$pintado   .= '<td class="text-center">';
+					$pintado   .= '--';
+			$pintado   .= '</td>';
+			$pintado   .= '<td class="text-center">';
 					$pintado   .= '';
 			$pintado   .= '</td>';
 		$pintado   .= '<tr>';
@@ -141,7 +153,13 @@ foreach($directorios as $reco)
 					$pintado   .= $reco['nombre'];
 				$pintado   .= "</a>";
 			$pintado   .= '</td>';
-			$pintado   .= '<td align="center">';
+			$pintado   .= '<td class="text-center">';
+					$pintado   .= '--';
+			$pintado   .= '</td>';
+			$pintado   .= '<td class="text-center">';
+					$pintado   .= mime_content_type('../'.$rutavisitada.$reco['nombre']);
+			$pintado   .= '</td>';
+			$pintado   .= '<td class="text-center">';
 					$pintado   .= '';
 			$pintado   .= '</td>';
 		$pintado   .= '<tr>';
@@ -160,6 +178,12 @@ foreach($directorios as $reco)
 				$pintado   .= "<a style='cursor:pointer' onclick='poner(\"../".$rutavisitada.$reco['nombre']."\",\"".$_SESSION['caja'] ."\")' class='pull-left'>";
 					$pintado   .= $reco['nombre'];
 				$pintado   .= "</a>";
+			$pintado   .= '</td>';
+			$pintado   .= '<td  class="text-center" valign="center">';
+					$pintado   .= FileSizeConvert(filesize('../'.$rutavisitada.$reco['nombre']));
+			$pintado   .= '</td>';
+			$pintado   .= '<td  class="text-center" valign="center">';
+					$pintado   .= mime_content_type('../'.$rutavisitada.$reco['nombre']);
 			$pintado   .= '</td>';
 			$pintado   .= '<td align="center">';
 					$pintado   .= "<button onClick='borrar_archivo(\"".$reco['nombre']."\",\"../".$rutavisitada."\",\"".$reco['idFile']."\",\"".$reco['idpadre']."\")' class='btn btn-danger btn-sm glyphicon glyphicon-trash'></button>
@@ -184,5 +208,46 @@ echo $pintado;
 closedir($directorio);
 
 
+
+
+
+}
+
+function FileSizeConvert($bytes)
+{
+    $bytes = floatval($bytes);
+        $arBytes = array(
+            0 => array(
+                "UNIT" => "TB",
+                "VALUE" => pow(1024, 4)
+            ),
+            1 => array(
+                "UNIT" => "GB",
+                "VALUE" => pow(1024, 3)
+            ),
+            2 => array(
+                "UNIT" => "MB",
+                "VALUE" => pow(1024, 2)
+            ),
+            3 => array(
+                "UNIT" => "KB",
+                "VALUE" => 1024
+            ),
+            4 => array(
+                "UNIT" => "B",
+                "VALUE" => 1
+            ),
+        );
+
+    foreach($arBytes as $arItem)
+    {
+        if($bytes >= $arItem["VALUE"])
+        {
+            $result = $bytes / $arItem["VALUE"];
+            $result = str_replace(".", "," , strval(round($result, 2)))." ".$arItem["UNIT"];
+            break;
+        }
+    }
+    return $result;
 }
 ?>

@@ -13,23 +13,23 @@ function mostrar(dato,caja)
 {
 	if(caja=='imagen')
 	{
-		document.getElementById('mostrar_imagen').innerHTML="<img src='../externos/Thumb.php?img=../images/"+dato+"&tamano=100' class='img-thumbnail'>";
+		document.getElementById('mostrar_imagen').innerHTML="<img src='"+dato+"' class='img-thumbnail' width='100px'>";
 	}
 	else if(caja=='imagen2')
 	{
-		document.getElementById('mostrar_imagen2').innerHTML="<img src='../externos/Thumb.php?img=../images/"+dato+"&tamano=100' class='img-thumbnail'>";
+		document.getElementById('mostrar_imagen2').innerHTML="<img src='"+dato+"' class='img-thumbnail' width='100px'>";
 	}
 	else if(caja=='imagen3')
 	{
-		document.getElementById('mostrar_imagen3').innerHTML="<img src='../externos/Thumb.php?img=../images/"+dato+"&tamano=100' class='img-thumbnail'>";
+		document.getElementById('mostrar_imagen3').innerHTML="<img src='"+dato+"' class='img-thumbnail' width='100px'>";
 	}
 	else if(caja=='imagen4')
 	{
-		document.getElementById('mostrar_imagen4').innerHTML="<img src='../externos/Thumb.php?img=../images/"+dato+"&tamano=100' class='img-thumbnail'>";
+		document.getElementById('mostrar_imagen4').innerHTML="<img src='"+dato+"' class='img-thumbnail' width='100px'>";
 	}
 	else if(caja=='imagen5')
 	{
-		document.getElementById('mostrar_imagen5').innerHTML="<img src='../externos/Thumb.php?img=../images/"+dato+"&tamano=100' class='img-thumbnail'>";	
+		document.getElementById('mostrar_imagen5').innerHTML="<img src='"+dato+"' class='img-thumbnail' width='100px'>";	
 	}
 }
 </script>
@@ -548,7 +548,7 @@ else {?>
 			else
 			{
 			?>
-				<img  src="externos/Thumb.php?img=../../images/<? echo $imagen;?>&tamano=100" class="img img-thumbnail">
+				<img  src="<? echo $imagen;?>" class="img img-thumbnail" width="100px">
 			<?}?>	
 				</div>
 				<div id="mostrar_imagen2" style="margin:0 0 0 20px;float:left">
@@ -560,7 +560,7 @@ else {?>
 			else
 			{
 			?>
-				<img  src="externos/Thumb.php?img=../../images/<? echo $imagen2;?>&tamano=100" class="img img-thumbnail">
+				<img  src="<? echo $imagen2;?>" class="img img-thumbnail" width="100px">
 			<?}?>
 			</div>
 				<div id="mostrar_imagen3" style="margin:0 0 0 20px;float:left">
@@ -572,7 +572,7 @@ else {?>
 			else
 			{
 			?>
-				<img  src="externos/Thumb.php?img=../../images/<? echo $imagen3;?>&tamano=100" class="img img-thumbnail">
+				<img  src="<? echo $imagen3;?>" class="img img-thumbnail" width="100px">
 			<?}?>	
 				</div>
 					<div id="mostrar_imagen4" style="margin:0 0 0 20px;float:left">
@@ -584,10 +584,10 @@ else {?>
 			else
 			{
 			?>
-				<img  src="externos/Thumb.php?img=../../images/<? echo $imagen4;?>&tamano=100" class="img img-thumbnail">
+				<img  src="<? echo $imagen4;?>" class="img img-thumbnail" width="100px">
 			<?}?>	
 				</div>
-				<div id="mostrar_imagen5" style="margin:0 0 0 20px">
+				<div id="mostrar_imagen5" style="margin:0 0 0 20px;float:left">
 			<?
 			if(empty($imagen5) or !file_exists('../images/'.$imagen5))
 			{
@@ -604,17 +604,17 @@ else {?>
 		<!-- fin campos producto -->
 		<tr id="imagen">
 			<td>
-				<?if($tipo_contenido == 42){echo "Imagen presentaci&oacute;n de la galer&iacute;a <br><span style='font-weight:bold;font-size:0.7em'><i>(190 x 71 PX)</i></span>";}else{echo "Imagen Contenido";}?>
+				<?if($tipo_contenido == 42){echo "Imagen presentaci&oacute;n de la galer&iacute;a <br><span style='font-weight:bold;font-size:0.7em'><i>(190 x 71 PX)</i></span>";}else{echo "Imagen  principal";}?>
 			</td>
 			<td align="left">
 				<table align="left">
 					<tr>
 						<td align="left">
-							<input type="text" class="form-control" name="imagen" size="53" value="<? echo $imagen; ?>">
+							<input type="text" class="form-control" readonly="" name="imagen" size="53" value="<? echo $imagen; ?>">
 
 						</td>
 						<td align="left">
-							<a border="0" href="#" onClick="ventanaPop('imagen')"><img border="0" src="externos/repositorio/63.png" width="30" height="30"></a>
+							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>
 						</td>
 					</tr>
 				</table>
@@ -622,17 +622,17 @@ else {?>
 		</tr>
 		<tr id="imagen2">
 			<td>
-				<?if($tipo_contenido == 42){echo "Banner Minisite <br> <span style='font-weight:bold;font-size:0.7em'><i><i>(450 X 123 PX)</i></span>";}else{echo "Imagen Medio";}?>
+				<?if($tipo_contenido == 42){echo "Banner Minisite <br> <span style='font-weight:bold;font-size:0.7em'><i><i>(450 X 123 PX)</i></span>";}else{echo "Imagen 2";}?>
 			</td>
 			<td align="left">
 				<table align="left">
 					<tr>
 						<td align="left">
-							<input type="text"  class="form-control" name="imagen2" size="53" value="<? echo $imagen2; ?>">
+							<input type="text"  class="form-control" readonly="" name="imagen2" size="53" value="<? echo $imagen2; ?>">
 
 						</td>
 						<td align="left">
-							<a border="0" href="#" onClick="ventanaPop('imagen2')"><img border="0" src="externos/repositorio/63.png" width="30" height="30"></a>
+							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen2')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>
 						</td>
 					</tr>
 				</table>
@@ -646,11 +646,11 @@ else {?>
 				<table align="left">
 					<tr>
 						<td align="left">
-							<input type="text" class="form-control" name="imagen3" size="53" value="<? echo $imagen3; ?>">
+							<input type="text" class="form-control" readonly="" name="imagen3" size="53" value="<? echo $imagen3; ?>">
 
 						</td>
 						<td align="left">
-							<a border="0" href="#" onClick="ventanaPop('imagen3')"><img border="0" src="externos/repositorio/63.png" width="30" height="30"></a>
+							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen3')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>
 						</td>
 					</tr>
 				</table>
@@ -664,11 +664,11 @@ else {?>
 				<table align="left">
 					<tr>
 						<td align="left">
-							<input type="text" class="form-control" name="imagen4" size="53" value="<? echo $imagen4; ?>">
+							<input type="text" class="form-control" readonly="" name="imagen4" size="53" value="<? echo $imagen4; ?>">
 
 						</td>
 						<td align="left">
-							<a border="0" href="#" onClick="ventanaPop('imagen4')"><img border="0" src="externos/repositorio/63.png" width="30" height="30"></a>
+							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen4')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>
 						</td>
 					</tr>
 				</table>
@@ -682,11 +682,11 @@ else {?>
 				<table align="left">
 					<tr>
 						<td align="left">
-							<input type="text" class="form-control" name="imagen5" size="53" value="<? echo $imagen5; ?>">
+							<input type="text" class="form-control" readonly="" name="imagen5" size="53" value="<? echo $imagen5; ?>">
 
 						</td>
 						<td align="left">
-							<a border="0" href="#" onClick="ventanaPop('imagen5')"><img border="0" src="externos/repositorio/63.png" width="30" height="30"></a>
+							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen5')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>
 						</td>
 					</tr>
 				</table>
