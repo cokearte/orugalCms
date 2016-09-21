@@ -353,11 +353,13 @@ else {?>
 			<?if($tipo_contenido == 43){?>
 				<input type="text" class="form-control" name="contenido" size="53" value="<? echo $contenido; ?>">
 			<?}else{?>
-				<textarea  id="noise" rows="10" name="contenido"  class="widgEditor nothing form-control">
+				<!--<textarea  id="noise" rows="10" name="contenido"  class="widgEditor nothing form-control">
 					<?
 						echo $contenido;
 					?>
-				</textarea>
+				</textarea>-->
+
+				<div class="summernote" name="contenido" ><? echo $contenido; ?></div>
 			<?}?>	
 			</td>
 		</tr>
@@ -1068,4 +1070,10 @@ else {?>
 </form>
 <!-- En esta parte se llama la funcion que muestra y oculta campos segun el tipo de nodo, esto es para la persistecia-->
 <script>tiposid(<?echo $tipo_contenido;?>)</script>
+
+<script>
+$(document).ready(function() {
+    $('.summernote').summernote();
+});
+</script>
 <?}?>
