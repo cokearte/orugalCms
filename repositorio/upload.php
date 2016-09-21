@@ -1,4 +1,8 @@
-<?
+<?php
+session_start();
+require("../config/configuracion.php");
+require("../config/conexion_2.php");
+global $db;
 ini_set("display_errors",1);
 $status = "";
 if(isset ($_FILES["archivo"])) 
@@ -46,6 +50,8 @@ if(isset ($_FILES["archivo"]))
 				if(copy($_FILES['archivo']['tmp_name'][$i],$destino))
 				{ 
 					array_push($cargados,$destino);
+					//cuado se copeen los archivos los voy guardando en la base de datos
+					$queryInsert = $db->Execute(sprintf("INSERT INTO repositorioimagenes (idpadre,nombre,tipo) VALUES('%s','%s','%s')",$_POST['padre'],$prefijo,2));
 		        }
 			}
 			else
@@ -60,7 +66,7 @@ if(isset ($_FILES["archivo"]))
    }
 }
 echo "<table align='center'>
-		<tr><td>La carga de Im&aacute;genes ha finalizado <a href='carga.php?dir=".$dir."'>
+		<tr><td>La carga de Im&aacute;genes ha finalizado <a href='carga.php?dir=".$_POST['padre']."'>
 										Volver
 									</a></td></tr>
 	 </table>"; 

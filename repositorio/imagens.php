@@ -1,6 +1,11 @@
 <?php 
 session_start();
 require("../config/configuracion.php");
+require("../config/conexion_2.php");
+global $db;
+
+
+
 ini_set("display_errors",0);
 if(!isset($_SESSION['login']))
 {
@@ -16,7 +21,9 @@ else
 	}
 	#imagenes{width:990px;height:350px;background:#fff;color:#000;overflow:auto}
 	.tabla{background:#fff;width:100%}
-	.tabla tr{border:1px solid red}
+	.tabla tr{border:1px solid red}.table > tbody > tr > td {
+	     vertical-align: middle;
+	}
 </style>
 <script>
 function poner(dato,caja)
@@ -47,11 +54,11 @@ function poner(dato,caja)
 }
 </script>
 <script>
-	function borrar_archivo(archivo,dir)
+	function borrar_archivo(archivo,dir,id,padre)
 	{
 		if(confirm("Esta seguro que desea borrar el archivo " + archivo) == true)
 		{
-			window.location	="carga.php?archivo="+archivo+"&dir="+dir;
+			window.location	="carga.php?archivo="+archivo+"&dire="+dir+"&idFile="+id+"&padre="+padre+"&dir="+padre;
 		}
 		else
 		{
@@ -61,97 +68,117 @@ function poner(dato,caja)
 </script>
 <?
 session_start();
-//valido si viene la variable caja
-if(isset($_GET['caja']))
-{
-	$_SESSION['caja'] =	$_GET['caja']; 
-}
 //capturo el directorio a examinar
-$dir	=	(isset($_GET['dir']))?$_GET['dir']:'../images/';
+$dir	=	(isset($_GET['dir']))?$_GET['dir']:'1';
 //abro el directorio
-$directorio = opendir($dir);
 
-echo "<div class='row'>";
+
+
+//traigo las carpetas iniciales
+$infoFolderActual	=	$db->GetAll(sprintf("SELECT * FROM repositorioimagenes WHERE idFile=%s AND eliminado=0",$dir));
+
+$query 		 = sprintf("SELECT * FROM repositorioimagenes WHERE idpadre=%s AND eliminado=0 ORDER BY tipo ASC",$dir);
+$directorios = $db->GetAll($query);
+
+
 $contador=0;
 $carpetas = array();
 $archivos = array();
 $carpetasRest = array("diseno",".");
 $archivosRest = array("index.php");
-while ($archivo = readdir($directorio))
-{ 
-	//meto todo en arreglos para saber que es carpetas y que es archivos
-	if(is_dir($dir.$archivo))
-	{
-		if(!in_array($archivo, $carpetasRest))
-		{
-			$array = array("nombre"=>$archivo,
-					   "ruta"=>$dir.$archivo,
-					   "tipo"=>"folder");
-			array_push($carpetas,$array);
-		}
-	}
-	else
-	{
-		if(!in_array($archivo, $archivosRest))
-		{
-			$array2 = array("nombre"=>$archivo,
-						    "ruta"=>$dir.$archivo,
-						    "tipo"=>"file");
-			array_push($archivos,$array2);
-		}
-	}
 
-}
-$pintado =  '';
+
+
+$pintado    =  '<br><table class="table table-striped table-responsive">';
+
+$pintado   .= '<thead>';
+	$pintado   .= '<tr>';
+		$pintado   .= '<th  class="text-center" colspan="3">Consultando los archivos de la carpeta '.$infoFolderActual[0]['nombre'].'</th>';
+	$pintado   .= '</tr>';
+	$pintado   .= '<tr>';
+		$pintado   .= '<th  class="text-left" colspan="2">NOMBRE</th>';
+		$pintado   .= '<th  class="text-center">ACCIONES</th>';
+	$pintado   .= '</tr>';
+$pintado   .= '</thead>';	
+$pintado   .= '<tbody>';
+if($dir != 1)
+	{
+		$icon = '<span class="glyphicon glyphicon-arrow-up" style="font-size:1.8em"></span>';
+		$pintado   .= '<tr>';
+			$pintado   .= '<td>';
+				$pintado   .= "<a href='?dir=".$infoFolderActual[0]['idpadre']."'  class='pull-left'>";
+					$pintado   .= $icon;
+				$pintado   .= "</a>";
+			$pintado   .= '</td>';
+			$pintado   .= '<td>';
+				$pintado   .= "<a href='?dir=".$infoFolderActual[0]['idpadre']."'  class='pull-left'>";
+					$pintado   .= "Subir un nivel";
+				$pintado   .= "</a>";
+			$pintado   .= '</td>';
+			$pintado   .= '<td align="center">';
+					$pintado   .= '';
+			$pintado   .= '</td>';
+		$pintado   .= '<tr>';
+	}
 //count($carpetas);echo "sdsasd";
-foreach($carpetas as $reco) 
+foreach($directorios as $reco) 
 {
 
-	if($reco['nombre'] == "..")
+
+	if($reco['tipo'] == 1)//carpetas
 	{
-		$rut = "?dir=".$reco['ruta']."/&caja=".$_SESSION['caja'];
-		$classCarpetas = "carpetas";
-	}
-	else
-	{
-		$rut = "?dir=".$reco['ruta']."/&caja=".$_SESSION['caja'];
-		$classCarpetas = "carpetas";
-	}
-	$pintado .=  '<div class="col-md-3 col-lg-3 col-xs-3 col-sm-3 text-center" style="margin:0 0 3% 0">';
-	$pintado .= '<div class="media-body '.$classCarpetas.'" data-carpeta="'.$reco['ruta'].'" style="float:left;width:100%;text-center"><center>';
-	$pintado .= "<a style='float:left' href='".$rut."' onClick='document.form1.ruta.value=\"".$dir."\"' class='pull-left'>";
-	$pintado .= '<img width="100%" class="thumnail" style="float:left" src="../externos/Thumb.php?img=../repositorio/carpeta.jpg&tamano=100" title="'.$archivo.'" border="0" title="'.$archivo.'"></a><br>
+		
 			
-		    	<small><strong>'.ucwords(strtolower($reco['nombre'])).'</strong></small></center>
-		    </div>
-		  ';
-	$pintado .=  '</div>';
+		$icon = '<span class="glyphicon glyphicon-folder-close" style="font-size:1.8em"></span>';
+		$pintado   .= '<tr>';
+			$pintado   .= '<td>';
+				$pintado   .= "<a href='?dir=".$reco['idFile']."'  class='pull-left'>";
+					$pintado   .= $icon;
+				$pintado   .= "</a>";
+			$pintado   .= '</td>';
+			$pintado   .= '<td>';
+				$pintado   .= "<a href='?dir=".$reco['idFile']."'  class='pull-left'>";
+					$pintado   .= $reco['nombre'];
+				$pintado   .= "</a>";
+			$pintado   .= '</td>';
+			$pintado   .= '<td align="center">';
+					$pintado   .= '';
+			$pintado   .= '</td>';
+		$pintado   .= '<tr>';
+		
+	}
+	else//archivos
+	{
+		$ruta_final = str_replace('../images/','',$dir);
+		$pintado   .= '<tr>';
+			$pintado   .= '<td width="80px">';
+				$pintado   .= "<a style='cursor:pointer' onclick='poner(\"../".$rutavisitada.$reco['nombre']."\",\"".$_SESSION['caja'] ."\")' class='pull-left'>";
+					$pintado   .= '<img width="50px" height="50px" class="thumbnail" style="float:left" src="../externos/Thumb.php?img=../'.$rutavisitada.$reco['nombre'].'&tamano=100" >';
+				$pintado   .= "</a>";
+			$pintado   .= '</td>';
+			$pintado   .= '<td  class="text-left" valign="center">';
+				$pintado   .= "<a style='cursor:pointer' onclick='poner(\"../".$rutavisitada.$reco['nombre']."\",\"".$_SESSION['caja'] ."\")' class='pull-left'>";
+					$pintado   .= $reco['nombre'];
+				$pintado   .= "</a>";
+			$pintado   .= '</td>';
+			$pintado   .= '<td align="center">';
+					$pintado   .= "<button onClick='borrar_archivo(\"".$reco['nombre']."\",\"../".$rutavisitada."\",\"".$reco['idFile']."\",\"".$reco['idpadre']."\")' class='btn btn-danger btn-sm glyphicon glyphicon-trash'></button>
+			   					   <button onclick='poner(\"../".$rutavisitada.$reco['nombre']."\",\"".$_SESSION['caja'] ."\")' class='btn btn-primary btn-sm glyphicon glyphicon-ok'></button>";
+			$pintado   .= '</td>';
+		$pintado   .= '<tr>';
+	}
+	
 
 
+	
+
 }
-foreach($archivos as $reco2) 
-{
-	$ruta_final = str_replace('../images/','',$dir);
-	$pintado .=  '<div class="col-md-3 col-lg-3 col-xs-3 col-sm-3 text-center" style="margin:0 0 3% 0">';
-	$pintado .= '<div class="media-body imagenes" data-ruta="'.$ruta_final.$reco2['nombre'].'" data-imagen="'.$reco2['nombre'].'"  style="float:left;width:100%;text-center"><center>';
-	$pintado .= "<a style='float:left' href='#' class='pull-left'>";
-	$pintado .= '<img width="100px" height="100px" class="thumbnail" style="float:left" src="../externos/Thumb.php?img='.$reco2['ruta'].'&tamano=100" >
-	</a><br>
-		   		<small><strong>'.$reco2['nombre'].'</strong></small> ';
-		   		/*$pintado  .= "<button style='margin:0 3% 0 0' class='btn btn-primary btn-sm' onclick='poner(\"".$ruta_final.$reco2['nombre']."\",\"".$_SESSION['caja'] ."\")' class='pull-left'>Agregar</button>";*/
-		   		$pintado .="<br>
-		   			<button onClick='borrar_archivo(\"".$reco2['nombre']."\",\"".$dir."\")' class='btn btn-danger btn-sm'>Borrar</button>
-		   			<button onclick='poner(\"".$ruta_final.$reco2['nombre']."\",\"".$_SESSION['caja'] ."\")' class='btn btn-success btn-sm'>Usar</button>
-		   			</center>
-		   </div>";
-	$pintado .=  '</div>';
-}
-$pintado .= '</div>';
+$pintado .= '</tbody></table>';
+
+
 
 echo $pintado;
 
-
-echo "</div>";
 
 
 closedir($directorio);
