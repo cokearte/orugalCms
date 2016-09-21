@@ -353,13 +353,13 @@ else {?>
 			<?if($tipo_contenido == 43){?>
 				<input type="text" class="form-control" name="contenido" size="53" value="<? echo $contenido; ?>">
 			<?}else{?>
-				<!--<textarea  id="noise" rows="10" name="contenido"  class="widgEditor nothing form-control">
+				<textarea  rows="10" name="contenido"  class="form-control summernote">
 					<?
 						echo $contenido;
 					?>
-				</textarea>-->
+				</textarea>
 
-				<div class="summernote" name="contenido" ><? echo $contenido; ?></div>
+				<!--<div class="summernote" name="contenido" ><? echo $contenido; ?></div>-->
 			<?}?>	
 			</td>
 		</tr>

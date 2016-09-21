@@ -76,7 +76,7 @@ $contador=0;
 $carpetas = array();
 $archivos = array();
 $carpetasRest = array("diseno",".");
-$archivosRest = array();
+$archivosRest = array("index.php");
 while ($archivo = readdir($directorio))
 { 
 	//meto todo en arreglos para saber que es carpetas y que es archivos
