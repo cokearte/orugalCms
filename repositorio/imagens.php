@@ -63,14 +63,44 @@ function poner(dato,caja)
 <script>
 	function borrar_archivo(archivo,dir,id,padre)
 	{
-		if(confirm("Esta seguro que desea borrar el archivo " + archivo) == true)
+
+		swal(
+		{   
+			title: "Eliminar archivo",   
+			text: "¿Está seguro que desea borrar el archivo <strong>" + archivo+"</strong>?",   
+			type: "info",   
+			html:true,
+			showCancelButton: true,   
+			confirmButtonColor: "#DD6B55",   
+			confirmButtonText: "Eliminar",   
+			closeOnConfirm: false 
+		},
+			function(isConfirm)
+			{   
+				if (isConfirm) 
+				{     
+					swal({
+						title:"Archivo eliminado!",
+						text:"El archivo "+archivo+" ha sido eliminado con éxito",
+						type:"success"
+					},
+					function(){
+						window.location	="carga.php?archivo="+archivo+"&dire="+dir+"&idFile="+id+"&padre="+padre+"&dir="+padre;
+					});   
+				} 
+			}
+
+		);
+
+
+		/*if(confirm("Esta seguro que desea borrar el archivo " + archivo) == true)
 		{
 			window.location	="carga.php?archivo="+archivo+"&dire="+dir+"&idFile="+id+"&padre="+padre+"&dir="+padre;
 		}
 		else
 		{
 			return true;
-		}
+		}*/
 	}
 </script>
 <?
@@ -126,6 +156,9 @@ if($dir != 1)
 			$pintado   .= '</td>';
 			$pintado   .= '<td class="text-center">';
 					$pintado   .= '--';
+			$pintado   .= '</td>';
+			$pintado   .= '<td class="text-center">';
+					$pintado   .= '';
 			$pintado   .= '</td>';
 			$pintado   .= '<td class="text-center">';
 					$pintado   .= '';
@@ -186,8 +219,8 @@ foreach($directorios as $reco)
 					$pintado   .= mime_content_type('../'.$rutavisitada.$reco['nombre']);
 			$pintado   .= '</td>';
 			$pintado   .= '<td align="center">';
-					$pintado   .= "<button onClick='borrar_archivo(\"".$reco['nombre']."\",\"../".$rutavisitada."\",\"".$reco['idFile']."\",\"".$reco['idpadre']."\")' class='btn btn-danger btn-sm glyphicon glyphicon-trash'></button>
-			   					   <button onclick='poner(\"../".$rutavisitada.$reco['nombre']."\",\"".$_SESSION['caja'] ."\")' class='btn btn-primary btn-sm glyphicon glyphicon-ok'></button>";
+					$pintado   .= "<button title='Eliminar archivo' onClick='borrar_archivo(\"".$reco['nombre']."\",\"../".$rutavisitada."\",\"".$reco['idFile']."\",\"".$reco['idpadre']."\")' class='btn btn-danger btn-sm glyphicon glyphicon-trash'></button>
+			   					   <button title='Usar el archivo' onclick='poner(\"../".$rutavisitada.$reco['nombre']."\",\"".$_SESSION['caja'] ."\")' class='btn btn-primary btn-sm glyphicon glyphicon-ok'></button>";
 			$pintado   .= '</td>';
 		$pintado   .= '<tr>';
 	}

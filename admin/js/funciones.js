@@ -740,7 +740,7 @@ function cargarSelect2(id,div)
 function ventanaPop(caja)
 {
 	var ancho = 1100;
-	var alto  = 800;
+	var alto  = 600;
 	var posicion_x; 
 	var posicion_y; 
 	posicion_x=(screen.width/2)-(ancho/2); 

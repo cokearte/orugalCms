@@ -67,6 +67,8 @@ else
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
 	<!--<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css" />-->
 	<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="<?php echo _DOMINIO ?>css/sweetalert.css" />
+	<link rel="stylesheet" href="<?php echo _DOMINIO ?>admin/css/toastr.min.css" />
 	<style>
 		body{background-repeat:repeat-x;background-color:#FFFFFF;font-family: 'Roboto', Helvetica, sans-serif;margin:0;padding:0;}
 		h1{font-size:14px;text-align:center}
@@ -257,6 +259,7 @@ else
 	<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="../js/jquery-ui-1.10.3.custom.js"></script>
 	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script src="<?php echo _DOMINIO ?>js/sweetalert.min.js" ></script>
 	<script type="text/javascript">
 		var dominio  	=   "<?php echo _DOMINIO ?>";
 		$(document).ready(function(){
@@ -297,6 +300,7 @@ else
 
 
 	</script>
+	<script src="<?php echo _DOMINIO ?>admin/css/toastr.min.js"></script>
 </body>
 </html>
 <?php }?>
