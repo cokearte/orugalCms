@@ -70,7 +70,14 @@ class Funciones
 								  "alto"=>$result->fields['alto'],
 								  "visitas"=>$result->fields['visitas'],
 								  "fecha"=>$result->fields['fecha'],
-								  "puntoscanje"=>$result->fields['puntoscanje']);
+								  "puntoscanje"=>$result->fields['puntoscanje'],
+								  "linkFacebook"=>$result->fields['linkFacebook'],
+								  "linkTwitter"=>$result->fields['linkTwitter'],
+								  "linkInstagram"=>$result->fields['linkInstagram'],
+								  "linkGooglePlus"=>$result->fields['linkGooglePlus'],
+								  "linkYoutube"=>$result->fields['linkYoutube'],
+								  "linkLinkedin"=>$result->fields['linkLinkedin']
+								  );
 			
 			array_push($arreglo_final,$arreglo);
 			$result->MoveNext();	
@@ -427,7 +434,13 @@ class Funciones
 								  "visitas"=>$result->fields['visitas'],
 								  "fecha"=>$result->fields['fecha'],
 								  "votos"=>$result->fields['votos'],
-								  "calificacion"=>$result->fields['calificacion']);
+								  "calificacion"=>$result->fields['calificacion'],
+								  "linkFacebook"=>$result->fields['linkFacebook'],
+								  "linkTwitter"=>$result->fields['linkTwitter'],
+								  "linkInstagram"=>$result->fields['linkInstagram'],
+								  "linkGooglePlus"=>$result->fields['linkGooglePlus'],
+								  "linkYoutube"=>$result->fields['linkYoutube'],
+								  "linkLinkedin"=>$result->fields['linkLinkedin']);
 			array_push($arreglo_final,$arreglo);
 			$result->MoveNext();	
 		}

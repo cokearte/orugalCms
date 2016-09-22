@@ -63,6 +63,15 @@ function campos(accion)
 	document.getElementById('notas').style.display = accion;
 	document.getElementById('mapa').style.display = accion;
 	document.getElementById('seo').style.display = accion;
+
+
+
+	document.getElementById('linkFacebook').style.display = accion;
+	document.getElementById('linkTwitter').style.display = accion;
+	document.getElementById('linkInstagram').style.display = accion;
+	document.getElementById('linkGooglePlus').style.display = accion;
+	document.getElementById('linkYoutube').style.display = accion;
+	document.getElementById('linkLinkedin').style.display = accion;
 	
 	document.getElementById('horarioinicio').style.display =  accion;
 	document.getElementById('horariofin').style.display =  accion;
@@ -94,6 +103,8 @@ function tiposid(id)
 		document.getElementById('pie_imagen').style.display = 'none';
 		document.getElementById('keywords').style.display = 'none';
 		document.getElementById('notas').style.display = 'none';
+
+		
 	}
 	//si es tipo reminiscencias
 	else if(id	== 55)
@@ -169,6 +180,14 @@ function tiposid(id)
 		document.getElementById('mail').style.display = '';
 		document.getElementById('notas').style.display = '';
 		document.getElementById('direccion').style.display = '';
+
+
+		document.getElementById('linkFacebook').style.display = '';
+		document.getElementById('linkTwitter').style.display = '';
+		document.getElementById('linkInstagram').style.display = '';
+		document.getElementById('linkGooglePlus').style.display = '';
+		document.getElementById('linkYoutube').style.display = '';
+		document.getElementById('linkLinkedin').style.display = '';
 	}
 	//si es subcategoria
 	else if(id == 8)

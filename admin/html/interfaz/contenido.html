@@ -18,22 +18,61 @@ function mostrar(dato,caja)
 	if(caja=='imagen')
 	{
 		document.getElementById('mostrar_imagen').innerHTML="<img src='"+dato+"' class='img-thumbnail' width='100px'>";
+		$("#btnEliminaFoto1").show();
 	}
 	else if(caja=='imagen2')
 	{
 		document.getElementById('mostrar_imagen2').innerHTML="<img src='"+dato+"' class='img-thumbnail' width='100px'>";
+		$("#btnEliminaFoto2").show();
 	}
 	else if(caja=='imagen3')
 	{
 		document.getElementById('mostrar_imagen3').innerHTML="<img src='"+dato+"' class='img-thumbnail' width='100px'>";
+		$("#btnEliminaFoto3").show();
 	}
 	else if(caja=='imagen4')
 	{
 		document.getElementById('mostrar_imagen4').innerHTML="<img src='"+dato+"' class='img-thumbnail' width='100px'>";
+		$("#btnEliminaFoto4").show();
 	}
 	else if(caja=='imagen5')
 	{
-		document.getElementById('mostrar_imagen5').innerHTML="<img src='"+dato+"' class='img-thumbnail' width='100px'>";	
+		document.getElementById('mostrar_imagen5').innerHTML="<img src='"+dato+"' class='img-thumbnail' width='100px'>";
+		$("#btnEliminaFoto5").show();	
+	}
+}
+
+function quitarImagenActual(caja,elemento)
+{
+	if(caja=='imagen')
+	{
+		document.getElementById('mostrar_imagen').innerHTML="<img src='externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100' class='img-thumbnail' width='100px'>";
+		$("#"+caja+"Text").val("");
+		$(elemento).hide();
+	}
+	else if(caja=='imagen2')
+	{
+		document.getElementById('mostrar_imagen2').innerHTML="<img src='externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100' class='img-thumbnail' width='100px'>";
+		$("#"+caja+"Text").val("");
+		$(elemento).hide();
+	}
+	else if(caja=='imagen3')
+	{
+		document.getElementById('mostrar_imagen3').innerHTML="<img src='externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100' class='img-thumbnail' width='100px'>";
+		$("#"+caja+"Text").val("");
+		$(elemento).hide();
+	}
+	else if(caja=='imagen4')
+	{
+		document.getElementById('mostrar_imagen4').innerHTML="<img src='externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100' class='img-thumbnail' width='100px'>";
+		$("#"+caja+"Text").val("");
+		$(elemento).hide();
+	}
+	else if(caja=='imagen5')
+	{
+		document.getElementById('mostrar_imagen5').innerHTML="<img src='externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100' class='img-thumbnail' width='100px'>";	
+		$("#"+caja+"Text").val("");
+		$(elemento).hide();
 	}
 }
 </script>
@@ -547,7 +586,7 @@ else {?>
 			<?
 			if(empty($imagen) or !file_exists('../images/'.$imagen))
 			{
-				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail">';
+				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail" width="100px">';
 			}
 			else
 			{
@@ -559,7 +598,7 @@ else {?>
 			<?
 			if(empty($imagen2) or !file_exists('../images/'.$imagen2))
 			{
-				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail">';
+				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail" width="100px">';
 			}
 			else
 			{
@@ -571,7 +610,7 @@ else {?>
 			<?
 			if(empty($imagen3) or !file_exists('../images/'.$imagen3))
 			{
-				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail">';
+				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail" width="100px">';
 			}
 			else
 			{
@@ -583,7 +622,7 @@ else {?>
 			<?
 			if(empty($imagen4) or !file_exists('../images/'.$imagen4))
 			{
-				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail">';
+				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail" width="100px">';
 			}
 			else
 			{
@@ -595,7 +634,7 @@ else {?>
 			<?
 			if(empty($imagen5) or !file_exists('../images/'.$imagen5))
 			{
-				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail">';
+				echo '<img  src="externos/Thumb.php?img=../images/generics/sin_imagen.jpg&tamano=100" class="img img-thumbnail" width="100px">';
 			}
 			else
 			{
@@ -614,11 +653,12 @@ else {?>
 				<table align="left">
 					<tr>
 						<td align="left">
-							<input type="text" class="form-control" readonly="" name="imagen" size="53" value="<? echo $imagen; ?>">
+							<input type="text" class="form-control" readonly="" name="imagen" id="imagenText" size="53" value="<? echo $imagen; ?>">
 
 						</td>
 						<td align="left">
-							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>
+							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>&nbsp;
+							<a id="btnEliminaFoto1" <?php if($imagen == ""){?> style="display:none" <?php }?> title="Eliminar im&aacute;gen del contenido" border="0" style="cursor:pointer" onClick="quitarImagenActual('imagen',this)"> <span class="glyphicon glyphicon-remove text-danger" style="font-size:1.8em"></span> </a>
 						</td>
 					</tr>
 				</table>
@@ -632,11 +672,12 @@ else {?>
 				<table align="left">
 					<tr>
 						<td align="left">
-							<input type="text"  class="form-control" readonly="" name="imagen2" size="53" value="<? echo $imagen2; ?>">
+							<input type="text"  class="form-control" readonly="" name="imagen2" id="imagen2Text" size="53" value="<? echo $imagen2; ?>">
 
 						</td>
 						<td align="left">
-							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen2')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>
+							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen2')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>&nbsp;
+							<a id="btnEliminaFoto2" <?php if($imagen2 == ""){?> style="display:none" <?php }?> title="Eliminar im&aacute;gen del contenido" border="0" style="cursor:pointer" onClick="quitarImagenActual('imagen2',this)"> <span class="glyphicon glyphicon-remove text-danger" style="font-size:1.8em"></span> </a>
 						</td>
 					</tr>
 				</table>
@@ -650,11 +691,12 @@ else {?>
 				<table align="left">
 					<tr>
 						<td align="left">
-							<input type="text" class="form-control" readonly="" name="imagen3" size="53" value="<? echo $imagen3; ?>">
+							<input type="text" class="form-control" readonly="" name="imagen3" id="imagen3Text" size="53" value="<? echo $imagen3; ?>">
 
 						</td>
 						<td align="left">
-							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen3')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>
+							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen3')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>&nbsp;
+							<a id="btnEliminaFoto3" <?php if($imagen3 == ""){?> style="display:none" <?php }?> title="Eliminar im&aacute;gen del contenido" border="0" style="cursor:pointer" onClick="quitarImagenActual('imagen3',this)"> <span class="glyphicon glyphicon-remove text-danger" style="font-size:1.8em"></span> </a>
 						</td>
 					</tr>
 				</table>
@@ -668,11 +710,13 @@ else {?>
 				<table align="left">
 					<tr>
 						<td align="left">
-							<input type="text" class="form-control" readonly="" name="imagen4" size="53" value="<? echo $imagen4; ?>">
+							<input type="text" class="form-control" readonly="" name="imagen4" id="imagen4Text" size="53" value="<? echo $imagen4; ?>">
 
 						</td>
 						<td align="left">
-							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen4')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>
+							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen4')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>&nbsp;
+							<a id="btnEliminaFoto4" <?php if($imagen4 == ""){?> style="display:none" <?php }?> title="Eliminar im&aacute;gen del contenido" border="0" style="cursor:pointer" onClick="quitarImagenActual('imagen4',this)"> <span class="glyphicon glyphicon-remove text-danger" style="font-size:1.8em"></span> </a>
+
 						</td>
 					</tr>
 				</table>
@@ -686,11 +730,12 @@ else {?>
 				<table align="left">
 					<tr>
 						<td align="left">
-							<input type="text" class="form-control" readonly="" name="imagen5" size="53" value="<? echo $imagen5; ?>">
+							<input type="text" class="form-control" readonly="" name="imagen5" id="imagen5Text" size="53" value="<? echo $imagen5; ?>">
 
 						</td>
 						<td align="left">
-							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen5')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>
+							&nbsp; <a border="0" href="#" onClick="ventanaPop('imagen5')"> <span class="glyphicon glyphicon-picture" style="font-size:1.8em"></span> </a>&nbsp;
+							<a id="btnEliminaFoto5" <?php if($imagen5 == ""){?> style="display:none" <?php }?> title="Eliminar im&aacute;gen del contenido" border="0" style="cursor:pointer" onClick="quitarImagenActual('imagen5',this)"> <span class="glyphicon glyphicon-remove text-danger" style="font-size:1.8em"></span> </a>
 						</td>
 					</tr>
 				</table>
@@ -779,6 +824,58 @@ else {?>
 				<input type="text" class="form-control"  name="keywords" size="53" value="<? echo $keywords; ?>">
 			</td>
 		</tr>
+		<!-- LINKS REDES SOCIALES-->
+		<tr id="linkFacebook">
+			<td>
+				<i class="fa fa-facebook" aria-hidden="true"></i> Facebook 
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="linkFacebook" size="53" value="<?php echo $linkFacebook; ?>">
+			</td>
+		</tr>
+		<tr id="linkTwitter">
+			<td>
+				<i class="fa fa-twitter" aria-hidden="true"></i> Twitter 
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="linkTwitter" size="53" value="<?php echo $linkTwitter; ?>">
+			</td>
+		</tr>
+		<tr id="linkInstagram">
+			<td>
+				<i class="fa fa-instagram" aria-hidden="true"></i> Instagram
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="linkInstagram" size="53" value="<?php echo $linkInstagram; ?>">
+			</td>
+		</tr>
+		<tr id="linkGooglePlus">
+			<td>
+				<i class="fa fa-google-plus" aria-hidden="true"></i> Google Plus
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="linkGooglePlus" size="53" value="<?php echo $linkGooglePlus; ?>">
+			</td>
+		</tr>
+		<tr id="linkYoutube">
+			<td>
+				<i class="fa fa-youtube-play" aria-hidden="true"></i> Youtube
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="linkYoutube" size="53" value="<?php echo $linkYoutube; ?>">
+			</td>
+		</tr>
+		<tr id="linkLinkedin">
+			<td>
+				<i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin
+			</td>
+			<td class="celdas">
+				<input type="text" class="form-control"  name="linkLinkedin" size="53" value="<?php echo $linkLinkedin; ?>">
+			</td>
+		</tr>
+
+
+		<!-- FIN LINK REDES SOCIALES-->
 		<tr id="notas">
 			<td>
 				Meta Descripci&oacute;n

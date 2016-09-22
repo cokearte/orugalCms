@@ -729,7 +729,7 @@ $tabla	.=	'</td>
 $tabla .= '</td>
 				<td align="center" colspan="4">';
 					
-						$tabla.='<b><a href="?id='.$id.'&nueva='.$id.'&type='.$tipo_contenido.'" title="Adicionar"><img src="images/iconos/adicionar.gif" border="0"></a></b>';	
+						$tabla.='<b><a href="?id='.$id.'&nueva='.$id.'&type='.$tipo_contenido.'" title="Agregar"><span class="glyphicon glyphicon-plus-sign"></span> Agregar</a></b>';	
 					
 					
 				$tabla	.='</td>
@@ -739,11 +739,11 @@ $tabla .= '</td>
 						<tr class="center">';
 							if($tipo_contenido == 10)
 							{
-								$tabla.='<td width="350px" align="center"><b><a href="index.php?type='.$tipo_contenido.'&orden='.base64_encode($orden).'">TITULO</a></b></td>';
+								$tabla.='<td width="350px" align="left"><b>TITULO</b></td>';
 							}
 							else
 							{
-								$tabla.='<td align="center"><b><a href="index.php?id='.$id.'&orden='.base64_encode('titulo DESC').'">TITULO</a></b></td>';
+								$tabla.='<td align="left"><b>TITULO</b></td>';
 							}
 							/*if($tipo_contenido == 10)
 							{
@@ -755,7 +755,7 @@ $tabla .= '</td>
 							}
 							else
 							{
-								$tabla.='<td align="center"><b>SUBIR | BAJAR</b></td>';
+								$tabla.='<td align="center"><b>ORDENAR</b></td>';
 							}	
 							
 							$tabla.='<td align="center"><b>VISIBLE</b></td>';
@@ -808,7 +808,7 @@ $tabla .= '</td>
 							
 							
 							$tabla.='<td align="center"><b><input type="checkbox" onClick="marcar(this)"></b>
-							<img src="images/iconos/eliminar.gif" border="0" title="Eliminar">
+									<span class="glyphicon glyphicon-trash"></span>
 							</td>
 						</tr>';
 						$contador	=	1;
@@ -832,11 +832,11 @@ $tabla .= '</td>
 								$tabla.= '<td align="center">';
 								if($contador!=1)
 								{
-									$tabla.= '<a href="?id='.$id.'&id_orden='.$rew['id'].'&orden='.$rew['orden'].'&acc=s">Subir</a> |';
+									$tabla.= '<a href="?id='.$id.'&id_orden='.$rew['id'].'&orden='.$rew['orden'].'&acc=s" title="Subir contenido"><span class="glyphicon glyphicon-arrow-up"></span> Subir</a>  ';
 								}
 								if($contador != $paging->numTotalRegistros())
 								{ 
-									$tabla.= '<a href="?id='.$id.'&id_orden='.$rew['id'].'&orden='.$rew['orden'].'&acc=b">Bajar</a>';
+									$tabla.= '<a href="?id='.$id.'&id_orden='.$rew['id'].'&orden='.$rew['orden'].'&acc=b" title="Bajar contenido"><span class="glyphicon glyphicon-arrow-down"></span> Bajar</a>';
 								}	
 									$tabla.= '</td>';
 								}
@@ -844,13 +844,13 @@ $tabla .= '</td>
 								if($rew['visible'] == 1)//abierto
 								{
 									$tabla.='<td align="center">
-												<img src="images/eye.png" title="Activo">
+												<span class="glyphicon glyphicon-eye-open"></span>
 											</td>';
 								}
 								else
 								{
 									$tabla.='<td align="center">
-												<img src="images/eye_cerrado.png" title="Inactivo">
+												<span class=" glyphicon glyphicon-eye-close"></span>
 											</td>';
 								}	
 								if($tipo_contenido == 9)
@@ -898,7 +898,7 @@ $tabla .= '</td>
 								{				
 									$tabla	.='	<td align="center">
 													<a href="?id='.$rew['id'].'" title="Ver Subcontenidos">
-														<img src="images/iconos/ver-subcontenido.gif" border="0" title="Ver Subcontenidos">
+														<span class="glyphicon glyphicon-th-list"></span>
 													</a>
 												</td>';	
 									$tabla	.='	<td align="center">
@@ -919,7 +919,7 @@ $tabla .= '</td>
 								{				
 									$tabla	.='	<td align="center">
 													<a href="?id='.$rew['id'].'" title="Ver Subcontenidos">
-														<img src="images/iconos/ver-subcontenido.gif" border="0" title="Ver Subcontenidos">
+														<span class="glyphicon glyphicon-th-list"></span>
 													</a>
 												</td>';		
 								}
@@ -942,7 +942,7 @@ $tabla .= '</td>
 								}
 								//funcionamiento para el producto
 								$tabla	.=	'<td align="center">';
-								$tabla	.=	'<a href="?id='.$rew['id'].'&editar='.$rew['id'].'" title="Modificar"><img src="images/iconos/editar.gif" border="0"></a>';
+								$tabla	.=	'<a href="?id='.$rew['id'].'&editar='.$rew['id'].'" title="Modificar"><span class="glyphicon glyphicon-pencil"></span></a>';
 								//if($tipo_contenido == _TIPO_PRODUCTO)
 							//	{
 								//	$tabla	.=	'<a href="?id='.$rew['id'].'&editar='.$rew['id'].'&atrib=1" title="Asignar Atributos"><img src="images/bot-atributos.gif" border="0"></a>';		
