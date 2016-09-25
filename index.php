@@ -29,6 +29,9 @@ $id		=	(isset($_GET['id']))?$_GET['id']:1;
 $funciones	=	new Funciones();
 //objeto de la clase core
 $core	=	new Core();
+
+//genera las urls amigables
+$htaccess = $funciones->automaticHtaccess();
 //muestro los banners del home
 if($id==1)
 {

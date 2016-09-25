@@ -1346,6 +1346,63 @@ class Funciones
 		fclose($fp); 
 	}
 
+	function entorno()
+	{
+		if(_ENTORNO == 'produccion')
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	//nuevas funciones plus del sitio
+	function imagenCorrecta($imagen)
+	{
+		$salida =	"";
+		if(trim($imagen) != "")
+		{
+			$salida = _DOMINIO."images/".$imagen;
+		}
+		else
+		{
+			$salida = _DOMINIO."images/diseno/sin_imagen.jpg";
+		}
+		return $salida;
+	}
+	function automaticHtaccess()
+	{
+		global $db;
+		global $funciones;
+
+		$marcas	=	$db->GetAll(sprintf("SELECT * FROM principal WHERE visible=1 AND eliminado=0 ORDER BY orden ASC"));
+		$fp = fopen('.htaccess',"w+");
+		$salto = '';
+		//salto de linea para servidor windows
+		if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') 
+		{
+		    $salto = "\r\n";
+		} 
+		else 
+		{
+		    $salto = "\n";
+		}
+
+
+		$datos	 = 	"RewriteEngine On".$salto;
+		$datos	.=	"#ErrorDocument 404 /noPage.php".$salto.$salto;
+		foreach($marcas as $data)
+		{
+			if(!empty($data['url_amigable']))
+			{
+				$datos	.='RewriteRule ^'.$data['url_amigable'].'$ index.php?id='.$data['id'].$salto;
+			}
+		}	
+		fwrite($fp, $datos, 8000);
+		fclose($fp); 
+	}
+
 	function traerUrl($id)
 	{
 		global $db;
@@ -1361,16 +1418,44 @@ class Funciones
 		return $url;
 	}
 
-	function entorno()
+	/**
+	 * Funcion que devuelve un array con los valores:
+	 *	os => sistema operativo
+	 *	browser => navegador
+	 *	version => version del navegador
+	 */
+	function detect()
 	{
-		if(_ENTORNO == 'produccion')
+		$browser=array("IE","OPERA","MOZILLA","NETSCAPE","FIREFOX","SAFARI","CHROME");
+		$os=array("WIN","MAC","LINUX");
+	 
+		# definimos unos valores por defecto para el navegador y el sistema operativo
+		$info['browser'] = "OTHER";
+		$info['os'] = "OTHER";
+	 
+		# buscamos el navegador con su sistema operativo
+		foreach($browser as $parent)
 		{
-			return true;
+			$s = strpos(strtoupper($_SERVER['HTTP_USER_AGENT']), $parent);
+			$f = $s + strlen($parent);
+			$version = substr($_SERVER['HTTP_USER_AGENT'], $f, 15);
+			$version = preg_replace('/[^0-9,.]/','',$version);
+			if ($s)
+			{
+				$info['browser'] = $parent;
+				$info['version'] = $version;
+			}
 		}
-		else
+	 
+		# obtenemos el sistema operativo
+		foreach($os as $val)
 		{
-			return false;
+			if (strpos(strtoupper($_SERVER['HTTP_USER_AGENT']),$val)!==false)
+				$info['os'] = $val;
 		}
+	 
+		# devolvemos el array de valores
+		return $info;
 	}
 }
 ?>
