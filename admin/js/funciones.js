@@ -75,10 +75,12 @@ function campos(accion)
 	
 	document.getElementById('horarioinicio').style.display =  accion;
 	document.getElementById('horariofin').style.display =  accion;
-	
-		document.getElementById('permisos').style.display = accion;
-		//document.getElementById('recom').style.display = accion;
-		document.getElementById('fecha_form').style.display = accion;
+
+	document.getElementById('permisos').style.display = accion;
+	//document.getElementById('recom').style.display = accion;
+	document.getElementById('fecha_form').style.display = accion;
+	document.getElementById('multiImagen').style.display = accion;
+	document.getElementById('url_amigable').style.display = '';
 		
 }
 function tiposid(id)
@@ -158,6 +160,7 @@ function tiposid(id)
 		campos('none');
 		document.getElementById('titulo').style.display = '';
 		document.getElementById('resumen').style.display = '';
+		document.getElementById('multiImagen').style.display = '';
 	}
 	//si es tipo aplicacion PHP
 	else if(id == 5)
