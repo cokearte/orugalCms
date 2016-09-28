@@ -81,6 +81,7 @@ function campos(accion)
 	document.getElementById('fecha_form').style.display = accion;
 	document.getElementById('multiImagen').style.display = accion;
 	document.getElementById('url_amigable').style.display = '';
+	document.getElementById('visorGaleria').style.display = accion;
 		
 }
 function tiposid(id)
@@ -160,7 +161,6 @@ function tiposid(id)
 		campos('none');
 		document.getElementById('titulo').style.display = '';
 		document.getElementById('resumen').style.display = '';
-		document.getElementById('multiImagen').style.display = '';
 	}
 	//si es tipo aplicacion PHP
 	else if(id == 5)
@@ -690,6 +690,15 @@ function tiposid(id)
 		document.getElementById('imagen').style.display = '';
 		document.getElementById('imagen1_preview').style.display = '';
 	}
+	//si es tipo super galeria de imagenes
+	else if(id == 61)
+	{
+		campos('none');
+		document.getElementById('titulo').style.display = '';
+		document.getElementById('descripcion').style.display = '';
+		document.getElementById('multiImagen').style.display = '';
+		document.getElementById('visorGaleria').style.display = '';
+	}
 }
 /*
 * Funcion que sirve para seleccionar todos los checkbox 
@@ -767,7 +776,17 @@ function ventanaPop(caja)
 	var posicion_y; 
 	posicion_x=(screen.width/2)-(ancho/2); 
 	posicion_y=(screen.height/2)-(alto/2);
-	window.open('../repositorio/carga.php?caja='+caja,"Repositorio imágenes", "width="+ancho+",height="+alto+",menubar=0,toolbar=0,directories=0,scrollbars=yes,resizable=no,left="+posicion_x+",top="+posicion_y+"");
+	window.open('../repositorio/carga.php?caja='+caja+"&ml=0","Repositorio imágenes", "width="+ancho+",height="+alto+",menubar=0,toolbar=0,directories=0,scrollbars=yes,resizable=no,left="+posicion_x+",top="+posicion_y+"");
+}
+function ventanaPopMultiple(caja)
+{
+	var ancho = 1100;
+	var alto  = 600;
+	var posicion_x; 
+	var posicion_y; 
+	posicion_x=(screen.width/2)-(ancho/2); 
+	posicion_y=(screen.height/2)-(alto/2);
+	window.open('../repositorio/carga.php?caja='+caja+"&ml=1","Repositorio imágenes", "width="+ancho+",height="+alto+",menubar=0,toolbar=0,directories=0,scrollbars=yes,resizable=no,left="+posicion_x+",top="+posicion_y+"");
 }
 function ventanaPop2(caja)
 {

@@ -1,4 +1,3 @@
 RewriteEngine On
 #ErrorDocument 404 /noPage.php
 
-RewriteRule ^home$ index.php?id=1

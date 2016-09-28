@@ -18,6 +18,10 @@ if(isset($_GET['caja']))
 {
 	$_SESSION['caja'] =	$_GET['caja']; 
 }	
+if(isset($_GET['ml']))
+{
+	$_SESSION['multiple'] =	$_GET['ml']; 
+}
 ?>
 
 <style>
@@ -58,6 +62,92 @@ function poner(dato,caja)
 	window.opener.mostrar(dato,caja);
 	window.close();
 	
+}
+function quitarFoto(dato,file,e)
+{
+	$.ajax({
+        url: "ajax.php",
+        data: "accion=1&idFile="+file+"&dato="+dato+"&mov=0",
+        type: "POST",
+        dataType:'json',
+        success:function(data)
+        {
+			$(e).remove();
+			if(data.datos.length == 0)
+			{
+				location.reload();
+				$("#tabOculta").addClass("hidden")
+			}
+        },
+        error:function(e) 
+        {
+           
+        }
+    });
+}
+function selFoto(dato,file,e)
+{
+	if($(e).hasClass('btn-warning'))
+	{
+		$(e).removeClass('btn-warning');
+		$(e).removeClass('glyphicon glyphicon-remove');
+		$(e).addClass('glyphicon glyphicon-ok');
+
+		$.ajax({
+	        url: "ajax.php",
+	        data: "accion=1&idFile="+file+"&dato="+dato+"&mov=0",
+	        type: "POST",
+        	dataType:'json',
+	        success:function(data)
+	        {
+				if(data.datos.length == 0)
+				{
+					location.reload();
+					$("#tabOculta").addClass("hidden")
+				}
+				else
+				{
+					$("#tabOculta").removeClass("hidden")
+				}
+
+				location.reload();
+	        },
+	        error:function(e) 
+	        {
+	           
+	        }
+	    });
+	}
+	else
+	{
+		$(e).addClass('btn-warning');
+		$(e).addClass('glyphicon glyphicon-remove');
+
+		$.ajax({
+	        url: "ajax.php",
+	        data: "accion=1&idFile="+file+"&dato="+dato+"&mov=1",
+	        type: "POST",
+       		dataType:'json',
+	        success:function(data)
+	        {
+				if(data.datos.length == 0)
+				{
+					location.reload();
+					$("#tabOculta").addClass("hidden")
+				}
+				else
+				{
+					$("#tabOculta").removeClass("hidden")
+				}
+
+				location.reload();
+	        },
+	        error:function(e) 
+	        {
+
+	        }
+	    });
+	}
 }
 </script>
 <script>
@@ -109,7 +199,7 @@ session_start();
 $dir	=	(isset($_GET['dir']))?$_GET['dir']:'1';
 //abro el directorio
 
-
+//var_dump($_SESSION['galeria']);
 
 //traigo las carpetas iniciales
 $infoFolderActual	=	$db->GetAll(sprintf("SELECT * FROM repositorioimagenes WHERE idFile=%s AND eliminado=0",$dir));
@@ -203,14 +293,29 @@ foreach($directorios as $reco)
 		$ruta_final = str_replace('../images/','',$dir);
 		$pintado   .= '<tr>';
 			$pintado   .= '<td width="80px">';
-				$pintado   .= "<a style='cursor:pointer' onclick='poner(\"../".$rutavisitada.$reco['nombre']."\",\"".$_SESSION['caja'] ."\")' class='pull-left'>";
-					$pintado   .= '<img width="50px" height="50px" class="thumbnail" style="float:left" src="../externos/Thumb.php?img=../'.$rutavisitada.$reco['nombre'].'&tamano=100" >';
-				$pintado   .= "</a>";
+				if($_SESSION['multiple'] == 0)
+				{
+					$pintado   .= "<a style='cursor:pointer' onclick='poner(\"../".$rutavisitada.$reco['nombre']."\",\"".$_SESSION['caja'] ."\")' class='pull-left'>";
+				}
+					
+						$pintado   .= '<img width="50px" height="50px" class="thumbnail" style="float:left" src="../'.$rutavisitada.$reco['nombre'].'" >';
+				if($_SESSION['multiple'] == 0)
+				{		
+					$pintado   .= "</a>";
+				}
 			$pintado   .= '</td>';
 			$pintado   .= '<td  class="text-left" valign="center">';
-				$pintado   .= "<a style='cursor:pointer' onclick='poner(\"../".$rutavisitada.$reco['nombre']."\",\"".$_SESSION['caja'] ."\")' class='pull-left'>";
-					$pintado   .= $reco['nombre'];
-				$pintado   .= "</a>";
+
+				if($_SESSION['multiple'] == 0)
+				{
+					$pintado   .= "<a style='cursor:pointer' onclick='poner(\"../".$rutavisitada.$reco['nombre']."\",\"".$_SESSION['caja'] ."\")' class='pull-left'>";
+				}	
+						$pintado   .= $reco['nombre'];
+
+				if($_SESSION['multiple'] == 0)
+				{		
+					$pintado   .= "</a>";
+				}
 			$pintado   .= '</td>';
 			$pintado   .= '<td  class="text-center" valign="center">';
 					$pintado   .= FileSizeConvert(filesize('../'.$rutavisitada.$reco['nombre']));
@@ -219,8 +324,24 @@ foreach($directorios as $reco)
 					$pintado   .= mime_content_type('../'.$rutavisitada.$reco['nombre']);
 			$pintado   .= '</td>';
 			$pintado   .= '<td align="center">';
-					$pintado   .= "<button title='Eliminar archivo' onClick='borrar_archivo(\"".$reco['nombre']."\",\"../".$rutavisitada."\",\"".$reco['idFile']."\",\"".$reco['idpadre']."\")' class='btn btn-danger btn-sm glyphicon glyphicon-trash'></button>
-			   					   <button title='Usar el archivo' onclick='poner(\"../".$rutavisitada.$reco['nombre']."\",\"".$_SESSION['caja'] ."\")' class='btn btn-primary btn-sm glyphicon glyphicon-ok'></button>";
+					$pintado   .= "<button title='Eliminar archivo' onClick='borrar_archivo(\"".$reco['nombre']."\",\"../".$rutavisitada."\",\"".$reco['idFile']."\",\"".$reco['idpadre']."\")' class='btn btn-danger btn-sm glyphicon glyphicon-trash'></button>";
+					if($_SESSION['multiple'] == 0)
+					{
+				   		$pintado   .= "&nbsp;<button title='Usar el archivo' onclick='poner(\"../".$rutavisitada.$reco['nombre']."\",\"".$_SESSION['caja'] ."\")' class='btn btn-primary btn-sm glyphicon glyphicon-ok'></button>";
+			   		}
+			   		else
+			   		{
+			   			if(isset($_SESSION['galeria'][$reco['idFile']]))
+			   			{
+			   				$pintado   .= "&nbsp;<button title='Usar el archivo' onclick='selFoto(\"../".$rutavisitada.$reco['nombre']."\",\"".$reco['idFile']."\",this)' class='selArchivo btn btn-warning btn-sm glyphicon glyphicon-remove'></button>";	
+			   			}
+			   			else
+			   			{
+			   				$pintado   .= "&nbsp;<button title='Usar el archivo' onclick='selFoto(\"../".$rutavisitada.$reco['nombre']."\",\"".$reco['idFile']."\",this)' class='selArchivo btn btn-default btn-sm glyphicon glyphicon-ok'></button>";		
+			   			}
+			   			
+			   		}
+
 			$pintado   .= '</td>';
 		$pintado   .= '<tr>';
 	}

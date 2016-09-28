@@ -72,7 +72,8 @@ class Funciones
 								  "fecha"=>$result->fields['fecha'],
 								  "puntoscanje"=>$result->fields['puntoscanje'],
 								  "url_amigable"=>$result->fields['url_amigable'],
-								  "multiImagen"=>$result->fields['multiImagen'],
+								  "multiImagenText"=>$result->fields['multiImagenText'],
+								  "multiImagenArray"=>json_decode($result->fields['multiImagenText'],true),
 								  "linkFacebook"=>$result->fields['linkFacebook'],
 								  "linkTwitter"=>$result->fields['linkTwitter'],
 								  "linkInstagram"=>$result->fields['linkInstagram'],
@@ -437,7 +438,8 @@ class Funciones
 								  "fecha"=>$result->fields['fecha'],
 								  "votos"=>$result->fields['votos'],
 								  "url_amigable"=>$result->fields['url_amigable'],
-								  "multiImagen"=>$result->fields['multiImagen'],
+								  "multiImagenText"=>$result->fields['multiImagenText'],
+								  "multiImagenArray"=>json_decode($result->fields['multiImagenText'],true),
 								  "calificacion"=>$result->fields['calificacion'],
 								  "linkFacebook"=>$result->fields['linkFacebook'],
 								  "linkTwitter"=>$result->fields['linkTwitter'],
@@ -663,7 +665,7 @@ class Funciones
 											//armo los campos a los cuales le insertare la informacion
 											$campos		.=	sprintf("".$key1[0].",");
 											//armo los valores para cada campo
-											$valores	.=	sprintf("'".$info."',");
+											$valores	.=	sprintf("'".utf8_decode($info)."',");
 										}
 									
 									}
@@ -1460,6 +1462,17 @@ class Funciones
 	 
 		# devolvemos el array de valores
 		return $info;
+	}
+	function id_youtube($url) 
+	{
+		//$url="https://www.youtube.com/watch?v=zp-64wdY_u4";
+		$parte = array();
+	    $patron = '%^ (?:https?://)? (?:www\.)? (?: youtu\.be/ | youtube\.com (?: /embed/ | /v/ | /watch\?v= ) ) ([\w-]{10,12}) $%x';
+	    $array = preg_match($patron, $url, $parte);
+	    if (false !== $array) {
+	        return $parte[1];
+	    }
+	    return false;
 	}
 }
 ?>

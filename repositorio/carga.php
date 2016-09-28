@@ -77,6 +77,7 @@ else
 		.boton{padding:5px;border:0}
 		.barra{box-shadow:none;border:none;border-radius: 0}
 		img{image-orientation: from-image;}
+		.noMostrar{display:none;}
 	</style>
 </head>
 <body>
@@ -103,7 +104,11 @@ else
 		        <?php include("includes/lateral.php");?>
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right" style="margin:1% 0 0 0">
+		      	<?php if(isset($_SESSION['galeria'])){ ?>
+		      		<a onclick="ponerGaleria()" class="btn btn-primary">Finalizar</a>
+		      	<?php }else{ ?>
 		        	<a onclick="javascript:window.close()" class="btn btn-primary">Cerrar</a>
+		        <?php }?>
 		      </ul> 
 
 		    </div><!-- /.navbar-collapse -->
@@ -200,6 +205,8 @@ else
 		<ul class="nav nav-tabs">
 		    <li class="active"><a data-toggle="tab" href="#home">Archivos actuales</a></li>
 		    <li><a data-toggle="tab" href="#subir">Subir nuevos archivos</a></li>
+		    <li id="tabOculta" <?php if(!isset($_SESSION['galeria']) && count($_SESSION['galeria']) == "0"){ ?>class="hidden"<?php }?> ><a data-toggle="tab" href="#listos" style="float:right">Archivos listos para cargar</a></li>
+		    
 		  </ul>
 
 		  <div class="tab-content" style="border-left:1px solid #DDDDDD;border-bottom:1px solid #DDDDDD;border-right:1px solid #DDDDDD">
@@ -241,7 +248,7 @@ else
 										<input type="hidden" name="padre" value="<?php echo $dir?>" class="form-control" size="35">
 									</div>
 									<div class="form-group">
-										<input name="crear_folder" type="submit" value="Crear folder" class="btn btn-primary"><br>
+										<input name="crear_folder" type="submit" value="Crear carpeta" class="btn btn-primary"><br>
 										<li style="color:#333;font-size:11px;display:block;font-weight:bold">
 											El nombre de la carpeta no debe contener (Espacios, tildes, &tilde; o cual quier caracter especial)
 										</li>
@@ -251,6 +258,28 @@ else
 						</div>
 					</div>
 				</div>
+		    </div>
+		    <div id="listos" class="tab-pane fade">
+		      	<div class="container-fluid" style="border-bottom:1px solid #ccc;">
+			    	<div class="row">
+						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 text-left">
+							<h3>Archivos listos para agregar a la galer&iacute;a</h3><br>
+						</div>
+						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 text-left" id="panelArchivosCargar">
+							<div class="row">
+								<?php foreach($_SESSION['galeria'] as $llave=>$gal){ ?>
+									<div class="col-sm-6 col-xs-12 col-md-2 col-lg-2 text-left" style="position: relative" id="miniFoto<?php echo $llave?>">
+											<img width="100%" height="100px" class="thumbnail" style="float:left" src="../images/<?php echo $gal?>" >
+											<a style="position: absolute;top:0;right:10px;cursor:pointer;padding: 2%" class="glyphicon glyphicon-remove btn-warning selArchivo" onclick="quitarFoto('<?php echo $gal?>',<?php echo $llave?>,'#miniFoto<?php echo $llave?>')"></a>
+									</div>	
+								<?php } ?>
+							</div>
+						</div>
+						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12 text-center" style="padding: 5%">
+							<a onclick="ponerGaleria()" class="btn btn-primary">Agregar a la gale&iacute;a</a>
+						</div>
+					</div>
+				</div>	
 		    </div>
 		  </div>
 	</div>	
@@ -301,6 +330,13 @@ else
 
 	</script>
 	<script src="<?php echo _DOMINIO ?>admin/css/toastr.min.js"></script>
+	<script type="text/javascript">
+		function ponerGaleria()
+		{
+			window.opener.ponerGaleriaFinal();
+			window.close();
+		}
+	</script>
 </body>
 </html>
 <?php }?>
